@@ -75,6 +75,47 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+#youtube {
+  padding: 60px 0;
+  background: #f7f7f7;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.youtube-frame {
+  position: relative;
+  width: 84vw; /* Use viewport width */
+  padding-bottom: 55%; /* Wider aspect ratio */
+  max-width: 2400px; /* Even larger max-width */
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%); /* Center the frame */
+}
+
+.youtube-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: adds subtle shadow */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .youtube-frame {
+    width: 95vw;
+    padding-bottom: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .youtube-frame {
+    width: 100%;
+    padding-bottom: 56.25%; /* Standard 16:9 ratio for mobile */
+  }
+}
+
 .back-to-top:focus {
   background: rgba(0, 0, 0, 0.2);
   color: #fff;
