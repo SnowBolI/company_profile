@@ -8,12 +8,13 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="{{asset('user/images/favicon.png')}}" rel="icon">
+  <link href="{{asset('user/images/logobank.png')}}" rel="icon">
   <link href="{{asset('user/images/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -58,7 +59,7 @@
       <div id="logo" class="pull-left">
         <a href="#hero">
           <img src="{{asset('user/images/logobank.png')}}" style="margin-right:0px; width: auto; height: 60px;"/></img>
-          <h2 class="d-inline text-light" >Ekadharma</h2>
+          <h2 class="d-inline text-light" style="text-decoration: none;">Ekadharma</h2>
         </a>
       </div>
 

@@ -71,21 +71,41 @@
 
 @section('content')
       <!--========================== About Us Section ============================-->
-      <section id="about">
-        <div class="container">
-          <div class="row about-container">
-  
-            <div class="col-lg-7 content order-lg-1 order-2">
-              <h2 class="title">Tentang Kami</h2>
-              <p> {!!$about[0]->caption!!}</p>
-            </div>
-  
-            <div class="col-lg-5 background order-lg-2 order-1 wow fadeInRight" 
-                style="background: url('{{asset('about_image/'.$about[0]->image)}}') center top no-repeat; background-size: cover;"></div>
-          </div>
-  
+      <section class="about-section">
+    <div class="about-container">
+      <div class="section-header">
+        <p>PRODUK UNGGULAN</p>
+        <h2>Nikmati Produk & Layanan<br>Terbaik Kami</h2>
+      </div>
+      
+      <div class="featured-image">
+        <img src="{{asset('about_image/'.$about[0]->image)}}" alt="Bank Staff" />
+      </div>
+      
+      <div class="product-grid">
+        <div class="product-item">
+          <div class="product-icon">💰</div>
+          <h3>Tabungan</h3>
+          <p>Simpanan nasabah yang memiliki imbal hasil bunga kompetitif fleksibilitas produk dan manfaat yang tinggi</p>
+          <a href="#">Selengkapnya →</a>
         </div>
-      </section>
+        
+        <div class="product-item">
+          <div class="product-icon">💳</div>
+          <h3>Deposito</h3>
+          <p>Simpanan nasabah dengan imbal hasil bunga dan dapat dicairkan berdasarkan jangka waktu yang ditentukan</p>
+          <a href="#">Selengkapnya →</a>
+        </div>
+        
+        <div class="product-item">
+          <div class="product-icon">📈</div>
+          <h3>Kredit</h3>
+          <p>Produk fasilitas pendanaan untuk modal kerja, investasi dengan tingkat suku bunga yang kompetitif</p>
+          <a href="#">Selengkapnya →</a>
+        </div>
+      </div>
+    </div>
+  </section>
   
       <!--========================== Services Section ============================-->
       <section id="services">
@@ -281,7 +301,7 @@
           <div class="row" id="category-wrapper">
             @foreach ($categories as $category)
                 <div class="col-md-4 col-sm-12 category-item filter-app" >
-                      <a href="">
+                      <a href="blog">
                         <img src="{{asset('category_image/'.$category->image)}}" class="image-center">
                         <div class="details">
                           <h4>{{$category->name}}</h4>
