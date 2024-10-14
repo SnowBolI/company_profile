@@ -66,6 +66,7 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="{{$url=='home'?'menu-active':''}}"><a href="{{url('home')}}" style="color: black;">Home</a></li>
+          <li class="{{$url=='profile'?'menu-active':''}}"><a href="{{url('profile')}}" style="color: black;">Profile</a></li>
           <li class="{{$url=='blog'?'menu-active':''}}"><a href="{{url('blog')}}" style="color: black;">Blog</a></li>
           <li class="{{$url=='destination'?'menu-active':''}}"><a href="{{url('destination')}}" style="color: black;">Destination</a></li>
           <li class="{{$url=='contact'?'menu-active':''}}"><a href="{{url('contact')}}" style="color: black;">Contact </a></li>
