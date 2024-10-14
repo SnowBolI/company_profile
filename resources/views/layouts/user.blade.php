@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Bank Ekadharma</title>
+  <title>BPR Ekadharma</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -92,21 +92,52 @@
     Footer
   ============================-->
   <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong>Regna</strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- #footer -->
+        <div class="footer-content">
+            <div class="logo-section">
+                <img src="user/images/logobank.png" alt="Bank Ekadharma" style="max-width: 50%;">
+                <img src="user/images/boot.png" alt="Logo1" style="max-width: 100%;">
+                <img src="user/images/boot.png" alt="Logo2" style="max-width: 100%;">
+                <img src="user/images/boot.png" alt="Logo3" style="max-width: 100%;">
+                <img src="user/images/boot.png" alt="Logo4" style="max-width: 100%;">
+            </div>
+            <div class="info-section">
+                <div class="contact-section">
+                    <h3>Hubungi Kami</h3>
+                    <ul>
+                        <li>Jl. Raya Jaranan - Ngadirejo</li>
+                        <li>Kecamatan Kawedanan Kabupaten Magetan Provinsi Jawa Timur 63382</li>
+                        <li>bank.ekadharma@gmail.com</li>
+                        <li>Telepon/FAX: (0351) 439872</li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">F</a>
+                        <a href="#" aria-label="Instagram">I</a>
+                    </div>
+                </div>
+                <div class="links-section">
+                    <h3>Link</h3>
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Profil BPR</a></li>
+                        <li><a href="#">Produk</a></li>
+                        <li><a href="#">Edukasi & Webinar</a></li>
+                        <li><a href="#">Karir</a></li>
+                        <li><a href="#">Berita</a></li>
+                        <li><a href="#">Laporan</a></li>
+                        <li><a href="#">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="registered-section">
+                    <h3>Terdaftar & Diawasi</h3>
+                    <img src="path_to_lps_logo.png" alt="LPS">
+                    <img src="user/images/ojeka.png" alt="OJK">
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            Copyright © 2024 PT BPR Ekadharma Bhinaraharja | Developed by Archipelago Digital Studio
+        </div>
+    </footer>
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 

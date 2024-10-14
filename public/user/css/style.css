@@ -987,19 +987,93 @@ body.mobile-nav-active #mobile-nav-toggle {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #343b40;
-  padding: 30px 0;
-  color: #fff;
-  font-size: 14px;
+  background-color: #4CAF50;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
 }
 
-#footer .copyright {
-  text-align: center;
+.footer-content {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-#footer .credits {
-  padding-top: 10px;
+.logo-section {
+  background-color: #333;
+  padding: 20px;
+  width: 25%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-section img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.info-section {
+  display: flex;
+  width: 75%;
+  padding-left: 20px;
+}
+
+.contact-section, .links-section, .registered-section {
+  flex: 1;
+}
+
+h3 {
+  color: #FFD700;
+  border-bottom: 2px solid #FFD700;
+  padding-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.links-section a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 2px 0;
+}
+
+.links-section a:before {
+  content: '→ ';
+  color: #FFD700;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  font-size: 16px;
+  color: #4CAF50;
+  background-color: #FFD700;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.copyright {
   text-align: center;
-  font-size: 13px;
-  color: #ccc;
+  margin-top: 20px;
+  font-size: 0.9em;
+  padding: 10px 0;
+  background-color: #45a049;
+}
+
+.registered-section img {
+  max-width: 50%;
+  height: auto;
+  margin-top: 10px;
 }

@@ -70,6 +70,36 @@
 @endsection
 
 @section('content')
+  
+      <!--========================== Services Section ============================-->
+      <section id="services">
+        <div class="container wow fadeIn">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+              <div class="box" data-toggle="modal" data-target="#modal-kredit">
+                <div class="icon"><i class="fa fa-money"></i></div>
+                <h4 class="title">Simulasi Kredit</h4>
+                <p class="description">Hitung Rencana Kredit Anda</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+              <div class="box" data-toggle="modal" data-target="#modal-deposito">
+                <div class="icon"><i class="fa fa-money"></i></div>
+                <h4 class="title">Simulasi Deposito</h4>
+                <p class="description">Hitung Rencana Deposito Anda</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+              <div class="box" data-toggle="modal" data-target="#modal-tabungan">
+                <div class="icon"><i class="fa fa-thumbs-up"></i></div>
+                <h4 class="title">Simulasi Tabungan</h4>
+                <p class="description">Hitung Rencana Tabungan Anda</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!--========================== About Us Section ============================-->
       <section class="about-section">
     <div class="about-container">
@@ -106,35 +136,6 @@
       </div>
     </div>
   </section>
-  
-      <!--========================== Services Section ============================-->
-      <section id="services">
-        <div class="container wow fadeIn">
-          <div class="row">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-              <div class="box" data-toggle="modal" data-target="#modal-kredit">
-                <div class="icon"><i class="fa fa-money"></i></div>
-                <h4 class="title">Simulasi Kredit</h4>
-                <p class="description">Hitung Rencana Kredit Anda</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-              <div class="box" data-toggle="modal" data-target="#modal-deposito">
-                <div class="icon"><i class="fa fa-money"></i></div>
-                <h4 class="title">Simulasi Deposito</h4>
-                <p class="description">Hitung Rencana Deposito Anda</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-              <div class="box" data-toggle="modal" data-target="#modal-tabungan">
-                <div class="icon"><i class="fa fa-thumbs-up"></i></div>
-                <h4 class="title">Simulasi Tabungan</h4>
-                <p class="description">Hitung Rencana Tabungan Anda</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- Modal Simulasi Kredit -->
       <div class="modal fade" id="modal-kredit" tabindex="-1" role="dialog">
