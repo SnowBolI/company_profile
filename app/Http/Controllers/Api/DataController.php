@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\About;
-use App\Category;
-use App\Article;
+use App\Models\About;
+use App\Models\Category;
+use App\Models\Article;
 
 class DataController extends Controller
 {
@@ -53,7 +53,7 @@ class DataController extends Controller
         $keyword  = $request->get('s') ? $request->get('s') : '';
         $category = $request->get('c') ? $request->get('c') : '';
 
-        $articles = \App\Article::with('categories')
+        $articles = \App\Models\Article::with('categories')
                                     ->whereHas('categories', function($q) use($category){
                                         $q->where('name', 'LIKE', "%$category%");
                                     })
@@ -88,7 +88,7 @@ class DataController extends Controller
 
     // article by category name
     public function get_article_by_category_name($category){
-        $articles = \App\Article::with('categories')
+        $articles = \App\Models\Article::with('categories')
                                     ->whereHas('categories', function($q) use($category){
                                         $q->where('name', 'LIKE', "%$category%"); })
                                     ->paginate(10);

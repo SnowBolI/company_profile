@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use Str;
 
-use App\Article;
+use Auth;
+use Validator;
+use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
@@ -63,15 +67,15 @@ class ArticleController extends Controller
    */
   public function store(Request $request)
   {
-    \Validator::make($request->all(),[
+    Validator::make($request->all(),[
       'title'      => 'required|min:2|max:200'
     ])->validate();
 
-    $new_articles               = new \App\Article;
+    $new_articles               = new Article;
     $new_articles->title        = $request->get('title');
-    $new_articles->slug         = \Str::slug($request->get('title'), '-');
+    $new_articles->slug         = Str::slug($request->get('title'), '-');
     $new_articles->content      = $request->get('content');
-    $new_articles->create_by    = \Auth::user()->id;
+    $new_articles->create_by    = Auth::user()->id;
     $new_articles->status       = $request->get('save_action');
     $new_articles->save();
     
@@ -84,7 +88,7 @@ class ArticleController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param  \App\Article  $article
+   * @param  \App\Models\Article  $article
    * @return \Illuminate\Http\Response
    */
   public function show(Article $article)
@@ -95,12 +99,12 @@ class ArticleController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  \App\Article  $article
+   * @param  \App\Models\Article  $article
    * @return \Illuminate\Http\Response
    */
   public function edit($id)
   {
-    $article = \App\Article::findOrFail($id);
+    $article = Article::findOrFail($id);
     return view('articles.edit', ['article'=>$article]);
   }
 
@@ -108,12 +112,12 @@ class ArticleController extends Controller
    * Update the specified resource in storage.
    *
    * @param  \Illuminate\Http\Request  $request
-   * @param  \App\Article  $article
+   * @param  \App\Models\Article  $article
    * @return \Illuminate\Http\Response
    */
   public function update(Request $request, $id)
   {
-    $article = \App\Article::findOrFail($id);
+    $article = Article::findOrFail($id);
 
     $article->title        = $request->get('title');
     $article->slug         = \Str::slug($request->get('title'), '-');
@@ -130,12 +134,12 @@ class ArticleController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param  \App\Article  $article
+   * @param  \App\Models\Article  $article
    * @return \Illuminate\Http\Response
    */
   public function destroy($id)
   {
-    $article = \App\Article::findOrFail($id);
+    $article = Article::findOrFail($id);
     $article->forceDelete();
 
     return redirect()->route('articles.index')->with('success', 'Article permanenly delete');

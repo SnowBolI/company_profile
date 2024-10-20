@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class AdministratorSeeder extends Seeder
@@ -11,7 +12,7 @@ class AdministratorSeeder extends Seeder
      */
     public function run()
     {
-        $administrator = new \App\User;
+        $administrator = new User;
         $administrator->name        = "Administrator";
         $administrator->email       = "admin@gmail.com";
         $administrator->password    = \Hash::make("password");

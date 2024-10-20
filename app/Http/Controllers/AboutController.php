@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\About;
+use App\Models\About;
 use Illuminate\Http\Request;
 use File;
 
@@ -15,7 +15,7 @@ class AboutController extends Controller
    */
   public function index()
   {
-    $abouts = \App\About::get();
+    $abouts = \App\Models\About::get();
     // dd($abouts);
     return view('abouts.index', ['abouts' => $abouts ]);
   }
@@ -44,7 +44,7 @@ class AboutController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param  \App\About  $about
+   * @param  \App\Models\About  $about
    * @return \Illuminate\Http\Response
    */
   public function show(About $about)
@@ -55,12 +55,12 @@ class AboutController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  \App\About  $about
+   * @param  \App\Models\About  $about
    * @return \Illuminate\Http\Response
    */
   public function edit($id)
   {
-      $about = \App\About::findOrFail($id);
+      $about = \App\Models\About::findOrFail($id);
       return view('abouts.edit', ['about' => $about]);
   }
 
@@ -68,12 +68,12 @@ class AboutController extends Controller
    * Update the specified resource in storage.
    *
    * @param  \Illuminate\Http\Request  $request
-   * @param  \App\About  $about
+   * @param  \App\Models\About  $about
    * @return \Illuminate\Http\Response
    */
   public function update(Request $request, $id)
   {
-      $about = \App\About::findOrFail($id);
+      $about = \App\Models\About::findOrFail($id);
 
       \Validator::make($request->all(),[
           'caption'     => 'required|min:15',
@@ -104,7 +104,7 @@ class AboutController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param  \App\About  $about
+   * @param  \App\Models\About  $about
    * @return \Illuminate\Http\Response
    */
   public function destroy(About $about)

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Destination;
+use App\Models\Destination;
 use File;
 
 class DestinationController extends Controller
@@ -57,7 +57,7 @@ class DestinationController extends Controller
           'image'      => 'required',
       ])->validate();
 
-      $new_Destination               = new \App\Destination;
+      $new_Destination               = new \App\Models\Destination;
       $new_Destination->title        = $request->get('title');
       $new_Destination->slug         = \Str::slug($request->get('title'), '-');
       $new_Destination->content      = $request->get('content');

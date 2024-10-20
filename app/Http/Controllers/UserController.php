@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Category;
-use App\About;
-use App\Article;
-use App\Destination;
+use App\Models\Category;
+use App\Models\About;
+use App\Models\Article;
+use App\Models\Destination;
 
 class UserController extends Controller
 {
