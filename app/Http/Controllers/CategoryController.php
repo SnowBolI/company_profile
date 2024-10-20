@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Str;
+use Auth;
 use File;
+use Validator;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -14,7 +18,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = \App\Category::paginate(10);
+        $categories = Category::paginate(10);
         return view('categories.index', ['categories'=>$categories]);
     }
 
@@ -42,11 +46,11 @@ class CategoryController extends Controller
             'image'         => 'required',
         ])->validate();
 
-        $new_category = new \App\Category;
+        $new_category = new \App\Models\Category;
         $new_category->name         = strtoupper($request->get('name'));
         $new_category->description  = $request->get('description');
-        $new_category->create_by    = \Auth::user()->id;
-        $new_category->slug         = \Str::slug($request->get('name'), '-');
+        $new_category->create_by    = Auth::user()->id;
+        $new_category->slug         = Str::slug($request->get('name'), '-');
 
         if($request->file('image')){
             // $image_path = $request->file('image')->store('category_image', 'public');
@@ -64,7 +68,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
@@ -75,12 +79,12 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $category = \App\Category::findOrFail($id);
+        $category = \App\Models\Category::findOrFail($id);
         return view('categories.edit', ['category'=>$category]);
     }
 
@@ -88,14 +92,14 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $category = \App\Category::findOrFail($id);
+        $category = \App\Models\Category::findOrFail($id);
 
-        \Validator::make($request->all(),[
+        Validator::make($request->all(),[
             'name'          => 'required|min:2|max:20',
             'description'   => 'required',
             'slug'          => 'required',
@@ -135,12 +139,12 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $category = \App\Category::findOrFail($id);
+        $category = \App\Models\Category::findOrFail($id);
         $category->articles()->sync([]);
         if($category->image){
             File::delete('category_image/'.$category->image);
@@ -151,12 +155,12 @@ class CategoryController extends Controller
     }
 
     public function restore($id){
-        $category = \App\Category::withTrashed()->findOrFail($id);
+        $category = \App\Models\Category::withTrashed()->findOrFail($id);
         $category->restore();
     }
 
     public function deletePermanent($id){
-        $category = \App\Category::withTrashed()->findOrFail($id);
+        $category = \App\Models\Category::withTrashed()->findOrFail($id);
         $category->articles()->sync([]);
 
         // if($category->image && file_exist(storage_path('app/public/'.$category->image))){
@@ -176,7 +180,7 @@ class CategoryController extends Controller
     public function ajaxSearch(Request $request)
     {
         $keyword = $request->get('q');
-        $categories = \App\Category::where('name', 'Like', "%$keyword%")->get();
+        $categories = \App\Models\Category::where('name', 'Like', "%$keyword%")->get();
         return $categories;
     }
 
