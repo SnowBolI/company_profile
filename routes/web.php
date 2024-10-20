@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\HomeSliderController;
 
 Route::get('/', function(){return redirect('/home');});
 Route::get('/home', 'UserController@home')->name('home');
@@ -42,5 +43,6 @@ Route::prefix('admin')->group(function(){
   Route::get('/abouts/{about}/edit', 'AboutController@edit')->name('abouts.edit')->middleware('auth');
   Route::put('/abouts/{about}', 'AboutController@update')->name('abouts.update')->middleware('auth');
     
-    
+  Route::resource('/home_slider',HomeSliderController::class)->middleware('auth');
+
 });
