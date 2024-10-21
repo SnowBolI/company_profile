@@ -90,35 +90,6 @@
 @endsection --}}
 
 @section('content')
-  
-      <!--========================== Services Section ============================-->
-      <section id="services">
-        <div class="container wow fadeIn">
-          <div class="row">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-              <div class="box" data-toggle="modal" data-target="#modal-kredit">
-                <div class="icon"><i class="fa fa-money"></i></div>
-                <h4 class="title">Simulasi Kredit</h4>
-                <p class="description">Hitung Rencana Kredit Anda</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-              <div class="box" data-toggle="modal" data-target="#modal-deposito">
-                <div class="icon"><i class="fa fa-money"></i></div>
-                <h4 class="title">Simulasi Deposito</h4>
-                <p class="description">Hitung Rencana Deposito Anda</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-              <div class="box" data-toggle="modal" data-target="#modal-tabungan">
-                <div class="icon"><i class="fa fa-thumbs-up"></i></div>
-                <h4 class="title">Simulasi Tabungan</h4>
-                <p class="description">Hitung Rencana Tabungan Anda</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!--========================== About Us Section ============================-->
       <section class="about-section">
@@ -283,21 +254,38 @@
         </div>
       </div>
   
-      <!--========================== Call To Action Section ============================-->
-      <section id="call-to-action">
-        <div class="container wow fadeIn">
-          <div class="row">
-            <div class="col-lg-9 text-center text-lg-left">
-              <h3 class="cta-title">Bergabung dan Bepergian Bersama Kami</h3>
-              <p class="cta-text"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-            <div class="col-lg-3 cta-btn-container text-center">
-              <a class="cta-btn align-middle" href="#">Contact</a>
-            </div>
+  <section id="call-to-action">
+  <div class="row mt-4">
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="simulation-card" data-toggle="modal" data-target="#modal-kredit">
+          <div class="icon-circle">
+            <i class="fa fa-money"></i>
           </div>
-  
+          <h4 class="simulation-title">SIMULASI KREDIT</h4>
+          <p class="simulation-description">Hitung Rencana Kredit Anda</p>
         </div>
-      </section>
+      </div>
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+        <div class="simulation-card" data-toggle="modal" data-target="#modal-deposito">
+          <div class="icon-circle">
+            <i class="fa fa-thumbs-up"></i>
+          </div>
+          <h4 class="simulation-title">SIMULASI DEPOSITO</h4>
+          <p class="simulation-description">Hitung Rencana Deposito Anda</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+        <div class="simulation-card" data-toggle="modal" data-target="#modal-tabungan">
+          <div class="icon-circle">
+            <i class="fa fa-bank"></i>
+          </div>
+          <h4 class="simulation-title">SIMULASI TABUNGAN</h4>
+          <p class="simulation-description">Hitung Rencana Tabungan Anda</p>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
       
       <!--========================== YouTube Section ============================-->
     <section id="youtube">

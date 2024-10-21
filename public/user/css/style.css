@@ -1077,3 +1077,45 @@ li {
   height: auto;
   margin-top: 10px;
 }
+
+/* SIMULASI */
+.simulation-card {
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.simulation-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.icon-circle {
+  background-color: #55efc4;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+}
+
+.icon-circle i {
+  font-size: 30px;
+  color: white;
+}
+
+.simulation-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.simulation-description {
+  font-size: 14px;
+  color: white;
+}
