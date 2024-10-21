@@ -129,6 +129,7 @@
         <a href="#"><i class="fas fa-twitter"></i></a>
         <a href="#"><i class="fas fa-instagram"></i></a>
         <a href="#"><i class="fas fa-linkedin-in"></i></a>
+
       </div>
     </div>
   </div>

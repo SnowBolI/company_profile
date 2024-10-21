@@ -100,7 +100,12 @@
       </div>
       
       <div class="featured-image">
-        <img src="{{asset('about_image/'.$about[0]->image)}}" alt="Bank Staff" />
+        @if($homeThumbnails)
+
+            <img src="{{ Storage::url($homeThumbnails->gambar) }}" alt="Bank Staff" />
+          @else
+          <img src="" alt="Bank Staff" />
+        @endif
       </div>
       
       <div class="product-grid">
