@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\HomeSliderController;
 
+use App\Http\Controllers\HomeYTController;
 use App\Http\Controllers\UserController;
 
 
@@ -50,5 +51,6 @@ Route::prefix('admin')->group(function(){
     
 
   Route::resource('/home_slider',HomeSliderController::class)->middleware('auth');
+  Route::resource('/home_youtube',HomeYTController::class)->middleware('auth');
 
 });

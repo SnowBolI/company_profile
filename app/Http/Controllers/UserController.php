@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\HomeYT;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\HomeSlider;
@@ -23,12 +24,22 @@ class UserController extends Controller
   {
     // Ambil 3 slider terbaru
     $homeSliders = HomeSlider::orderBy('created_at', 'desc')->take(3)->get();
+    $homeYoutubes = HomeYT::orderBy('created_at', 'desc')->first();
+    if ($homeYoutubes) {
+      $url = $homeYoutubes->linkyt;
+      $parsedUrl = parse_url($url);
+      parse_str($parsedUrl['query'], $query);
+      $youtubeId = $query['v'] ?? ''; // Mendapatkan ID video jika ada
+      $homeYoutubes->youtubeId = $youtubeId; // Menyimpan ID video ke model (opsional)
+  } else {
+      $youtubeId = '';
+  }
 
     // Ambil data kategori dan about
     $categories = Category::all();
     $about = About::all();
 
-    return view('user.home', compact('homeSliders', 'categories', 'about'));
+    return view('user.home', compact('homeSliders','youtubeId', 'categories', 'about'));
   }
 
 
