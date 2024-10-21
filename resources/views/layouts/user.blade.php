@@ -133,7 +133,7 @@
     </div>
   </div>
   
-  <div class="footer-banner">
+  {{-- <div class="footer-banner">
     <div class="logo-scroll">
       <div class="logo-item">
         <img src="user/images/logobank.png" alt="Logo 1">
@@ -185,6 +185,32 @@
         <img src="user/images/ojk.png" alt="Logo 6">
       </div>
     </div>
+  </div> --}}
+  <div class="footer-banner">
+    <div class="logo-container">
+      <div class="logo">
+        <img src="user/images/logobank.png" alt="Logo 1">
+        <img src="user/images/bi.png" alt="Logo 2">
+        <img src="user/images/indo2.png" alt="Logo 3">
+        <img src="user/images/ayobank.png" alt="Logo 4">
+        <img src="user/images/bpr.png" alt="Logo 5">
+        <img src="user/images/magetan.png" alt="Logo 6">
+        <img src="user/images/lps.png" alt="Logo 7">
+        <img src="user/images/ojk.png" alt="Logo 8">
+
+      </div>
+      <div class="logo">
+        <img src="user/images/logobank.png" alt="Logo 1">
+        <img src="user/images/bi.png" alt="Logo 2">
+        <img src="user/images/indo2.png" alt="Logo 3">
+        <img src="user/images/ayobank.png" alt="Logo 4">
+        <img src="user/images/bpr.png" alt="Logo 5">
+        <img src="user/images/magetan.png" alt="Logo 6">
+        <img src="user/images/lps.png" alt="Logo 7">
+        <img src="user/images/ojk.png" alt="Logo 8">
+
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -203,6 +229,7 @@
 
   <!-- Template Main Javascript File -->
   <script src="{{asset('user/js/main.js')}}"></script>
+
 
 </body>
 
