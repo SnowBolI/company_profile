@@ -125,41 +125,17 @@
         <button><i class="fas fa-paper-plane"></i></button>
       </div>
       <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fas fa-facebook-f"></i></a>
+        <a href="#"><i class="fas fa-twitter"></i></a>
+        <a href="#"><i class="fas fa-instagram"></i></a>
+        <a href="#"><i class="fas fa-linkedin-in"></i></a>
+
       </div>
     </div>
   </div>
   
   <div class="footer-banner">
     <div class="logo-scroll">
-      <div class="logo-item">
-        <img src="user/images/logobank.png" alt="Logo 1">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/bi.png" alt="Logo 2">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/indo2.png" alt="Logo 3">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/ayobank.png" alt="Logo 4">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/bpr.png" alt="Logo 5">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/magetan.png" alt="Logo 6">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/lps.png" alt="Logo 6">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/ojk.png" alt="Logo 6">
-      </div>
-      <!-- Duplicate logos for seamless loop -->
       <div class="logo-item">
         <img src="user/images/logobank.png" alt="Logo 1">
       </div>
@@ -194,6 +170,11 @@
   <script src="{{asset('user/lib/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('user/lib/easing/easing.min.js')}}"></script>
   <script src="{{asset('user/lib/wow/wow.min.js')}}"></script>
+  <script>
+    const logo = document.querySelector(".logo").cloneNode(true);
+
+    document.querySelector(".logo-container").appendChild(logo);
+  </script>
 
   <script src="{{asset('user/lib/superfish/superfish.min.js')}}"></script>
 

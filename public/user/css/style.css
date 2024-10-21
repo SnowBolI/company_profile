@@ -9,6 +9,7 @@
 --------------------------------------------------------------*/
 body {
   background: #fff;
+  overflow-x: hidden;
   color: #666666;
   font-family: "Open Sans", sans-serif;
 }
@@ -989,8 +990,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 .footer {
   background-color: #208454;
   color: #ffffff;
-  padding: 4rem 2rem;
-  font-family: 'Poppins', sans-serif;
+  padding: 4rem 2rem 2rem;
+  position: relative;
 }
 
 .footer-container {
@@ -1025,22 +1026,82 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-radius: 50%;
 }
 
-/* Updated Logo banner styles */
 .footer-banner {
-  max-width: 85%;
+  width: 100vw;
   background-color: #0b2f1e;
-  margin: 3rem auto 0 auto;
   padding: 1rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 3rem;
 }
 
 .logo-scroll {
   display: flex;
-  justify-content: flex-start;
+  width: calc(120px * 5); /* Adjust based on the number of logos and their width */
+  animation: infinite-scroll 10s linear infinite;
+}
+
+.logo-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes infinite-scroll {
+  from {
+      transform: translateX(0);
+  }
+  to {
+      transform: translateX(calc(-120px * 8));
+  }
+}
+
+.logo-item {
+  flex: 0 0 auto;
+  width: 120px;
+  height: 60px;
+  background-color: transparent;
+  padding: 5px;
+  display: flex;
   align-items: center;
-  gap: 2rem;
-  animation: scroll 30s linear infinite;
+  justify-content: center;
+}
+
+.logo-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+
+.logo-item:hover {
+  transform: translateY(-5px);
+}
+
+.logo-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+.contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-info i {
+  color: #E91E63;
 }
 
 @keyframes scroll {
@@ -1076,10 +1137,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   filter: brightness(1.1);
 }
 
-.contact-info {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.quick-links li {
+  margin-bottom: 0.75rem;
 }
 
 .contact-info li {
@@ -1098,10 +1157,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 0;
   margin: 0;
   columns: 2;
-}
-
-.quick-links li {
-  margin-bottom: 0.75rem;
 }
 
 .quick-links a {
@@ -1128,7 +1183,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-radius: 4px;
   color: #fff;
 }
-
 .email-subscribe button {
   position: absolute;
   right: 0;
@@ -1171,6 +1225,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .copyright {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.875rem;
+}
+
   margin-top: 3rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
