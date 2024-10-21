@@ -9,6 +9,7 @@
 --------------------------------------------------------------*/
 body {
   background: #fff;
+  overflow-x: hidden;
   color: #666666;
   font-family: "Open Sans", sans-serif;
 }
@@ -989,8 +990,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 .footer {
   background-color: #208454;
   color: #ffffff;
-  padding: 4rem 2rem;
-  font-family: 'Poppins', sans-serif;
+  padding: 4rem 2rem 2rem;
+  position: relative;
 }
 
 .footer-container {
@@ -1025,44 +1026,55 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-radius: 50%;
 }
 
-/* Updated Logo banner styles */
 .footer-banner {
-  max-width: 85%;
+  width: 100vw;
   background-color: #0b2f1e;
-  margin: 3rem auto 0 auto;
   padding: 1rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 3rem;
 }
 
 .logo-scroll {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 2rem;
-  animation: scroll 30s linear infinite;
+  width: calc(120px * 5); /* Adjust based on the number of logos and their width */
+  animation: infinite-scroll 10s linear infinite;
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
+.logo-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes infinite-scroll {
+  from {
+      transform: translateX(0);
   }
-  100% {
-    transform: translateX(-100%);
+  to {
+      transform: translateX(calc(-120px * 8));
   }
 }
 
 .logo-item {
   flex: 0 0 auto;
-  width: 200px;
-  height: 100px;
+  width: 120px;
+  height: 60px;
   background-color: transparent;
-  border-radius: 8px;
-  padding: 10px;
-  transition: transform 0.3s;
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.logo-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: brightness(1.1);
 }
 
 .logo-item:hover {
@@ -1075,7 +1087,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   object-fit: contain;
   filter: brightness(1.1);
 }
-
 .contact-info {
   list-style: none;
   padding: 0;
@@ -1171,8 +1182,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .copyright {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   font-size: 0.875rem;
@@ -1185,6 +1196,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   .logo-scroll {
     gap: 1rem;
   }
+  
   .logo-item {
     width: 150px;
   }
