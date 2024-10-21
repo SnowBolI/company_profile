@@ -301,13 +301,24 @@
       
       <!--========================== YouTube Section ============================-->
     <section id="youtube">
-        <div class="container wow fadeInUp">
-            <div class="youtube-frame">
-            <iframe src="https://www.youtube.com/embed/9fvETktnaRw"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
-            </div>
+      <div class="container wow fadeInUp">
+        <div class="youtube-frame">
+            @if($youtubeId)
+            <iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            @else
+                <p>Tidak ada video yang tersedia.</p>
+            @endif
         </div>
+        {{-- <div class="container wow fadeInUp">
+          <div class="youtube-frame">
+          <iframe src="https://www.youtube.com/embed/8SIFoy8dXgg"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
+          </div>
+      </div> --}}
+    </div>
     </section>
 
       <!--========================== category Section ============================-->
