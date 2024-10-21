@@ -1039,6 +1039,30 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-right: -50vw;
   margin-top: 3rem;
 }
+.logo-container{
+  overflow: hidden;
+  display: flex;
+}
+.logo{
+  display: flex;
+  gap: 5rem;
+  flex-shrink: 0;
+  padding: 1rem;
+  animation: inifite-scroll 5s linear infinite;
+
+}
+.logo img{
+  height: 3rem;
+}
+@keyframes inifite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 
 .logo-scroll {
   display: flex;
