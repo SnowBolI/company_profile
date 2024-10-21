@@ -16,6 +16,14 @@ Route::get('/destination', 'UserController@destination')->name('destination');
 Route::get('/destination/{slug}', 'UserController@show_destination')->name('destination.show');
 Route::get('/contact', 'UserController@contact')->name('contact');
 
+// route profile
+Route::get('/profile', 'ProfileController@index')->name('profile.index');
+Route::get('/profile/sejarah', 'ProfileController@showSejarah')->name('profile.sejarah');
+Route::get('/profile/visi-misi', 'ProfileController@showVisiMisi')->name('profile.visi-misi');
+Route::get('/profile/struktur-organisasi', 'ProfileController@showStrukturOrganisasi')->name('profile.struktur-organisasi');
+Route::get('/profile/milestone', 'ProfileController@showMilestone')->name('profile.milestone');
+
+
 Route::prefix('admin')->group(function(){
 
   Route::get('/', function(){
