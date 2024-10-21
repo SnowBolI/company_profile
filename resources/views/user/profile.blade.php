@@ -3,7 +3,7 @@
 @section('header')
     <style>
         #hero {
-            background: url('{{ asset('user/images/Tugu-Jogja.png') }}') top center;
+            background: url('{{ asset('user/images/bank.jpg') }}') top center;
             background-repeat: no-repeat;
             width: 100%;
             background-size: cover;
