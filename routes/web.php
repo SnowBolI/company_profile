@@ -1,8 +1,9 @@
 <?php
-use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\HomeYTController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\HomeThumbnailController;
 
 
 Route::get('/', function(){return redirect('/home');});
@@ -52,5 +53,7 @@ Route::prefix('admin')->group(function(){
 
   Route::resource('/home_slider',HomeSliderController::class)->middleware('auth');
   Route::resource('/home_youtube',HomeYTController::class)->middleware('auth');
+  Route::resource('/home_thumbnail',HomeThumbnailController::class)->middleware('auth');
+
 
 });
