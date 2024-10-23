@@ -46,6 +46,8 @@
 @endsection
 
 @section('hero')
+<section id="hero">
+  <div class="hero-container">
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
         @foreach ($homeSliders as $index => $slider)
@@ -63,6 +65,8 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+  </div>
+</section>
 @endsection
 
 {{-- @section('hero')

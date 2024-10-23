@@ -82,11 +82,12 @@
   </header><!-- #header -->
 
   <!--========================== Hero Section ============================-->
-  <section id="hero">
+  {{-- <section id="hero">
     <div class="hero-container">
       @yield('hero')
     </div>
-  </section>
+  </section> --}}
+  @yield('hero')
 
   <main id="main">
 
