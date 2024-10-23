@@ -164,6 +164,9 @@
     </div>
   </div> --}}
   <div class="footer-banner">
+  <div class="banner-text">
+      Terdaftar dan Diawasi
+    </div>
     <div class="logo-container">
       <div class="logo">
         <img src="user/images/logobank.png" alt="Logo 1">
