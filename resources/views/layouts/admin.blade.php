@@ -71,6 +71,40 @@
                             <li><i class="fa fa-angle-right"></i><a href="{{url('admin/home_tabungan')}}">Persen Tabungan</a></li>
                         </ul>
                     </li>
+
+                    {{-- profile --}}
+                    <li class="menu-item-has-children dropdown {{ 
+                        Request::is('admin/profile_slider*') || 
+                        Request::is('admin/profile_youtube*') ||
+                        Request::is('admin/profile_thumbnail*') ||
+                        Request::is('admin/profile_tabungan*') ||
+                        Request::is('admin/profile_deposito*')? 'show' : '' 
+                        }}">
+    
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
+                        Request::is('admin/profile_slider*') || 
+                        Request::is('admin/profile_youtube*') ||
+                        Request::is('admin/profile_thumbnail*') ||
+                        Request::is('admin/profile_deposito*') ||
+                        Request::is('admin/profile_tabungan*')? 'show' : '' 
+                        }}">
+                                <i class="menu-icon fa fa-user"></i>Profile
+                            </a>
+                            <ul class="sub-menu children dropdown-menu {{ 
+                        Request::is('admin/profile_slider*') || 
+                        Request::is('admin/profile_youtube*') ||
+                        Request::is('admin/profile_thumbnail*') ||
+                        Request::is('admin/profile_deposito*') ||
+                        Request::is('admin/profile_tabungan*')? 'show' : '' 
+                        }}">
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_slider')}}">Slider</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_thumbnail')}}">Thumbnail</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_youtube')}}">Link YT</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_deposito')}}">Persen Deposito</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_tabungan')}}">Persen Tabungan</a></li>
+                            </ul>
+                    </li>
+
                     <li class="{{$url=='categories'?'active':''}}">
                         <a href="{{url('admin/categories')}}"><i class="menu-icon fa fa-list-ul"></i>Categories </a>
                     </li>
