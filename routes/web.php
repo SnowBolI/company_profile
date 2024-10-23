@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\HomeTabunganController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\HomeYTController;
@@ -15,6 +16,14 @@ Route::get('/blog/{slug}', 'UserController@show_article')->name('blog.show');
 Route::get('/destination', 'UserController@destination')->name('destination');
 Route::get('/destination/{slug}', 'UserController@show_destination')->name('destination.show');
 Route::get('/contact', 'UserController@contact')->name('contact');
+
+// route profile
+Route::get('/profile', 'ProfileController@index')->name('profile.index');
+Route::get('/profile/sejarah', 'ProfileController@showSejarah')->name('profile.sejarah');
+Route::get('/profile/visi-misi', 'ProfileController@showVisiMisi')->name('profile.visi-misi');
+Route::get('/profile/struktur-organisasi', 'ProfileController@showStrukturOrganisasi')->name('profile.struktur-organisasi');
+Route::get('/profile/milestone', 'ProfileController@showMilestone')->name('profile.milestone');
+
 
 Route::prefix('admin')->group(function(){
 
@@ -54,6 +63,7 @@ Route::prefix('admin')->group(function(){
   Route::resource('/home_slider',HomeSliderController::class)->middleware('auth');
   Route::resource('/home_youtube',HomeYTController::class)->middleware('auth');
   Route::resource('/home_thumbnail',HomeThumbnailController::class)->middleware('auth');
+  Route::resource('/home_tabungan',HomeTabunganController::class)->middleware('auth');
 
 
 });
