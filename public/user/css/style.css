@@ -589,82 +589,113 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* About Us Section
 --------------------------------*/
+/* About Us Section */
 #about {
   background: #fff;
   padding: 80px 0;
 }
 
-#about .about-container .background {
-  min-height: 300px;
-  margin-bottom: 10px;
-  
-}
-
-#about .about-container .content {
-  background: #fff;
-}
-
-#about .about-container .title {
-  color: #333;
-  font-weight: 700;
-  font-size: 32px;
-}
-
-@media (max-width: 768px) {
-  #about .about-container .title {
-    padding-top: 15px;
-  }
-}
-
-#about .about-container p {
-  line-height: 26px;
-}
-
-#about .about-container p:last-child {
-  margin-bottom: 0;
-}
-
-#about .about-container .icon-box {
-  background: #fff;
-  background-size: cover;
-  padding: 0 0 30px 0;
-}
-
-#about .about-container .icon-box .icon {
-  float: left;
-  background: #fff;
-  width: 64px;
-  height: 64px;
+.about-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  border-radius: 50%;
-  border: 2px solid #2dc997;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
 }
 
-#about .about-container .icon-box .icon i {
-  color: #2dc997;
-  font-size: 24px;
+.content-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
 }
 
-#about .about-container .icon-box .title {
-  margin-left: 80px;
-  font-weight: 500;
-  margin-bottom: 5px;
-  font-size: 18px;
+.featured-image {
+  flex: 1;
+  max-width: 500px;
+}
+
+.featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.section-header {
+  grid-column: 1 / -1;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  color: #333;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  color: #666;
+  font-size: 16px;
   text-transform: uppercase;
 }
 
-#about .about-container .icon-box .title a {
-  color: #111;
+.product-item {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-#about .about-container .icon-box .description {
-  margin-left: 80px;
-  line-height: 24px;
+.product-item:hover {
+  transform: translateY(-5px);
+}
+
+.product-icon {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.product-item h3 {
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.product-item p {
+  color: #666;
   font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.product-item a {
+  color: #2dc997;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.product-item a:hover {
+  color: #2dc997;
+  transform: translateX(5px);
+}
+
+@media (max-width: 992px) {
+  .about-container {
+    flex-direction: column;
+  }
+  
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .featured-image {
+    max-width: 100%;
+    order: -1;
+  }
 }
 
 /* Services Section
