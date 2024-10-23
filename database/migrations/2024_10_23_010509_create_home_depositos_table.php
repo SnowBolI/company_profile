@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('home_tabungans', function (Blueprint $table) {
+        Schema::create('home_depositos', function (Blueprint $table) {
             $table->id();
+            
             $table->string('judul');
             $table->decimal('nilai_persentase', 5, 4);
             $table->timestamps();
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('home_tabungans');
+        Schema::dropIfExists('home_depositos');
     }
 };
