@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\HomeTabunganController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\HomeYTController;
@@ -62,6 +63,7 @@ Route::prefix('admin')->group(function(){
   Route::resource('/home_slider',HomeSliderController::class)->middleware('auth');
   Route::resource('/home_youtube',HomeYTController::class)->middleware('auth');
   Route::resource('/home_thumbnail',HomeThumbnailController::class)->middleware('auth');
+  Route::resource('/home_tabungan',HomeTabunganController::class)->middleware('auth');
 
 
 });
