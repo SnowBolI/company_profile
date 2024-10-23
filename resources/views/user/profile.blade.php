@@ -34,7 +34,7 @@
         }
 
         .nav-pills .nav-link.active {
-            background-color: #FF9800;
+            background-color: #FFC107;
             color: #ffffff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
@@ -45,7 +45,7 @@
 
         .nav-pills .nav-link:hover {
             transform: translateY(-3px);
-            background-color: #FF9800;
+            background-color:#FFC107;
             color: #ffffff;
         }
 
@@ -55,15 +55,18 @@
             border-radius: 10px;
             margin-top: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            min-height: 500px;
         }
 
         #profile {
             padding: 0;
+            
         }
 
         .tab-pane h3 {
             color: #2e7d32;
             margin-bottom: 20px;
+            font-weight: bold;
         }
 
         .tab-pane h4 {
@@ -134,6 +137,32 @@
             font-size: 1rem;
             font-weight: 500;
             margin: 0 0 10px;
+        }
+
+        #pills-sejarah p, #pills-visimisi p {
+            text-align: justify;
+        }
+
+        .vision-section h4, .mission-section h4 {
+            color: #4CAF50; /* Hijau cerah untuk sub judul */
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Text for Visi & Misi */
+        .vision-section p, .mission-section p {
+            color: #333; /* Warna teks utama */
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+            padding: 10px 20px;
+            background-color: #f9f9f9; /* Latar belakang abu-abu terang */
+            border-left: 4px solid #FF9800; /* Garis dekoratif di sebelah kiri */
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Efek bayangan lembut */
         }
 
         /* Responsive Design */
@@ -266,17 +295,35 @@
                     <div class="tab-pane fade" id="pills-sejarah" role="tabpanel" 
                          aria-labelledby="pills-sejarah-tab" tabindex="0">
                         <h3>Sejarah</h3>
-                        <p>{{ $profileData['sejarah'] }}</p>
+                        <p class="text-justify">{{ $profileData['sejarah'] }}</p>
                     </div>
 
-                    <div class="tab-pane fade" id="pills-visimisi" role="tabpanel" 
+                    <!-- <div class="tab-pane fade" id="pills-visimisi" role="tabpanel" 
                          aria-labelledby="pills-visimisi-tab" tabindex="0">
                         <h3>Visi & Misi</h3>
                         <h4>Visi</h4>
-                        <p>{{ $profileData['visi_misi']['visi'] }}</p>
+                        <p class="text-justify">{{ $profileData['visi_misi']['visi'] }}</p>
                         <h4>Misi</h4>
-                        <p>{{ $profileData['visi_misi']['misi'] }}</p>
-                    </div>
+                        <p class="text-justify">{{ $profileData['visi_misi']['misi'] }}</p>
+                    </div> -->
+
+                    <div class="tab-pane fade" id="pills-visimisi" role="tabpanel" aria-labelledby="pills-visimisi-tab" tabindex="0">
+    <h3>Visi & Misi</h3>
+
+    <!-- Visi Section -->
+    <div class="vision-section">
+        <h4>Visi</h4>
+        <p class="text-justify">{{ $profileData['visi_misi']['visi'] }}</p>
+    </div>
+
+    <!-- Misi Section -->
+    <div class="mission-section">
+        <h4>Misi</h4>
+        <p class="text-justify">{{ $profileData['visi_misi']['misi'] }}</p>
+    </div>
+</div>
+
+
 
                     <div class="tab-pane fade" id="pills-struktur" role="tabpanel" 
                         aria-labelledby="pills-struktur-tab" tabindex="0">
