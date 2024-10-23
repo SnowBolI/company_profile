@@ -48,6 +48,26 @@
 @section('hero')
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
+        @foreach ($homeSliders as $index => $slider)
+            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                <img src="{{ Storage::url($slider->gambar) }}" class="d-block w-100" alt="Slide {{ $index + 1 }}">
+            </div>
+        @endforeach
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+@endsection
+
+{{-- @section('hero')
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
         <div class="carousel-item active ">
             <img src="{{ asset('user/images/fua.png') }}" class="d-block w-100" alt="Slide 1">
         </div>
@@ -67,38 +87,9 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-@endsection
+@endsection --}}
 
 @section('content')
-  
-      <!--========================== Services Section ============================-->
-      <section id="services">
-        <div class="container wow fadeIn">
-          <div class="row">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-              <div class="box" data-toggle="modal" data-target="#modal-kredit">
-                <div class="icon"><i class="fa fa-money"></i></div>
-                <h4 class="title">Simulasi Kredit</h4>
-                <p class="description">Hitung Rencana Kredit Anda</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-              <div class="box" data-toggle="modal" data-target="#modal-deposito">
-                <div class="icon"><i class="fa fa-money"></i></div>
-                <h4 class="title">Simulasi Deposito</h4>
-                <p class="description">Hitung Rencana Deposito Anda</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-              <div class="box" data-toggle="modal" data-target="#modal-tabungan">
-                <div class="icon"><i class="fa fa-thumbs-up"></i></div>
-                <h4 class="title">Simulasi Tabungan</h4>
-                <p class="description">Hitung Rencana Tabungan Anda</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!--========================== About Us Section ============================-->
       <section class="about-section">
@@ -109,7 +100,12 @@
       </div>
       
       <div class="featured-image">
-        <img src="{{asset('about_image/'.$about[0]->image)}}" alt="Bank Staff" />
+        @if($homeThumbnails)
+
+            <img src="{{ Storage::url($homeThumbnails->gambar) }}" alt="Bank Staff" />
+          @else
+          <img src="" alt="Bank Staff" />
+        @endif
       </div>
       
       <div class="product-grid">
@@ -263,31 +259,59 @@
         </div>
       </div>
   
-      <!--========================== Call To Action Section ============================-->
-      <section id="call-to-action">
-        <div class="container wow fadeIn">
-          <div class="row">
-            <div class="col-lg-9 text-center text-lg-left">
-              <h3 class="cta-title">Bergabung dan Bepergian Bersama Kami</h3>
-              <p class="cta-text"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-            <div class="col-lg-3 cta-btn-container text-center">
-              <a class="cta-btn align-middle" href="#">Contact</a>
-            </div>
+  <section id="call-to-action">
+  <div class="row mt-4">
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="simulation-card" data-toggle="modal" data-target="#modal-kredit">
+          <div class="icon-circle">
+            <i class="fa fa-money"></i>
           </div>
-  
+          <h4 class="simulation-title">SIMULASI KREDIT</h4>
+          <p class="simulation-description">Hitung Rencana Kredit Anda</p>
         </div>
-      </section>
+      </div>
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+        <div class="simulation-card" data-toggle="modal" data-target="#modal-deposito">
+          <div class="icon-circle">
+            <i class="fa fa-thumbs-up"></i>
+          </div>
+          <h4 class="simulation-title">SIMULASI DEPOSITO</h4>
+          <p class="simulation-description">Hitung Rencana Deposito Anda</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+        <div class="simulation-card" data-toggle="modal" data-target="#modal-tabungan">
+          <div class="icon-circle">
+            <i class="fa fa-bank"></i>
+          </div>
+          <h4 class="simulation-title">SIMULASI TABUNGAN</h4>
+          <p class="simulation-description">Hitung Rencana Tabungan Anda</p>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
       
       <!--========================== YouTube Section ============================-->
     <section id="youtube">
-        <div class="container wow fadeInUp">
-            <div class="youtube-frame">
-            <iframe src="https://www.youtube.com/embed/9fvETktnaRw"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
-            </div>
+      <div class="container wow fadeInUp">
+        <div class="youtube-frame">
+            @if($youtubeId)
+            <iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            @else
+                <p>Tidak ada video yang tersedia.</p>
+            @endif
         </div>
+        {{-- <div class="container wow fadeInUp">
+          <div class="youtube-frame">
+          <iframe src="https://www.youtube.com/embed/8SIFoy8dXgg"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
+          </div>
+      </div> --}}
+    </div>
     </section>
 
       <!--========================== category Section ============================-->

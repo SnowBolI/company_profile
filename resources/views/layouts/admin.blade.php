@@ -40,6 +40,32 @@
                     <li class="{{$url=='dashboard'?'active':''}}">
                     <a href="{{url('admin/dashboard')}}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
+                    <li class="menu-item-has-children dropdown {{ 
+                    Request::is('admin/home_slider*') || 
+                    Request::is('admin/home_youtube*') ||
+                    Request::is('admin/home_thumbnail*') ? 'show' : '' 
+                    }}">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
+                    Request::is('admin/home_slider*') || 
+                    Request::is('admin/home_youtube*') ||
+                    Request::is('admin/home_thumbnail*') ? 'show' : '' 
+                    }}">
+                            <i class="menu-icon fa fa-home"></i>Home
+                        </a>
+                        <ul class="sub-menu children dropdown-menu {{ 
+                    Request::is('admin/home_slider*') || 
+                    Request::is('admin/home_youtube*') ||
+                    Request::is('admin/home_thumbnail*') ? 'show' : '' 
+                    }}">
+                            <li><i class="fa fa-angle-right"></i><a href="{{url('admin/home_slider')}}">Slider</a></li>
+                            <li><i class="fa fa-angle-right"></i><a href="{{url('admin/home_thumbnail')}}">Thumbnail</a></li>
+                            <li><i class="fa fa-angle-right"></i><a href="{{url('admin/home_youtube')}}">Link YT</a></li>
+                            <li><i class="fa fa-angle-right"></i><a href="#">Persen Kredit</a></li>
+                            <li><i class="fa fa-angle-right"></i><a href="#">Persen Deposito</a></li>
+                            <li><i class="fa fa-angle-right"></i><a href="#">Persen Tabungan</a></li>
+                        </ul>
+                    </li>
                     <li class="{{$url=='categories'?'active':''}}">
                         <a href="{{url('admin/categories')}}"><i class="menu-icon fa fa-list-ul"></i>Categories </a>
                     </li>

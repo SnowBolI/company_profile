@@ -1,6 +1,14 @@
 <?php
+use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\HomeYTController;
+use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\HomeThumbnailController;
+
 
 Route::get('/', function(){return redirect('/home');});
+
+
 Route::get('/home', 'UserController@home')->name('home');
 Route::get('/blog', 'UserController@blog')->name('blog');
 Route::get('/blog/{slug}', 'UserController@show_article')->name('blog.show');
@@ -50,5 +58,10 @@ Route::prefix('admin')->group(function(){
   Route::get('/abouts/{about}/edit', 'AboutController@edit')->name('abouts.edit')->middleware('auth');
   Route::put('/abouts/{about}', 'AboutController@update')->name('abouts.update')->middleware('auth');
     
-    
+
+  Route::resource('/home_slider',HomeSliderController::class)->middleware('auth');
+  Route::resource('/home_youtube',HomeYTController::class)->middleware('auth');
+  Route::resource('/home_thumbnail',HomeThumbnailController::class)->middleware('auth');
+
+
 });
