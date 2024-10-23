@@ -62,8 +62,7 @@
     <div class="container">
       <div id="logo" class="pull-left">
         <a href="#hero">
-          <img src="{{asset('user/images/logobank.png')}}" style="margin-right:0px; width: auto; height: 60px;" /></img>
-          <h2 class="d-inline text-light" style="text-decoration: none;">Ekadharma</h2>
+          <img src="{{asset('user/images/logonew.png')}}" style="margin-right:0px; width: auto; height: 45px;" /></img>
         </a>
       </div>
 
