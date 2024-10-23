@@ -196,11 +196,6 @@
   <script src="{{asset('user/lib/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('user/lib/easing/easing.min.js')}}"></script>
   <script src="{{asset('user/lib/wow/wow.min.js')}}"></script>
-  <script>
-    const logo = document.querySelector(".logo").cloneNode(true);
-
-    document.querySelector(".logo-container").appendChild(logo);
-  </script>
 
   <script src="{{asset('user/lib/superfish/superfish.min.js')}}"></script>
 
