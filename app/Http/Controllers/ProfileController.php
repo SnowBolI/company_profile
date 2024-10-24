@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ProfileSlider;
+use App\Models\ProfileBanner;
+use App\Models\ProfileSejarahVisi;
 use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
@@ -29,22 +30,33 @@ class ProfileController extends Controller
     public function index()
 {
     // Mengambil gambar terbaru dari ProfileSlider
-    $profileSliders = ProfileSlider::orderBy('created_at', 'desc')->take(1)->get();
-    
+    $profileSliders = ProfileBanner::orderBy('created_at', 'desc')->take(1)->get();
+     // Mencari record di tabel ProfileSejarahVisi yang judulnya 'sejarah' dengan mengonversi judul ke huruf kecil
+     $profileSejarah = ProfileSejarahVisi::whereRaw('LOWER(judul) = ?', ['sejarah'])->first();
+
+     // Cek apakah data ditemukan
+     if (!$profileSejarah) {
+         return abort(404, 'Data tidak ditemukan');
+     }
+   
     return view('user.profile', [
         'section' => 'tentang',
         'profileData' => $this->profileData,
+        'profileDataSejarah' => $profileSejarah->konten,
         'profileSliders' => $profileSliders
     ]);
 }
     
     public function showSejarah()
     {
+        
         return view('user.profile', [
             'section' => 'sejarah',
             'profileData' => $this->profileData
         ]);
     }
+
+
 
     public function showVisiMisi()
     {

@@ -105,12 +105,16 @@
                         <p>{{ $profileData['index'] }}</p>
                     </div>
 
-                    <div class="tab-pane fade" id="pills-sejarah" role="tabpanel" 
+                    {{-- <div class="tab-pane fade" id="pills-sejarah" role="tabpanel" 
                          aria-labelledby="pills-sejarah-tab" tabindex="0">
                         <h3>Sejarah</h3>
                         <p>{{ $profileData['sejarah'] }}</p>
+                    </div> --}}
+                    <div class="tab-pane fade" id="pills-sejarah" role="tabpanel" 
+                        aria-labelledby="pills-sejarah-tab" tabindex="0">
+                        <h3>Sejarah</h3>
+                        <p>{!! $profileDataSejarah !!}</p> 
                     </div>
-
                     <div class="tab-pane fade" id="pills-visimisi" role="tabpanel" 
                          aria-labelledby="pills-visimisi-tab" tabindex="0">
                         <h3>Visi & Misi</h3>
