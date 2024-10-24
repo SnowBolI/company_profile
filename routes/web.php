@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeDepositoController;
 use App\Http\Controllers\HomeTabunganController;
 use App\Http\Controllers\HomeThumbnailController;
 use App\Http\Controllers\ProfileBannerController;
+use App\Http\Controllers\ProfileStrukturController;
 use App\Http\Controllers\ProfileSejarahVisiController;
 
 
@@ -72,6 +73,8 @@ Route::prefix('admin')->group(function(){
 
   Route::resource('/profile_banner',ProfileBannerController::class)->middleware('auth');
   Route::resource('/profile_sejarah_visi',ProfileSejarahVisiController::class)->middleware('auth');
+  Route::resource('/profile_struktur',ProfileStrukturController::class)->middleware('auth');
+
 
 
 });
