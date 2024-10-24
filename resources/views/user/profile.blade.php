@@ -119,12 +119,12 @@
                          aria-labelledby="pills-visimisi-tab" tabindex="0">
                         <h3>Visi & Misi</h3>
                         <h4>Visi</h4>
-                        <p>{{ $profileData['visi_misi']['visi'] }}</p>
+                        <p>{!! $profileDataVisi !!}</p>
                         <h4>Misi</h4>
-                        <p>{{ $profileData['visi_misi']['misi'] }}</p>
+                        <p>{!! $profileDataMisi !!}</p>
                     </div>
 
-                    <div class="tab-pane fade" id="pills-struktur" role="tabpanel" 
+                    {{-- <div class="tab-pane fade" id="pills-struktur" role="tabpanel" 
                         aria-labelledby="pills-struktur-tab" tabindex="0">
                         <h3>Struktur Organisasi</h3>
                         <p>{{ $profileData['struktur_organisasi'] }}</p>
@@ -133,8 +133,21 @@
                         @if(isset($profileData['gambar']))
                             <img src="{{ asset($profileData['gambar']) }}" alt="Struktur Organisasi" class="img-fluid">
                         @endif
+                    </div> --}}
+                    <div class="tab-pane fade" id="pills-struktur" role="tabpanel" 
+                        aria-labelledby="pills-struktur-tab" tabindex="0">
+                        <h3>Struktur Organisasi</h3>
+                        @if($profileStrukturs->isNotEmpty())
+                            @foreach($profileStrukturs as $struktur)
+                                <p>{{ $struktur->judul }}</p>
+                                 <img src="{{ Storage::url($struktur->gambar) }}"  alt="Struktur Organisasi" class="img-fluid"/>
+                            @endforeach
+                        @else
+                            <p>Tidak ada data yang ditemukan</p>
+                            <img src="" alt="Struktur Organisasi" class="img-fluid"/>
+                        @endif
+                       
                     </div>
-
 
                     <div class="tab-pane fade" id="pills-milestone" role="tabpanel"
                         aria-labelledby="pills-milestone-tab" tabindex="0">

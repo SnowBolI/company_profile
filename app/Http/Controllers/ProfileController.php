@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProfileBanner;
+use App\Models\ProfileStruktur;
 use App\Models\ProfileSejarahVisi;
 use App\Http\Controllers\Controller;
 
@@ -31,21 +32,48 @@ class ProfileController extends Controller
 {
     // Mengambil gambar terbaru dari ProfileSlider
     $profileSliders = ProfileBanner::orderBy('created_at', 'desc')->take(1)->get();
-     // Mencari record di tabel ProfileSejarahVisi yang judulnya 'sejarah' dengan mengonversi judul ke huruf kecil
-     $profileSejarah = ProfileSejarahVisi::whereRaw('LOWER(judul) = ?', ['sejarah'])->first();
+    
+    // Mencari record di tabel ProfileSejarahVisi untuk 'sejarah', 'visi', dan 'misi' dengan mengonversi judul ke huruf kecil
+    $profileSejarah = ProfileSejarahVisi::whereRaw('LOWER(judul) = ?', ['sejarah'])->first();
+    $profileVisi = ProfileSejarahVisi::whereRaw('LOWER(judul) = ?', ['visi'])->first();
+    $profileMisi = ProfileSejarahVisi::whereRaw('LOWER(judul) = ?', ['misi'])->first();
+    $profileStrukturs = ProfileStruktur::orderBy('created_at', 'desc')->take(1)->get();
 
-     // Cek apakah data ditemukan
-     if (!$profileSejarah) {
-         return abort(404, 'Data tidak ditemukan');
-     }
-   
+
+    // Cek apakah data ditemukan untuk sejarah
+    if (!$profileSejarah) {
+        $profileDataSejarah = 'Tidak ada yang ditemukan'; // Atau bisa menggunakan null atau nilai lainnya
+    } else {
+        $profileDataSejarah = $profileSejarah->konten;
+    }
+
+    // Cek apakah data ditemukan untuk visi
+    if (!$profileVisi) {
+        $profileDataVisi = 'Tidak ada yang ditemukan'; // Atau bisa menggunakan null atau nilai lainnya
+    } else {
+        $profileDataVisi = $profileVisi->konten;
+    }
+
+    // Cek apakah data ditemukan untuk misi
+    if (!$profileMisi) {
+        $profileDataMisi = 'Tidak ada yang ditemukan'; // Atau bisa menggunakan null atau nilai lainnya
+    } else {
+        $profileDataMisi = $profileMisi->konten;
+    }
+    
     return view('user.profile', [
         'section' => 'tentang',
         'profileData' => $this->profileData,
-        'profileDataSejarah' => $profileSejarah->konten,
-        'profileSliders' => $profileSliders
+        'profileDataSejarah' => $profileDataSejarah, // Kirimkan data sejarah
+        'profileDataVisi' => $profileDataVisi, // Kirimkan data visi
+        'profileDataMisi' => $profileDataMisi, // Kirimkan data misi
+        'profileSliders' => $profileSliders,
+        'profileStrukturs' => $profileStrukturs
+
     ]);
 }
+
+    
     
     public function showSejarah()
     {
