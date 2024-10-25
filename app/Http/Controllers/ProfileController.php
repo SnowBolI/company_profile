@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ProfileBanner;
 use App\Models\ProfileStruktur;
+use App\Models\ProfileMilestone;
 use App\Models\ProfileSejarahVisi;
 use App\Http\Controllers\Controller;
 
@@ -38,7 +39,7 @@ class ProfileController extends Controller
     $profileVisi = ProfileSejarahVisi::whereRaw('LOWER(judul) = ?', ['visi'])->first();
     $profileMisi = ProfileSejarahVisi::whereRaw('LOWER(judul) = ?', ['misi'])->first();
     $profileStrukturs = ProfileStruktur::orderBy('created_at', 'desc')->take(1)->get();
-
+    $profileMilestones = ProfileMilestone::orderBy('tahun', 'asc')->get();
 
     // Cek apakah data ditemukan untuk sejarah
     if (!$profileSejarah) {
@@ -61,6 +62,7 @@ class ProfileController extends Controller
         $profileDataMisi = $profileMisi->konten;
     }
     
+    
     return view('user.profile', [
         'section' => 'tentang',
         'profileData' => $this->profileData,
@@ -68,7 +70,8 @@ class ProfileController extends Controller
         'profileDataVisi' => $profileDataVisi, // Kirimkan data visi
         'profileDataMisi' => $profileDataMisi, // Kirimkan data misi
         'profileSliders' => $profileSliders,
-        'profileStrukturs' => $profileStrukturs
+        'profileStrukturs' => $profileStrukturs,     
+        'profileMilestones' => $profileMilestones
 
     ]);
 }

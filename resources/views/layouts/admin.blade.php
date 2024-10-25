@@ -77,7 +77,7 @@
                         Request::is('admin/profile_banner*') || 
                         Request::is('admin/profile_sejarah_visi*') ||
                         Request::is('admin/profile_struktur*') ||
-                        Request::is('admin/profile_tabungan*') ||
+                        Request::is('admin/profile_milestone*') ||
                         Request::is('admin/profile_deposito*')? 'show' : '' 
                         }}">
     
@@ -85,7 +85,7 @@
                         Request::is('admin/profile_banner*') || 
                         Request::is('admin/profile_sejarah_visi*') ||
                         Request::is('admin/profile_struktur*') ||
-                        Request::is('admin/profile_deposito*') ||
+                        Request::is('admin/profile_milestone*') ||
                         Request::is('admin/profile_tabungan*')? 'show' : '' 
                         }}">
                                 <i class="menu-icon fa fa-user"></i>Profile
@@ -94,13 +94,13 @@
                         Request::is('admin/profile_banner*') || 
                         Request::is('admin/profile_sejarah_visi*') ||
                         Request::is('admin/profile_struktur*') ||
-                        Request::is('admin/profile_deposito*') ||
+                        Request::is('admin/profile_milestone*') ||
                         Request::is('admin/profile_tabungan*')? 'show' : '' 
                         }}">
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_banner')}}">Banner</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_sejarah_visi')}}">Sejarah Visi</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_struktur')}}">Gambar Struktur</a></li>
-                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_deposito')}}">Persen Deposito</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_milestone')}}">Milestone</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_tabungan')}}">Persen Tabungan</a></li>
                             </ul>
                     </li>
