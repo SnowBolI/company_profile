@@ -62,8 +62,7 @@
     <div class="container">
       <div id="logo" class="pull-left">
         <a href="#hero">
-          <img src="{{asset('user/images/logobank.png')}}" style="margin-right:0px; width: auto; height: 60px;" /></img>
-          <h2 class="d-inline text-light" style="text-decoration: none;">Ekadharma</h2>
+          <img src="{{asset('user/images/logonew.png')}}" style="margin-right:0px; width: auto; height: 45px;" /></img>
         </a>
       </div>
 
@@ -83,11 +82,12 @@
   </header><!-- #header -->
 
   <!--========================== Hero Section ============================-->
-  <section id="hero">
+  {{-- <section id="hero">
     <div class="hero-container">
       @yield('hero')
     </div>
-  </section>
+  </section> --}}
+  @yield('hero')
 
   <main id="main">
 
@@ -135,7 +135,8 @@
     </div>
   </div>
   
-  <div class="footer-banner">
+
+  {{-- <div class="footer-banner">
     <div class="logo-scroll">
       <div class="logo-item">
         <img src="user/images/logobank.png" alt="Logo 1">
@@ -161,30 +162,33 @@
       <div class="logo-item">
         <img src="user/images/ojk.png" alt="Logo 6">
       </div>
-      <!-- Duplicate logos for seamless loop -->
-      <div class="logo-item">
+    </div>
+  </div> --}}
+  <div class="footer-banner">
+  <div class="banner-text">
+      Terdaftar dan Diawasi
+    </div>
+    <div class="logo-container">
+      <div class="logo">
         <img src="user/images/logobank.png" alt="Logo 1">
-      </div>
-      <div class="logo-item">
         <img src="user/images/bi.png" alt="Logo 2">
-      </div>
-      <div class="logo-item">
         <img src="user/images/indo2.png" alt="Logo 3">
-      </div>
-      <div class="logo-item">
         <img src="user/images/ayobank.png" alt="Logo 4">
-      </div>
-      <div class="logo-item">
         <img src="user/images/bpr.png" alt="Logo 5">
-      </div>
-      <div class="logo-item">
         <img src="user/images/magetan.png" alt="Logo 6">
+        <img src="user/images/lps.png" alt="Logo 7">
+        <img src="user/images/ojk.png" alt="Logo 8">
+
       </div>
-      <div class="logo-item">
-        <img src="user/images/lps.png" alt="Logo 6">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/ojk.png" alt="Logo 6">
+      <div class="logo">
+        <img src="user/images/logobank.png" alt="Logo 1">
+        <img src="user/images/bi.png" alt="Logo 2">
+        <img src="user/images/indo2.png" alt="Logo 3">
+        <img src="user/images/ayobank.png" alt="Logo 4">
+        <img src="user/images/bpr.png" alt="Logo 5">
+        <img src="user/images/magetan.png" alt="Logo 6">
+        <img src="user/images/lps.png" alt="Logo 7">
+        <img src="user/images/ojk.png" alt="Logo 8">
       </div>
     </div>
   </div>
@@ -205,6 +209,7 @@
 
   <!-- Template Main Javascript File -->
   <script src="{{asset('user/js/main.js')}}"></script>
+
 
 </body>
 

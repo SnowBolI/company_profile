@@ -9,6 +9,7 @@
 --------------------------------------------------------------*/
 body {
   background: #fff;
+  overflow-x: hidden;
   color: #666666;
   font-family: "Open Sans", sans-serif;
 }
@@ -194,6 +195,16 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
+/* #hero {
+  width: 100%;
+  height: 80vh;
+  color: black;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  background-repeat: no-repeat;
+  background-image: url('path-to-your-image.jpg');
+} */
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
@@ -986,11 +997,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+
+/* Base Footer Styles */
 .footer {
   background-color: #208454;
   color: #ffffff;
-  padding: 4rem 2rem;
-  font-family: 'Poppins', sans-serif;
+  padding: 4rem 2rem 0;
+  position: relative;
 }
 
 .footer-container {
@@ -1000,7 +1013,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
-
+/* Footer Section Styles */
 .footer-section {
   padding: 1rem;
 }
@@ -1025,57 +1038,58 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-radius: 50%;
 }
 
-/* Updated Logo banner styles */
+/* Footer Banner and Logo Scroll */
 .footer-banner {
-  max-width: 85%;
+  width: 100vw;
   background-color: #0b2f1e;
-  margin: 3rem auto 0 auto;
-  padding: 1rem 0;
+  padding: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 3rem;
 }
 
-.logo-scroll {
+.banner-text {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.logo-container {
+  overflow: hidden;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 2rem;
-  animation: scroll 30s linear infinite;
+  padding: 1rem 0;
 }
 
-@keyframes scroll {
-  0% {
+.logo {
+  display: flex;
+  gap: 11rem;
+  flex-shrink: 0;
+  padding: 1rem;
+  animation: infinite-scroll 20s linear infinite;
+}
+
+.logo img {
+  height: 6rem;
+}
+
+/* Logo Animation */
+@keyframes infinite-scroll {
+  from {
     transform: translateX(0);
   }
-  100% {
+  to {
     transform: translateX(-100%);
   }
 }
 
-.logo-item {
-  flex: 0 0 auto;
-  width: 200px;
-  height: 100px;
-  background-color: transparent;
-  border-radius: 8px;
-  padding: 10px;
-  transition: transform 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-item:hover {
-  transform: translateY(-5px);
-}
-
-.logo-item img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  filter: brightness(1.1);
-}
-
+/* Contact Info Styles */
 .contact-info {
   list-style: none;
   padding: 0;
@@ -1093,6 +1107,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #E91E63;
 }
 
+
+/* Quick Links Styles */
 .quick-links {
   list-style: none;
   padding: 0;
@@ -1114,6 +1130,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #E91E63;
 }
 
+/* Email Subscribe Styles */
 .email-subscribe {
   position: relative;
   margin-top: 1rem;
@@ -1146,7 +1163,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 .email-subscribe button:hover {
   background-color: #C2185B;
 }
-
 .social-icons {
   display: flex;
   gap: 1rem;
@@ -1170,23 +1186,33 @@ body.mobile-nav-active #mobile-nav-toggle {
   transform: translateY(-3px);
 }
 
+/* Copyright Section */
 .copyright {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
+
+  margin-top: 2rem;
+  padding-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   font-size: 0.875rem;
 }
-
+/* Responsive Design */
 @media (max-width: 992px) {
   .footer-container {
     grid-template-columns: repeat(2, 1fr);
   }
-  .logo-scroll {
-    gap: 1rem;
+
+  
+  .banner-text {
+    font-size: 1rem;
+    padding: 0.75rem;
   }
-  .logo-item {
-    width: 150px;
+  
+  .logo {
+    gap: 8rem;
+  }
+  
+  .logo img {
+    height: 5rem;
   }
 }
 
@@ -1194,8 +1220,17 @@ body.mobile-nav-active #mobile-nav-toggle {
   .footer-container {
     grid-template-columns: 1fr;
   }
-  .logo-item {
-    width: 120px;
+  .banner-text {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  
+  .logo {
+    gap: 5rem;
+  }
+  
+  .logo img {
+    height: 4rem;
   }
 }
 

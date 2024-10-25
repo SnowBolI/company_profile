@@ -24,9 +24,29 @@
     </style>    
 @endsection
 
-@section('hero')
+{{-- @section('hero')
     <h1>Blog Jogja-Travel</h1>
     <h2>Kumpulan artikel-artikel wisata Jogja, Tips travelling, dan kesehatan</h2>
+@endsection --}}
+
+@section('hero')
+    {{-- @if($profileSliders->isNotEmpty())
+        @foreach($profileSliders as $slider)
+            <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
+                <div class="hero-container">
+                    <h1>Tentang Kami</h1>
+                    <h2>Informasi profil bank</h2>
+                </div>
+            </section>
+        @endforeach
+    @else --}}
+        <section id="hero">
+            <div class="hero-container">
+              <h1>Blog Jogja-Travel</h1>
+              <h2>Kumpulan artikel-artikel wisata Jogja, Tips travelling, dan kesehatan</h2>
+            </div>
+        </section>
+    {{-- @endif --}}
 @endsection
 
 

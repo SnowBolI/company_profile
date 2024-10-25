@@ -46,6 +46,30 @@
 @endsection
 
 @section('hero')
+<section id="hero">
+  <div class="hero-container">
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        @foreach ($homeSliders as $index => $slider)
+            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                <img src="{{ Storage::url($slider->gambar) }}" class="d-block w-100" alt="Slide {{ $index + 1 }}">
+            </div>
+        @endforeach
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+  </div>
+</section>
+@endsection
+
+{{-- @section('hero')
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
         @foreach ($homeSliders as $index => $slider)
@@ -92,46 +116,44 @@
 @section('content')
 
       <!--========================== About Us Section ============================-->
-      <section class="about-section">
-    <div class="about-container">
+      <section id="about">
       <div class="section-header">
         <p>PRODUK UNGGULAN</p>
         <h2>Nikmati Produk & Layanan<br>Terbaik Kami</h2>
       </div>
-      
-      <div class="featured-image">
-        @if($homeThumbnails)
-
-            <img src="{{ Storage::url($homeThumbnails->gambar) }}" alt="Bank Staff" />
-          @else
-          <img src="" alt="Bank Staff" />
-        @endif
+  <div class="about-container">
+    <div class="content-grid">      
+      <div class="product-item">
+        <div class="product-icon">💳</div>
+        <h3>Deposito</h3>
+        <p>Simpanan nasabah dengan imbal hasil bunga dan dapat dicairkan berdasarkan jangka waktu yang ditentukan</p>
+        <a href="#">Selengkapnya →</a>
       </div>
       
-      <div class="product-grid">
-        <div class="product-item">
-          <div class="product-icon">💰</div>
-          <h3>Tabungan</h3>
-          <p>Simpanan nasabah yang memiliki imbal hasil bunga kompetitif fleksibilitas produk dan manfaat yang tinggi</p>
-          <a href="#">Selengkapnya →</a>
-        </div>
-        
-        <div class="product-item">
-          <div class="product-icon">💳</div>
-          <h3>Deposito</h3>
-          <p>Simpanan nasabah dengan imbal hasil bunga dan dapat dicairkan berdasarkan jangka waktu yang ditentukan</p>
-          <a href="#">Selengkapnya →</a>
-        </div>
-        
-        <div class="product-item">
-          <div class="product-icon">📈</div>
-          <h3>Kredit</h3>
-          <p>Produk fasilitas pendanaan untuk modal kerja, investasi dengan tingkat suku bunga yang kompetitif</p>
-          <a href="#">Selengkapnya →</a>
-        </div>
+      <div class="product-item">
+        <div class="product-icon">📈</div>
+        <h3>Kredit</h3>
+        <p>Produk fasilitas pendanaan untuk modal kerja, investasi dengan tingkat suku bunga yang kompetitif</p>
+        <a href="#">Selengkapnya →</a>
+      </div>
+      
+      <div class="product-item">
+        <div class="product-icon">📱</div>
+        <h3>Mobile Banking</h3>
+        <p>Layanan perbankan digital yang memudahkan transaksi Anda kapan saja dan dimana saja</p>
+        <a href="#">Coming Soon →</a>
       </div>
     </div>
-  </section>
+    
+    <div class="featured-image">
+      @if($homeThumbnails)
+        <img src="{{ Storage::url($homeThumbnails->gambar) }}" alt="Bank Staff" />
+      @else
+        <img src="" alt="Bank Staff" />
+      @endif
+    </div>
+  </div>
+</section>
 
       <!-- Modal Simulasi Kredit -->
       <div class="modal fade" id="modal-kredit" tabindex="-1" role="dialog">

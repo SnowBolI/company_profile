@@ -200,9 +200,25 @@
 @endsection
 
 @section('hero')
-    <h1>Tentang Kami</h1>
-    <h2>Informasi profil bank</h2>
+@if($profileSliders->isNotEmpty())
+@foreach($profileSliders as $slider)
+    <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
+        <div class="hero-container">
+            <h1>Tentang Kami</h1>
+            <h2>Informasi profil bank</h2>
+        </div>
+    </section>
+@endforeach
+@else
+<section id="hero">
+    <div class="hero-container">
+        <h1>Tentang Kami</h1>
+        <h2>Informasi profil bank</h2>
+    </div>
+</section>
+@endif
 @endsection
+
 
 @section('content')  
     <section id="profile">
@@ -295,53 +311,54 @@
                     <div class="tab-pane fade" id="pills-sejarah" role="tabpanel" 
                          aria-labelledby="pills-sejarah-tab" tabindex="0">
                         <h3>Sejarah</h3>
-                        <p class="text-justify">{{ $profileData['sejarah'] }}</p>
+                        <p class="text-justify">{!! $profileDataSejarah !!}<</p>
                     </div>
 
-                    <!-- <div class="tab-pane fade" id="pills-visimisi" role="tabpanel" 
-                         aria-labelledby="pills-visimisi-tab" tabindex="0">
-                        <h3>Visi & Misi</h3>
-                        <h4>Visi</h4>
-                        <p class="text-justify">{{ $profileData['visi_misi']['visi'] }}</p>
-                        <h4>Misi</h4>
-                        <p class="text-justify">{{ $profileData['visi_misi']['misi'] }}</p>
-                    </div> -->
 
                     <div class="tab-pane fade" id="pills-visimisi" role="tabpanel" aria-labelledby="pills-visimisi-tab" tabindex="0">
-    <h3>Visi & Misi</h3>
+                        <h3>Visi & Misi</h3>
 
-    <!-- Visi Section -->
-    <div class="vision-section">
-        <h4>Visi</h4>
-        <p class="text-justify">{{ $profileData['visi_misi']['visi'] }}</p>
-    </div>
+                        <!-- Visi Section -->
+                        <div class="vision-section">
+                            <h4>Visi</h4>
+                            <p class="text-justify">{!! $profileDataVisi !!}</p>
+                        </div>
 
-    <!-- Misi Section -->
-    <div class="mission-section">
-        <h4>Misi</h4>
-        <p class="text-justify">{{ $profileData['visi_misi']['misi'] }}</p>
-    </div>
-</div>
+                        <!-- Misi Section -->
+                        <div class="mission-section">
+                            <h4>Misi</h4>
+                            <p class="text-justify">{!! $profileDataMisi !!}</p>
+                        </div>
+                    </div>
 
 
 
                     <div class="tab-pane fade" id="pills-struktur" role="tabpanel" 
                         aria-labelledby="pills-struktur-tab" tabindex="0">
                         <h3>Struktur Organisasi</h3>
-                        <p>{{ $profileData['struktur_organisasi'] }}</p>
-                        @if(isset($profileData['gambar']))
-                            <img src="{{ asset($profileData['gambar']) }}" alt="Struktur Organisasi" class="img-fluid">
+                        @if($profileStrukturs->isNotEmpty())
+                            @foreach($profileStrukturs as $struktur)
+                                <p>{{ $struktur->judul }}</p>
+                                <img src="{{ Storage::url($struktur->gambar) }}"  alt="Struktur Organisasi" class="img-fluid"/>
+                            @endforeach
+                        @else
+                            <p>Tidak ada data yang ditemukan</p>
+                            <img src="" alt="Struktur Organisasi" class="img-fluid"/>
                         @endif
                     </div>
 
                     <div class="tab-pane fade" id="pills-milestone" role="tabpanel"
                         aria-labelledby="pills-milestone-tab" tabindex="0">
                         <h3>Milestone</h3>
-                        <ul class="list-unstyled">
-                            @foreach($profileData['milestone'] as $year => $event)
-                                <li><strong>{{ $year }}</strong>: {{ $event }}</li>
-                            @endforeach
-                        </ul>
+                        @if($profileMilestones->isEmpty())
+                            <p>Tidak ada data yang ditemukan</p>
+                        @else
+                            <ul class="list-unstyled">
+                                @foreach($profileMilestones as $milestone)
+                                    <li><strong>{{ $milestone->tahun }}</strong>: {{ $milestone->keterangan }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                 </div>
             </div>
