@@ -267,7 +267,7 @@
         <div class="container wow fadeIn">
             <div class="profile-content">
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-tentang" role="tabpanel" 
+                    {{-- <div class="tab-pane fade show active" id="pills-tentang" role="tabpanel" 
                          aria-labelledby="pills-tentang-tab" tabindex="0">
                         <h3>Tentang</h3>
                         
@@ -306,12 +306,33 @@
                         </div>
 
                         <!-- <p>{{ $profileData['index'] }}</p> -->
+                    </div> --}}
+                    <div class="tab-pane fade show active" id="pills-tentang" role="tabpanel" 
+                        aria-labelledby="pills-tentang-tab" tabindex="0">
+                        <h3>Tentang</h3>
+                        
+                        <div class="management-team">
+                            @if($profileTentangs->isEmpty())
+                                <p>Tidak ada data yang ditemukan</p>
+                            @else
+                                @foreach($profileTentangs as $tentang)
+                                    <div class="management-card">
+                                        <img src="{{ asset('storage/' . $tentang->gambar) }}" alt="{{ $tentang->jabatan }}" class="management-photo">
+                                        <div class="management-info">
+                                            <h4 class="management-title">{{ $tentang->jabatan }}</h4>
+                                            <p class="management-name">{{ $tentang->nama }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
                     </div>
+
 
                     <div class="tab-pane fade" id="pills-sejarah" role="tabpanel" 
                          aria-labelledby="pills-sejarah-tab" tabindex="0">
                         <h3>Sejarah</h3>
-                        <p class="text-justify">{!! $profileDataSejarah !!}<</p>
+                        <p class="text-justify">{!! $profileDataSejarah !!}</p>
                     </div>
 
 
@@ -321,13 +342,13 @@
                         <!-- Visi Section -->
                         <div class="vision-section">
                             <h4>Visi</h4>
-                            <p class="text-justify">{!! $profileDataVisi !!}</p>
+                            {!! $profileDataVisi !!}
                         </div>
 
                         <!-- Misi Section -->
                         <div class="mission-section">
                             <h4>Misi</h4>
-                            <p class="text-justify">{!! $profileDataMisi !!}</p>
+                            {!! $profileDataMisi !!}
                         </div>
                     </div>
 

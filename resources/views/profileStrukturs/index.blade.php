@@ -28,7 +28,7 @@
                                 <!-- Form Pencarian -->
                                 <form method="GET" action="{{ url('/admin/profile_struktur') }}" class="mb-3">
                                     <div class="input-group">
-                                        <input type="text" name="search" class="form-control" placeholder="Cari struktur..." value="{{ $search }}">
+                                        <input type="text" name="search" class="form-control" placeholder="Cari Struktur..." value="{{ $search }}">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-secondary">Cari</button>
                                         </div>

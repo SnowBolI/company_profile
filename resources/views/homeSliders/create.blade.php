@@ -22,8 +22,8 @@
                             <label for="judul" class="font-weight-bold">Judul</label>
                             <input type="text" id="judul" class="form-control {{ $errors->first('judul') ? 'is-invalid' : '' }}" name="judul" placeholder="Judul" value="{{ old('judul') }}" required>
                             <div class="invalid-feedback">{{ $errors->first('judul') }}</div>
-                        {{-- </div>
-                        <div class="form-group">
+                        </div>
+                        {{-- <div class="form-group">
                             <label for="keterangan" class="font-weight-bold">Keterangan</label>
                             <textarea id="keterangan" class="form-control {{ $errors->first('keterangan') ? 'is-invalid' : '' }}" name="keterangan" placeholder="Keterangan" required>{{ old('keterangan') }}</textarea>
                             <div class="invalid-feedback">{{ $errors->first('keterangan') }}</div>
