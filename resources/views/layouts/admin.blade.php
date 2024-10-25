@@ -82,33 +82,33 @@
                     {{-- profile --}}
                     <li class="menu-item-has-children dropdown {{ 
                         Request::is('admin/profile_banner*') || 
+                        Request::is('admin/profile_tentang*') ||
                         Request::is('admin/profile_sejarah_visi*') ||
                         Request::is('admin/profile_struktur*') ||
-                        Request::is('admin/profile_milestone*') ||
-                        Request::is('admin/profile_deposito*')? 'show' : '' 
+                        Request::is('admin/profile_milestone*')? 'show' : '' 
                         }}">
     
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
                         Request::is('admin/profile_banner*') || 
+                        Request::is('admin/profile_tentang*') ||
                         Request::is('admin/profile_sejarah_visi*') ||
                         Request::is('admin/profile_struktur*') ||
-                        Request::is('admin/profile_milestone*') ||
-                        Request::is('admin/profile_tabungan*')? 'show' : '' 
+                        Request::is('admin/profile_milestone*')? 'show' : '' 
                         }}">
                                 <i class="menu-icon fa fa-user"></i>Profile
                             </a>
                             <ul class="sub-menu children dropdown-menu {{ 
                         Request::is('admin/profile_banner*') || 
+                        Request::is('admin/profile_tentang*') ||
                         Request::is('admin/profile_sejarah_visi*') ||
                         Request::is('admin/profile_struktur*') ||
-                        Request::is('admin/profile_milestone*') ||
-                        Request::is('admin/profile_tabungan*')? 'show' : '' 
+                        Request::is('admin/profile_milestone*')? 'show' : ''  
                         }}">
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_banner')}}">Banner</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_tentang')}}">Tentang Kami</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_sejarah_visi')}}">Sejarah Visi</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_struktur')}}">Gambar Struktur</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_milestone')}}">Milestone</a></li>
-                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_tabungan')}}">Persen Tabungan</a></li>
                             </ul>
                     </li>
 
