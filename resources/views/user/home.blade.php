@@ -72,6 +72,26 @@
 {{-- @section('hero')
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
+        @foreach ($homeSliders as $index => $slider)
+            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                <img src="{{ Storage::url($slider->gambar) }}" class="d-block w-100" alt="Slide {{ $index + 1 }}">
+            </div>
+        @endforeach
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+@endsection
+
+{{-- @section('hero')
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
         <div class="carousel-item active ">
             <img src="{{ asset('user/images/fua.png') }}" class="d-block w-100" alt="Slide 1">
         </div>
@@ -102,16 +122,7 @@
         <h2>Nikmati Produk & Layanan<br>Terbaik Kami</h2>
       </div>
   <div class="about-container">
-    <div class="content-grid">
-      
-      
-      <div class="product-item">
-        <div class="product-icon">💰</div>
-        <h3>Tabungan</h3>
-        <p>Simpanan nasabah yang memiliki imbal hasil bunga kompetitif fleksibilitas produk dan manfaat yang tinggi</p>
-        <a href="#">Selengkapnya →</a>
-      </div>
-      
+    <div class="content-grid">      
       <div class="product-item">
         <div class="product-icon">💳</div>
         <h3>Deposito</h3>

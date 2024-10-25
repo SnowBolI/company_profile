@@ -127,15 +127,15 @@
         <button><i class="fas fa-paper-plane"></i></button>
       </div>
       <div class="social-icons">
-        <a href="#"><i class="fas fa-facebook-f"></i></a>
-        <a href="#"><i class="fas fa-twitter"></i></a>
-        <a href="#"><i class="fas fa-instagram"></i></a>
-        <a href="#"><i class="fas fa-linkedin-in"></i></a>
-
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
   </div>
   
+
   {{-- <div class="footer-banner">
     <div class="logo-scroll">
       <div class="logo-item">
@@ -189,7 +189,6 @@
         <img src="user/images/magetan.png" alt="Logo 6">
         <img src="user/images/lps.png" alt="Logo 7">
         <img src="user/images/ojk.png" alt="Logo 8">
-
       </div>
     </div>
   </div>

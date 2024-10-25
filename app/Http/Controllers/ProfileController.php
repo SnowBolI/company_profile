@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\ProfileBanner;
 use App\Models\ProfileStruktur;
 use App\Models\ProfileMilestone;
 use App\Models\ProfileSejarahVisi;
 use App\Http\Controllers\Controller;
+
 
 class ProfileController extends Controller
 {
@@ -30,6 +32,7 @@ class ProfileController extends Controller
         ]
     ];
     public function index()
+
 {
     // Mengambil gambar terbaru dari ProfileSlider
     $profileSliders = ProfileBanner::orderBy('created_at', 'desc')->take(1)->get();
@@ -80,12 +83,13 @@ class ProfileController extends Controller
     
     public function showSejarah()
     {
-        
+
         return view('user.profile', [
             'section' => 'sejarah',
             'profileData' => $this->profileData
         ]);
     }
+
 
 
 

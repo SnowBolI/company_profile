@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\HomeYTController;
 
 use App\Http\Controllers\HomeSliderController;
@@ -76,8 +77,6 @@ Route::prefix('admin')->group(function(){
   Route::resource('/profile_sejarah_visi',ProfileSejarahVisiController::class)->middleware('auth');
   Route::resource('/profile_struktur',ProfileStrukturController::class)->middleware('auth');
   Route::resource('/profile_milestone',ProfileMilestoneController::class)->middleware('auth');
-
-
 
 
 });

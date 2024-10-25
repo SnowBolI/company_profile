@@ -997,6 +997,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+
 /* Base Footer Styles */
 .footer {
   background-color: #208454;
@@ -1012,7 +1013,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
-
 /* Footer Section Styles */
 .footer-section {
   padding: 1rem;
@@ -1107,6 +1107,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #E91E63;
 }
 
+
 /* Quick Links Styles */
 .quick-links {
   list-style: none;
@@ -1162,8 +1163,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 .email-subscribe button:hover {
   background-color: #C2185B;
 }
-
-/* Social Icons Styles */
 .social-icons {
   display: flex;
   gap: 1rem;
@@ -1189,18 +1188,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* Copyright Section */
 .copyright {
+
   margin-top: 2rem;
   padding-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   font-size: 0.875rem;
 }
-
 /* Responsive Design */
 @media (max-width: 992px) {
   .footer-container {
     grid-template-columns: repeat(2, 1fr);
   }
+
   
   .banner-text {
     font-size: 1rem;
@@ -1220,7 +1220,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   .footer-container {
     grid-template-columns: 1fr;
   }
-  
   .banner-text {
     font-size: 0.9rem;
     padding: 0.5rem;
