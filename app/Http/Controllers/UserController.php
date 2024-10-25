@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\HomeBackground;
 use App\Models\HomeThumbnail;
 use App\Models\HomeYT;
 use App\Models\Article;
@@ -27,6 +28,7 @@ class UserController extends Controller
     $homeSliders = HomeSlider::orderBy('created_at', 'desc')->take(3)->get();
     $homeYoutubes = HomeYT::orderBy('created_at', 'desc')->first();
     $homeThumbnails = HomeThumbnail::orderBy('created_at', 'desc')->first();
+    $homeBackgrounds = HomeBackground::orderBy('created_at', 'desc')->take(1)->get();
 
     if ($homeYoutubes) {
       $url = $homeYoutubes->linkyt;
@@ -42,7 +44,7 @@ class UserController extends Controller
     $categories = Category::all();
     $about = About::all();
 
-    return view('user.home', compact('homeSliders', 'homeThumbnails', 'youtubeId', 'categories', 'about'));
+    return view('user.home', compact('homeSliders','homeBackgrounds', 'homeThumbnails', 'youtubeId', 'categories', 'about'));
   }
 
 

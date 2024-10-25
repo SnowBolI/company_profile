@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeDepositoController;
 use App\Http\Controllers\HomeTabunganController;
 use App\Http\Controllers\HomeThumbnailController;
 use App\Http\Controllers\ProfileBannerController;
+use App\Http\Controllers\HomeBackgroundController;
 use App\Http\Controllers\ProfileTentangController;
 use App\Http\Controllers\ProfileStrukturController;
 use App\Http\Controllers\ProfileMilestoneController;
@@ -68,6 +69,7 @@ Route::prefix('admin')->group(function(){
     
 
   Route::resource('/home_slider',HomeSliderController::class)->middleware('auth');
+  Route::resource('/home_background',HomeBackgroundController::class)->middleware('auth');
   Route::resource('/home_youtube',HomeYTController::class)->middleware('auth');
   Route::resource('/home_thumbnail',HomeThumbnailController::class)->middleware('auth');
   Route::resource('/home_tabungan',HomeTabunganController::class)->middleware('auth');

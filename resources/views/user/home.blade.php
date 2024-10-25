@@ -288,38 +288,45 @@
         </div>
       </div>
   
-  <section id="call-to-action">
-  <div class="row mt-4">
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="simulation-card" data-toggle="modal" data-target="#modal-kredit">
-          <div class="icon-circle">
-            <i class="fa fa-money"></i>
+
+      <section id="call-to-action" 
+      @if($homeBackgrounds->isNotEmpty())
+          @foreach($homeBackgrounds as $backgrounds)
+          style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ asset('storage/' . $backgrounds->gambar) }}');">
+          @endforeach
+      @endif
+      >
+      <div class="row mt-4">
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+              <div class="simulation-card" data-toggle="modal" data-target="#modal-kredit">
+                  <div class="icon-circle">
+                      <i class="fa fa-money"></i>
+                  </div>
+                  <h4 class="simulation-title">SIMULASI KREDIT</h4>
+                  <p class="simulation-description">Hitung Rencana Kredit Anda</p>
+              </div>
           </div>
-          <h4 class="simulation-title">SIMULASI KREDIT</h4>
-          <p class="simulation-description">Hitung Rencana Kredit Anda</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-        <div class="simulation-card" data-toggle="modal" data-target="#modal-deposito">
-          <div class="icon-circle">
-            <i class="fa fa-thumbs-up"></i>
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+              <div class="simulation-card" data-toggle="modal" data-target="#modal-deposito">
+                  <div class="icon-circle">
+                      <i class="fa fa-thumbs-up"></i>
+                  </div>
+                  <h4 class="simulation-title">SIMULASI DEPOSITO</h4>
+                  <p class="simulation-description">Hitung Rencana Deposito Anda</p>
+              </div>
           </div>
-          <h4 class="simulation-title">SIMULASI DEPOSITO</h4>
-          <p class="simulation-description">Hitung Rencana Deposito Anda</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-        <div class="simulation-card" data-toggle="modal" data-target="#modal-tabungan">
-          <div class="icon-circle">
-            <i class="fa fa-bank"></i>
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+              <div class="simulation-card" data-toggle="modal" data-target="#modal-tabungan">
+                  <div class="icon-circle">
+                      <i class="fa fa-bank"></i>
+                  </div>
+                  <h4 class="simulation-title">SIMULASI TABUNGAN</h4>
+                  <p class="simulation-description">Hitung Rencana Tabungan Anda</p>
+              </div>
           </div>
-          <h4 class="simulation-title">SIMULASI TABUNGAN</h4>
-          <p class="simulation-description">Hitung Rencana Tabungan Anda</p>
-        </div>
       </div>
-    </div>
-    </div>
-</section>
+  </section>
+  
       
       <!--========================== YouTube Section ============================-->
     <section id="youtube">
