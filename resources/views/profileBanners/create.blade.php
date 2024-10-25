@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Create Profile Slider')
+@section('title', 'Create Profile Banner')
 
-@section('breadcrumbs', 'Profile Slider')
+@section('breadcrumbs', 'Profile Banner')
 
 @section('second-breadcrumb')
     <li>Create</li>
@@ -14,9 +14,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="col-12 mb-3">
-                        <h3 align="center">Tambah Slider</h3>
+                        <h3 align="center">Tambah Banner</h3>
                     </div>
-                    <form action="{{ route('profile_slider.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('profile_banner.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="judul" class="font-weight-bold">Judul</label>
@@ -34,7 +34,7 @@
                             <div class="invalid-feedback">{{ $errors->first('gambar') }}</div>
                         </div>
                         <div class="form-group mt-4">
-                            <a href="{{ route('profile_slider.index') }}" class="btn btn-secondary">Kembali</a>
+                            <a href="{{ route('profile_banner.index') }}" class="btn btn-secondary">Kembali</a>
                             <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </form>

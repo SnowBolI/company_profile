@@ -1,12 +1,16 @@
 <?php
 use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\HomeYTController;
 
 use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\HomeDepositoController;
 use App\Http\Controllers\HomeTabunganController;
 use App\Http\Controllers\HomeThumbnailController;
-use App\Http\Controllers\ProfileSliderController;
+use App\Http\Controllers\ProfileBannerController;
+use App\Http\Controllers\ProfileStrukturController;
+use App\Http\Controllers\ProfileMilestoneController;
+use App\Http\Controllers\ProfileSejarahVisiController;
 
 
 Route::get('/', function(){return redirect('/home');});
@@ -69,6 +73,10 @@ Route::prefix('admin')->group(function(){
   Route::resource('/home_deposito',HomeDepositoController::class)->middleware('auth');
 
 
-  Route::resource('/profile_slider',ProfileSliderController::class)->middleware('auth');
+  Route::resource('/profile_banner',ProfileBannerController::class)->middleware('auth');
+  Route::resource('/profile_sejarah_visi',ProfileSejarahVisiController::class)->middleware('auth');
+  Route::resource('/profile_struktur',ProfileStrukturController::class)->middleware('auth');
+  Route::resource('/profile_milestone',ProfileMilestoneController::class)->middleware('auth');
+
 
 });

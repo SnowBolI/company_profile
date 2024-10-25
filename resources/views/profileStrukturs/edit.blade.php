@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Edit Profile Slider')
+@section('title', 'Edit Profile Struktur')
 
-@section('breadcrumbs', 'Profile Slider')
+@section('breadcrumbs', 'Profile Struktur')
 
 @section('second-breadcrumb')
     <li>Edit</li>
@@ -14,24 +14,24 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <a href="/admin/profile_slider" class="mb-3 btn btn-primary">Kembali</a>
-                    <form action="{{ route('profile_slider.update', $profileSlider->id) }}" method="POST" enctype="multipart/form-data">
+                    <a href="/admin/profile_struktur" class="mb-3 btn btn-primary">Kembali</a>
+                    <form action="{{ route('profile_struktur.update', $profileStruktur->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
                             <label for="judul" class="font-weight-bold">Judul</label>
-                            <input type="text" id="judul" class="form-control {{ $errors->first('judul') ? 'is-invalid' : '' }}" name="judul" placeholder="Judul" value="{{ old('judul', $profileSlider->judul) }}" required>
+                            <input type="text" id="judul" class="form-control {{ $errors->first('judul') ? 'is-invalid' : '' }}" name="judul" placeholder="Judul" value="{{ old('judul', $profileStruktur->judul) }}" required>
                             <div class="invalid-feedback">{{ $errors->first('judul') }}</div>
                         </div>
                         {{-- <div class="mb-3">
                             <label for="keterangan" class="font-weight-bold">Keterangan</label>
-                            <textarea id="keterangan" class="form-control {{ $errors->first('keterangan') ? 'is-invalid' : '' }}" name="keterangan" placeholder="Keterangan" required>{{ old('keterangan', $profileSlider->keterangan) }}</textarea>
+                            <textarea id="keterangan" class="form-control {{ $errors->first('keterangan') ? 'is-invalid' : '' }}" name="keterangan" placeholder="Keterangan" required>{{ old('keterangan', $profileStruktur->keterangan) }}</textarea>
                             <div class="invalid-feedback">{{ $errors->first('keterangan') }}</div>
                         </div> --}}
                         <div class="mb-3">
                             <label for="gambar" class="font-weight-bold">Gambar</label>
-                            @if($profileSlider->gambar)
-                                <img class="img-fluid rounded mx-auto d-block my-3" src="{{ Storage::url($profileSlider->gambar) }}" alt="Gambar Produk">
+                            @if($profileStruktur->gambar)
+                                <img class="img-fluid rounded mx-auto d-block my-3" src="{{ Storage::url($profileStruktur->gambar) }}" alt="Gambar Produk">
                             @else
                                 <p>Tidak ada gambar yang diunggah.</p>
                             @endif

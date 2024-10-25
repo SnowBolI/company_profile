@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profile_sliders', function (Blueprint $table) {
+        Schema::create('profile_banners', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
             $table->string('gambar');

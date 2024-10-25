@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProfileSlider extends Model
+class ProfileSejarahVisi extends Model
 {
     use HasFactory;
-    protected $fillable = ['judul', 'gambar'];
-
+    protected $fillable = ['judul', 'konten'];
 }
