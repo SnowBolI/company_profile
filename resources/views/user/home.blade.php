@@ -131,6 +131,13 @@
       </div>
       
       <div class="product-item">
+        <div class="product-icon">🤝🏻</div>
+        <h3>Tabungan</h3>
+        <p>Produk fasilitas pendanaan untuk modal kerja, investasi dengan tingkat suku bunga yang kompetitif</p>
+        <a href="#">Selengkapnya →</a>
+      </div>
+
+      <div class="product-item">
         <div class="product-icon">📈</div>
         <h3>Kredit</h3>
         <p>Produk fasilitas pendanaan untuk modal kerja, investasi dengan tingkat suku bunga yang kompetitif</p>

@@ -1102,7 +1102,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   display: flex;
   gap: 11rem;
   flex-shrink: 0;
-  padding: 1rem;
+  padding: 0 5.5rem;
   animation: infinite-scroll 20s linear infinite;
 }
 
