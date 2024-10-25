@@ -43,7 +43,7 @@
                     <li class="menu-item-has-children dropdown {{ 
                     Request::is('admin/home_slider*') || 
                     Request::is('admin/home_youtube*') ||
-
+                    Request::is('admin/home_background*') ||
                     Request::is('admin/home_thumbnail*') ||
                     Request::is('admin/home_tabungan*') ||
                     Request::is('admin/home_deposito*')? 'show' : '' 
@@ -53,7 +53,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
                     Request::is('admin/home_slider*') || 
                     Request::is('admin/home_youtube*') ||
-
+                    Request::is('admin/home_background*') ||
                     Request::is('admin/home_thumbnail*') ||
                     Request::is('admin/home_deposito*') ||
                     Request::is('admin/home_tabungan*')? 'show' : '' 
@@ -64,13 +64,14 @@
                         <ul class="sub-menu children dropdown-menu {{ 
                     Request::is('admin/home_slider*') || 
                     Request::is('admin/home_youtube*') ||
-
+                    Request::is('admin/home_background*') ||
                     Request::is('admin/home_thumbnail*') ||
                     Request::is('admin/home_deposito*') ||
                     Request::is('admin/home_tabungan*')? 'show' : '' 
 
                     }}">
                             <li><i class="fa fa-angle-right"></i><a href="{{url('admin/home_slider')}}">Slider</a></li>
+                            <li><i class="fa fa-angle-right"></i><a href="{{url('admin/home_background')}}">Background</a></li>
                             <li><i class="fa fa-angle-right"></i><a href="{{url('admin/home_thumbnail')}}">Thumbnail</a></li>
                             <li><i class="fa fa-angle-right"></i><a href="{{url('admin/home_youtube')}}">Link YT</a></li>
 
