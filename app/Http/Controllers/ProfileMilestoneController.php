@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProfileSejarahVisi;
+use App\Models\ProfileMilestone;
 use Illuminate\Http\Request;
 
-class ProfileSejarahVisiController extends Controller
+class ProfileMilestoneController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,12 +19,12 @@ class ProfileSejarahVisiController extends Controller
           $search = $request->input('search');
 
           // Query untuk mengambil data produk berdasarkan pencarian dan pagination
-          $profileSejarahVisis = ProfileSejarahVisi::when($search, function ($query, $search) {
-              return $query->where('judul', 'like', "%{$search}%");
+          $profileMilestones = ProfileMilestone::when($search, function ($query, $search) {
+              return $query->where('tahun', 'like', "%{$search}%");
           })->orderBy('updated_at', 'desc')->paginate(10);
   
           // Mengirimkan data produk dan kata kunci pencarian ke view
-          return view('profileSejarahVisis.index', compact('profileSejarahVisis', 'search'));
+          return view('profileMilestones.index', compact('profileMilestones', 'search'));
     }
 
     /**
@@ -34,7 +34,7 @@ class ProfileSejarahVisiController extends Controller
      */
     public function create()
     {
-        return view('profileSejarahVisis.create');
+        return view('profileMilestones.create');
     }
 
     /**
@@ -46,77 +46,77 @@ class ProfileSejarahVisiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required',
-            'konten' => 'required'
+            'tahun' => 'required',
+            'keterangan' => 'required'
         ]);
     
         $input = $request->all();
         
     
-        ProfileSejarahVisi::create($input);
+        ProfileMilestone::create($input);
     
-        return redirect('/admin/profile_sejarah_visi')->with('message', 'Data berhasil ditambahkan');
+        return redirect('/admin/profile_milestone')->with('message', 'Data berhasil ditambahkan');
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProfileSejarahVisi  $profileSejarahVisi
+     * @param  \App\Models\ProfileMilestone  $profileMilestone
      * @return \Illuminate\Http\Response
      */
-    public function show(ProfileSejarahVisi $profileSejarahVisi)
+    public function show(ProfileMilestone $profileMilestone)
     {
-        return view('profileSejarahVisis.show', compact('profileSejarahVisi'));
+        return view('profileMilestones.show', compact('profileMilestone'));
         
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProfileSejarahVisi  $profileSejarahVisi
+     * @param  \App\Models\ProfileMilestone  $profileMilestone
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProfileSejarahVisi $profileSejarahVisi)
+    public function edit(ProfileMilestone $profileMilestone)
     {
-        return view('profileSejarahVisis.edit', compact('profileSejarahVisi'));
+        return view('profileMilestones.edit', compact('profileMilestone'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProfileSejarahVisi  $profileSejarahVisi
+     * @param  \App\Models\ProfileMilestone  $profileMilestone
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProfileSejarahVisi $profileSejarahVisi)
+    public function update(Request $request, ProfileMilestone $profileMilestone)
     {
         $request->validate([
-            'judul' => 'required',
-            'konten' => 'required'
+            'tahun' => 'required',
+            'keterangan' => 'required'
         ]);
     
         $input = $request->all();
         
-        $profileSejarahVisi->update($input);
+        $profileMilestone->update($input);
     
-        return redirect('/admin/profile_sejarah_visi')->with('message', 'Data berhasil diedit');
+        return redirect('/admin/profile_milestone')->with('message', 'Data berhasil diedit');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProfileSejarahVisi  $profileSejarahVisi
+     * @param  \App\Models\ProfileMilestone  $profileMilestone
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProfileSejarahVisi $profileSejarahVisi)
+    public function destroy(ProfileMilestone $profileMilestone)
     {
     
 
         // Hapus data dari database
-        $profileSejarahVisi->delete();
+        $profileMilestone->delete();
 
         // Redirect dengan pesan sukses
-        return redirect('/admin/profile_sejarah_visi')->with('message', 'Data berhasil dihapus');
+        return redirect('/admin/profile_milestone')->with('message', 'Data berhasil dihapus');
     }
 }

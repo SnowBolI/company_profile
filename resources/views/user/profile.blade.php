@@ -149,14 +149,17 @@
                        
                     </div>
 
-                    <div class="tab-pane fade" id="pills-milestone" role="tabpanel"
-                        aria-labelledby="pills-milestone-tab" tabindex="0">
+                    <div class="tab-pane fade" id="pills-milestone" role="tabpanel" aria-labelledby="pills-milestone-tab" tabindex="0">
                         <h3>Milestone</h3>
-                        <ul>
-                            @foreach($profileData['milestone'] as $year => $event)
-                                <li><strong>{{ $year }}</strong>: {{ $event }}</li>
-                            @endforeach
-                        </ul>
+                        @if($profileMilestones->isEmpty())
+                            <p>Tidak ada data yang ditemukan</p>
+                        @else
+                            <ul>
+                                @foreach($profileMilestones as $milestone)
+                                    <li><strong>{{ $milestone->tahun }}</strong>: {{ $milestone->keterangan }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                 </div>
             </div>
