@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeTabunganController;
 use App\Http\Controllers\HomeThumbnailController;
 use App\Http\Controllers\ProfileBannerController;
 use App\Http\Controllers\HomeBackgroundController;
+use App\Http\Controllers\ProdukTabunganController;
 use App\Http\Controllers\ProfileTentangController;
 use App\Http\Controllers\ProfileStrukturController;
 use App\Http\Controllers\ProfileMilestoneController;
@@ -81,6 +82,9 @@ Route::prefix('admin')->group(function(){
   Route::resource('/profile_struktur',ProfileStrukturController::class)->middleware('auth');
   Route::resource('/profile_milestone',ProfileMilestoneController::class)->middleware('auth');
   Route::resource('/profile_tentang',ProfileTentangController::class)->middleware('auth');
+
+  Route::resource('/produk_tabungan',ProdukTabunganController::class)->middleware('auth');
+
 
 
 
