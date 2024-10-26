@@ -85,7 +85,10 @@ Route::prefix('admin')->group(function(){
   Route::resource('/profile_tentang',ProfileTentangController::class)->middleware('auth');
 
   Route::resource('/produk_tabungan',ProdukTabunganController::class)->middleware('auth');
+
   Route::resource('/produk_banner',ProdukBannerController::class)->middleware('auth');
+
+
 
 
 
