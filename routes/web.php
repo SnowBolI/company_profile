@@ -10,6 +10,7 @@ use App\Http\Controllers\ProdukBannerController;
 use App\Http\Controllers\HomeThumbnailController;
 use App\Http\Controllers\ProfileBannerController;
 use App\Http\Controllers\HomeBackgroundController;
+use App\Http\Controllers\ProdukDepositoController;
 use App\Http\Controllers\ProdukTabunganController;
 use App\Http\Controllers\ProfileTentangController;
 use App\Http\Controllers\ProfileStrukturController;
@@ -85,8 +86,9 @@ Route::prefix('admin')->group(function(){
   Route::resource('/profile_tentang',ProfileTentangController::class)->middleware('auth');
 
   Route::resource('/produk_tabungan',ProdukTabunganController::class)->middleware('auth');
-
   Route::resource('/produk_banner',ProdukBannerController::class)->middleware('auth');
+  Route::resource('/produk_deposito',ProdukDepositoController::class)->middleware('auth');
+
 
 
 
