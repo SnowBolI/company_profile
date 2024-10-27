@@ -118,7 +118,7 @@
                     <li class="menu-item-has-children dropdown {{ 
                         Request::is('admin/produk_banner*') || 
                         Request::is('admin/produk_tabungan*') ||
-                        Request::is('admin/produk_sejarah_visi*') ||
+                        Request::is('admin/produk_deposito*') ||
                         Request::is('admin/produk_struktur*') ||
                         Request::is('admin/produk_milestone*')? 'show' : '' 
                         }}">
@@ -126,7 +126,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
                         Request::is('admin/produk_banner*') || 
                         Request::is('admin/produk_tabungan*') ||
-                        Request::is('admin/produk_sejarah_visi*') ||
+                        Request::is('admin/produk_deposito*') ||
                         Request::is('admin/produk_struktur*') ||
                         Request::is('admin/produk_milestone*')? 'show' : '' 
                         }}">
@@ -135,13 +135,13 @@
                             <ul class="sub-menu children dropdown-menu {{ 
                         Request::is('admin/produk_banner*') || 
                         Request::is('admin/produk_tabungan*') ||
-                        Request::is('admin/produk_sejarah_visi*') ||
+                        Request::is('admin/produk_deposito*') ||
                         Request::is('admin/produk_struktur*') ||
                         Request::is('admin/produk_milestone*')? 'show' : ''  
                         }}">
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_banner')}}">Banner</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_tabungan')}}">Tabungan</a></li>
-                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_sejarah_visi')}}">Sejarah Visi</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_deposito')}}">Deposito</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_struktur')}}">Gambar Struktur</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_milestone')}}">Milestone</a></li>
                             </ul>
