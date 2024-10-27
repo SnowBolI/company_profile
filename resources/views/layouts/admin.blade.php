@@ -120,7 +120,7 @@
                         Request::is('admin/produk_tabungan*') ||
                         Request::is('admin/produk_deposito*') ||
                         Request::is('admin/produk_kredit*') ||
-                        Request::is('admin/produk_milestone*')? 'show' : '' 
+                        Request::is('admin/produk_ppob*')? 'show' : '' 
                         }}">
     
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
@@ -128,7 +128,7 @@
                         Request::is('admin/produk_tabungan*') ||
                         Request::is('admin/produk_deposito*') ||
                         Request::is('admin/produk_kredit*') ||
-                        Request::is('admin/produk_milestone*')? 'show' : '' 
+                        Request::is('admin/produk_ppob*')? 'show' : '' 
                         }}">
                                 <i class="menu-icon fa fa-archive"></i>Produk
                             </a>
@@ -137,13 +137,13 @@
                         Request::is('admin/produk_tabungan*') ||
                         Request::is('admin/produk_deposito*') ||
                         Request::is('admin/produk_kredit*') ||
-                        Request::is('admin/produk_milestone*')? 'show' : ''  
+                        Request::is('admin/produk_ppob*')? 'show' : ''  
                         }}">
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_banner')}}">Banner</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_tabungan')}}">Tabungan</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_deposito')}}">Deposito</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_kredit')}}">Kredit</a></li>
-                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_milestone')}}">Milestone</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/produk_ppob')}}">PPOB</a></li>
                             </ul>
                     </li>
 
