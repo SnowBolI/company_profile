@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\HomeDepositoController;
 use App\Http\Controllers\HomeTabunganController;
 use App\Http\Controllers\ProdukBannerController;
+use App\Http\Controllers\ProdukKreditController;
 use App\Http\Controllers\HomeThumbnailController;
 use App\Http\Controllers\ProfileBannerController;
 use App\Http\Controllers\HomeBackgroundController;
@@ -88,6 +89,7 @@ Route::prefix('admin')->group(function(){
   Route::resource('/produk_tabungan',ProdukTabunganController::class)->middleware('auth');
   Route::resource('/produk_banner',ProdukBannerController::class)->middleware('auth');
   Route::resource('/produk_deposito',ProdukDepositoController::class)->middleware('auth');
+  Route::resource('/produk_kredit',ProdukKreditController::class)->middleware('auth');
 
 
 
