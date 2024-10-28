@@ -147,6 +147,28 @@
                             </ul>
                     </li>
 
+                    {{-- Edukasi --}}
+
+                    <li class="menu-item-has-children dropdown {{ 
+                        Request::is('admin/edukasi_banner*') || 
+                        Request::is('admin/edukasi*')? 'show' : '' 
+                        }}">
+    
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
+                        Request::is('admin/edukasi_banner*') || 
+                        Request::is('admin/edukasi*')? 'show' : '' 
+                        }}">
+                                <i class="menu-icon fa fa-list-alt"></i>Edukasi
+                            </a>
+                            <ul class="sub-menu children dropdown-menu {{ 
+                        Request::is('admin/edukasi_banner*') || 
+                        Request::is('admin/edukasi*')? 'show' : ''  
+                        }}">
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/edukasi_banner')}}">Banner</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/edukasi')}}">Edukasi</a></li>
+                            </ul>
+                    </li>
+
                     <li class="{{$url=='categories'?'active':''}}">
                         <a href="{{url('admin/categories')}}"><i class="menu-icon fa fa-list-ul"></i>Categories </a>
                     </li>
