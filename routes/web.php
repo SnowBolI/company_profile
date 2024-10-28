@@ -3,6 +3,7 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\HomeYTController;
 
+use App\Http\Controllers\EdukasiController;
 use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\ProdukPPOBController;
 use App\Http\Controllers\HomeDepositoController;
@@ -96,6 +97,8 @@ Route::prefix('admin')->group(function(){
 
 
   Route::resource('/edukasi_banner',EdukasiBannerController::class)->middleware('auth');
+  Route::resource('/edukasi',EdukasiController::class)->middleware('auth');
+
 
 
 
