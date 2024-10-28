@@ -68,13 +68,11 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="{{$url == 'home' ? 'menu-active' : ''}}"><a href="{{url('home')}}" style="color: black;">Home</a></li>
-          <li class="{{$url == 'profile' ? 'menu-active' : ''}}"><a href="{{url('profile')}}"
-              style="color: black;">Profile</a></li>
-          <li class="{{$url == 'blog' ? 'menu-active' : ''}}"><a href="{{url('blog')}}" style="color: black;">Blog</a></li>
-          <li class="{{$url == 'destination' ? 'menu-active' : ''}}"><a href="{{url('destination')}}"
-              style="color: black;">Destination</a></li>
-          <li class="{{$url == 'contact' ? 'menu-active' : ''}}"><a href="{{url('contact')}}" style="color: black;">Contact
+          <li class="{{$url == 'home' ? 'menu-active' : ''}}"><a href="{{url('home')}}" style="color: black;">Beranda</a></li>
+          <li class="{{$url == 'profile' ? 'menu-active' : ''}}"><a href="{{url('profile')}}" style="color: black;">Profile</a></li>
+          <li class="{{$url == 'blog' ? 'menu-active' : ''}}"><a href="{{url('blog')}}" style="color: black;">Edukasi</a></li>
+          <li class="{{$url == 'destination' ? 'menu-active' : ''}}"><a href="{{url('destination')}}" style="color: black;">Berita</a></li>
+          <li class="{{$url == 'contact' ? 'menu-active' : ''}}"><a href="{{url('contact')}}" style="color: black;">Kontak
             </a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
@@ -103,20 +101,21 @@
     <div class="footer-section">
       <h3>Contact Us</h3>
       <ul class="contact-info">
-        <li><i class="fas fa-map-marker-alt"></i> 123 Street Name, City, Country</li>
-        <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
-        <li><i class="fas fa-envelope"></i> info@example.com</li>
+        <li><i class="fas fa-map-marker-alt"></i>
+        Jl. Raya Jaranan – Ngadirejo, Kecamatan Kawedanan Kabupaten Magetan Provinsi Jawa Timur 63382</li>
+        <li><i class="fas fa-envelope"></i>bank.ekadharma@gmail.com</li>
+        <li><i class="fas fa-phone"></i>Telepon/FAX: (0351) 439872</li>
       </ul>
     </div>
     <div class="footer-section">
       <h3>Quick Links</h3>
       <ul class="quick-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">FAQ</a></li>
+        <li><a href="{{url('home')}}">Beranda</a></li>
+        <li><a href="{{url('profile')}}">Profile BPR</a></li>
+        <li><a href="{{url('blog')}}">Edukasi</a></li>
+        <li><a href="{{url('destination')}}">Berita</a></li>
+        <li><a href="{{url('contact')}}">Contact</a></li>
+        <li><a href="{{url('home')}}">FAQ</a></li>
       </ul>
     </div>
     <div class="footer-section">

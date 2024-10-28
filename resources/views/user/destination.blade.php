@@ -38,8 +38,8 @@
     @else --}}
         <section id="hero">
             <div class="hero-container">
-              <h1>Destinasi Jogja-Travel</h1>
-              <h2>Cek semua destinasi-destinasi yang dapat anda kunjungi untuk liburan anda</h2>
+              <h1>Berita</h1>
+              <h2>Cek semua berita yang ada di Bank Ekadharma</h2>
             </div>
         </section>
     {{-- @endif --}}
