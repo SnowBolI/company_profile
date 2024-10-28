@@ -42,8 +42,8 @@
     @else --}}
         <section id="hero">
             <div class="hero-container">
-              <h1>Blog Jogja-Travel</h1>
-              <h2>Kumpulan artikel-artikel wisata Jogja, Tips travelling, dan kesehatan</h2>
+              <h1>Edukasi & Webinar</h1>
+              <h2>Kumpulan edukasi dan Webinar</h2>
             </div>
         </section>
     {{-- @endif --}}
