@@ -4,11 +4,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeYTController;
 
 use App\Http\Controllers\EdukasiController;
+use App\Http\Controllers\KantorKasController;
 use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\ProdukPPOBController;
 use App\Http\Controllers\HomeDepositoController;
 use App\Http\Controllers\HomeTabunganController;
 use App\Http\Controllers\KantorBannerController;
+use App\Http\Controllers\KantorCabangController;
 use App\Http\Controllers\ProdukBannerController;
 use App\Http\Controllers\ProdukKreditController;
 use App\Http\Controllers\EdukasiBannerController;
@@ -101,6 +103,10 @@ Route::prefix('admin')->group(function(){
   Route::resource('/edukasi',EdukasiController::class)->middleware('auth');
 
   Route::resource('/kantor_banner',KantorBannerController::class)->middleware('auth');
+  Route::resource('/kantor_cabang',KantorCabangController::class)->middleware('auth');
+  Route::prefix('kantor_cabang/{idkantorcabang}')->group(function () {
+    Route::resource('kantor_kas', KantorKasController::class)->middleware('auth');
+  }); 
 
 
 
