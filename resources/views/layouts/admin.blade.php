@@ -180,7 +180,7 @@
                         Request::is('admin/kantor_banner*') || 
                         Request::is('admin/kantor_cabang*')? 'show' : '' 
                         }}">
-                                <i class="menu-icon fa fa-archive"></i>Kantor
+                                <i class="menu-icon fa fa-sitemap"></i>Kantor
                             </a>
                             <ul class="sub-menu children dropdown-menu {{ 
                         Request::is('admin/kantor_banner*') || 
