@@ -1,20 +1,28 @@
 <?php
 use App\Http\Controllers\UserController;
 
-use App\Http\Controllers\HomeYTController;
+use App\Http\Controllers\KarirController;
 
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\HomeYTController;
+use App\Http\Controllers\KontakController;
 use App\Http\Controllers\EdukasiController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\KantorKasController;
 use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\ProdukPPOBController;
+use App\Http\Controllers\KarirBannerController;
+use App\Http\Controllers\BeritaBannerController;
 use App\Http\Controllers\HomeDepositoController;
 use App\Http\Controllers\HomeTabunganController;
 use App\Http\Controllers\KantorBannerController;
 use App\Http\Controllers\KantorCabangController;
+use App\Http\Controllers\KontakBannerController;
 use App\Http\Controllers\ProdukBannerController;
 use App\Http\Controllers\ProdukKreditController;
 use App\Http\Controllers\EdukasiBannerController;
 use App\Http\Controllers\HomeThumbnailController;
+use App\Http\Controllers\LaporanBannerController;
 use App\Http\Controllers\ProfileBannerController;
 use App\Http\Controllers\HomeBackgroundController;
 use App\Http\Controllers\ProdukDepositoController;
@@ -108,6 +116,19 @@ Route::prefix('admin')->group(function(){
     Route::resource('kantor_kas', KantorKasController::class)->middleware('auth');
   }); 
 
+  Route::resource('/karir_banner',KarirBannerController::class)->middleware('auth');
+  Route::resource('/karir',KarirController::class)->middleware('auth');
+
+  Route::resource('/berita_banner',BeritaBannerController::class)->middleware('auth');
+  Route::resource('/berita',BeritaController::class)->middleware('auth');
+
+
+  Route::resource('/laporan_banner',LaporanBannerController::class)->middleware('auth');
+  Route::resource('/laporan',LaporanController::class)->middleware('auth');
+
+
+  Route::resource('/kontak_banner',KontakBannerController::class)->middleware('auth');
+  Route::resource('/kontak',KontakController::class)->middleware('auth');
 
 
 

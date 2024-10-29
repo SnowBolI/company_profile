@@ -191,6 +191,93 @@
                             </ul>
                     </li>
 
+                    {{-- Karir --}}
+
+                    <li class="menu-item-has-children dropdown {{ 
+                        Request::is('admin/karir_banner*') || 
+                        Request::is('admin/karir*')? 'show' : '' 
+                        }}">
+    
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
+                        Request::is('admin/karir_banner*') || 
+                        Request::is('admin/karir*')? 'show' : '' 
+                        }}">
+                                <i class="menu-icon fa fa-group"></i>Karir
+                            </a>
+                            <ul class="sub-menu children dropdown-menu {{ 
+                        Request::is('admin/karir_banner*') || 
+                        Request::is('admin/karir')? 'show' : ''  
+                        }}">
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/karir_banner')}}">Banner</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/karir')}}">Karir</a></li>
+                            </ul>
+                    </li>
+
+                    {{-- Berita --}}
+
+                    <li class="menu-item-has-children dropdown {{ 
+                        Request::is('admin/berita_banner*') || 
+                        Request::is('admin/berita*')? 'show' : '' 
+                        }}">
+    
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
+                        Request::is('admin/berita_banner*') || 
+                        Request::is('admin/berita*')? 'show' : '' 
+                        }}">
+                                <i class="menu-icon fa fa-tags"></i>Berita
+                            </a>
+                            <ul class="sub-menu children dropdown-menu {{ 
+                        Request::is('admin/berita_banner*') || 
+                        Request::is('admin/berita*')? 'show' : ''  
+                        }}">
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/berita_banner')}}">Banner</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/berita')}}">Berita</a></li>
+                            </ul>
+                    </li>
+
+                    {{-- Laporan --}}
+
+                    <li class="menu-item-has-children dropdown {{ 
+                        Request::is('admin/laporan_banner*') || 
+                        Request::is('admin/laporan*')? 'show' : '' 
+                        }}">
+    
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
+                        Request::is('admin/laporan_banner*') || 
+                        Request::is('admin/laporan*')? 'show' : '' 
+                        }}">
+                                <i class="menu-icon fa fa-book"></i>Laporan
+                            </a>
+                            <ul class="sub-menu children dropdown-menu {{ 
+                        Request::is('admin/laporan_banner*') || 
+                        Request::is('admin/laporan*')? 'show' : ''  
+                        }}">
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/laporan_banner')}}">Banner</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/laporan')}}">Laporan</a></li>
+                            </ul>
+                    </li>
+
+                    {{-- Kontak --}}
+
+                    <li class="menu-item-has-children dropdown {{ 
+                        Request::is('admin/kontak_banner*') || 
+                        Request::is('admin/kontak*')? 'show' : '' 
+                        }}">
+    
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
+                        Request::is('admin/kontak_banner*') || 
+                        Request::is('admin/kontak*')? 'show' : '' 
+                        }}">
+                                <i class="menu-icon fa fa-phone"></i>Kontak
+                            </a>
+                            <ul class="sub-menu children dropdown-menu {{ 
+                        Request::is('admin/kontak_banner*') || 
+                        Request::is('admin/kontak*')? 'show' : ''  
+                        }}">
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/kontak_banner')}}">Banner</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/kontak')}}">Kontak</a></li>
+                            </ul>
+                    </li>
 
                     <li class="{{$url=='categories'?'active':''}}">
                         <a href="{{url('admin/categories')}}"><i class="menu-icon fa fa-list-ul"></i>Categories </a>
