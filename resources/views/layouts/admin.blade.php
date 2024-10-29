@@ -169,6 +169,29 @@
                             </ul>
                     </li>
 
+                    {{-- Kantor --}}
+
+                    <li class="menu-item-has-children dropdown {{ 
+                        Request::is('admin/kantor_banner*') || 
+                        Request::is('admin/kantor_cabang*')? 'show' : '' 
+                        }}">
+    
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{ 
+                        Request::is('admin/kantor_banner*') || 
+                        Request::is('admin/kantor_cabang*')? 'show' : '' 
+                        }}">
+                                <i class="menu-icon fa fa-archive"></i>Kantor
+                            </a>
+                            <ul class="sub-menu children dropdown-menu {{ 
+                        Request::is('admin/kantor_banner*') || 
+                        Request::is('admin/kantor_cabang*')? 'show' : ''  
+                        }}">
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/kantor_banner')}}">Banner</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/kantor_cabang')}}">Cabang</a></li>
+                            </ul>
+                    </li>
+
+
                     <li class="{{$url=='categories'?'active':''}}">
                         <a href="{{url('admin/categories')}}"><i class="menu-icon fa fa-list-ul"></i>Categories </a>
                     </li>
