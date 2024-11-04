@@ -68,11 +68,16 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="{{$url == 'home' ? 'menu-active' : ''}}"><a href="{{url('home')}}" style="color: black;">Beranda</a></li>
-          <li class="{{$url == 'profile' ? 'menu-active' : ''}}"><a href="{{url('profile')}}" style="color: black;">Profile</a></li>
-          <li class="{{$url == 'blog' ? 'menu-active' : ''}}"><a href="{{url('blog')}}" style="color: black;">Edukasi</a></li>
-          <li class="{{$url == 'destination' ? 'menu-active' : ''}}"><a href="{{url('destination')}}" style="color: black;">Berita</a></li>
-          <li class="{{$url == 'contact' ? 'menu-active' : ''}}"><a href="{{url('contact')}}" style="color: black;">Kontak
+          <li class="{{$url == 'home' ? 'menu-active' : ''}}"><a href="{{url('home')}}"
+              style="color: black;">Beranda</a></li>
+          <li class="{{$url == 'profile' ? 'menu-active' : ''}}"><a href="{{url('profile')}}"
+              style="color: black;">Profile</a></li>
+          <li class="{{$url == 'blog' ? 'menu-active' : ''}}"><a href="{{url('blog')}}"
+              style="color: black;">Edukasi</a></li>
+          <li class="{{$url == 'destination' ? 'menu-active' : ''}}"><a href="{{url('destination')}}"
+              style="color: black;">Berita</a></li>
+          <li class="{{$url == 'contact' ? 'menu-active' : ''}}"><a href="{{url('contact')}}"
+              style="color: black;">Kontak
             </a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
@@ -97,101 +102,101 @@
     Footer
   ============================-->
   <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3>Contact Us</h3>
-      <ul class="contact-info">
-        <li><i class="fas fa-map-marker-alt"></i>
-        Jl. Raya Jaranan – Ngadirejo, Kecamatan Kawedanan Kabupaten Magetan Provinsi Jawa Timur 63382</li>
-        <li><i class="fas fa-envelope"></i>bank.ekadharma@gmail.com</li>
-        <li><i class="fas fa-phone"></i>Telepon/FAX: (0351) 439872</li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h3>Quick Links</h3>
-      <ul class="quick-links">
-        <li><a href="{{url('home')}}">Beranda</a></li>
-        <li><a href="{{url('profile')}}">Profile BPR</a></li>
-        <li><a href="{{url('blog')}}">Edukasi</a></li>
-        <li><a href="{{url('destination')}}">Berita</a></li>
-        <li><a href="{{url('contact')}}">Contact</a></li>
-        <li><a href="{{url('home')}}">FAQ</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h3>Newsletter</h3>
-      <p>Subscribe to our newsletter for updates.</p>
-      <div class="email-subscribe">
-        <input type="email" placeholder="Enter your email">
-        <button><i class="fas fa-paper-plane"></i></button>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <ul class="contact-info">
+          <li><i class="fas fa-map-marker-alt"></i>
+            Jl. Raya Jaranan – Ngadirejo, Kecamatan Kawedanan Kabupaten Magetan Provinsi Jawa Timur 63382</li>
+          <li><i class="fas fa-envelope"></i>bank.ekadharma@gmail.com</li>
+          <li><i class="fas fa-phone"></i>Telepon/FAX: (0351) 439872</li>
+        </ul>
       </div>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="quick-links">
+          <li><a href="{{url('home')}}">Beranda</a></li>
+          <li><a href="{{url('profile')}}">Profile BPR</a></li>
+          <li><a href="{{url('blog')}}">Edukasi</a></li>
+          <li><a href="{{url('destination')}}">Berita</a></li>
+          <li><a href="{{url('contact')}}">Contact</a></li>
+          <li><a href="{{url('home')}}">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter for updates.</p>
+        <div class="email-subscribe">
+          <input type="email" placeholder="Enter your email">
+          <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
       </div>
     </div>
-  </div>
-  
 
-  {{-- <div class="footer-banner">
-    <div class="logo-scroll">
-      <div class="logo-item">
-        <img src="user/images/logobank.png" alt="Logo 1">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/bi.png" alt="Logo 2">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/indo2.png" alt="Logo 3">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/ayobank.png" alt="Logo 4">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/bpr.png" alt="Logo 5">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/magetan.png" alt="Logo 6">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/lps.png" alt="Logo 6">
-      </div>
-      <div class="logo-item">
-        <img src="user/images/ojk.png" alt="Logo 6">
-      </div>
-    </div>
-  </div> --}}
-  <div class="footer-banner">
-  <div class="banner-text">
-      Terdaftar dan Diawasi
-    </div>
-    <div class="logo-container">
-      <div class="logo">
-        <img src="user/images/logobank.png" alt="Logo 1">
-        <img src="user/images/bi.png" alt="Logo 2">
-        <img src="user/images/indo2.png" alt="Logo 3">
-        <img src="user/images/ayobank.png" alt="Logo 4">
-        <img src="user/images/bpr.png" alt="Logo 5">
-        <img src="user/images/magetan.png" alt="Logo 6">
-        <img src="user/images/lps.png" alt="Logo 7">
-        <img src="user/images/ojk.png" alt="Logo 8">
 
+    {{-- <div class="footer-banner">
+      <div class="logo-scroll">
+        <div class="logo-item">
+          <img src="user/images/logobank.png" alt="Logo 1">
+        </div>
+        <div class="logo-item">
+          <img src="user/images/bi.png" alt="Logo 2">
+        </div>
+        <div class="logo-item">
+          <img src="user/images/indo2.png" alt="Logo 3">
+        </div>
+        <div class="logo-item">
+          <img src="user/images/ayobank.png" alt="Logo 4">
+        </div>
+        <div class="logo-item">
+          <img src="user/images/bpr.png" alt="Logo 5">
+        </div>
+        <div class="logo-item">
+          <img src="user/images/magetan.png" alt="Logo 6">
+        </div>
+        <div class="logo-item">
+          <img src="user/images/lps.png" alt="Logo 6">
+        </div>
+        <div class="logo-item">
+          <img src="user/images/ojk.png" alt="Logo 6">
+        </div>
       </div>
-      <div class="logo">
-        <img src="user/images/logobank.png" alt="Logo 1">
-        <img src="user/images/bi.png" alt="Logo 2">
-        <img src="user/images/indo2.png" alt="Logo 3">
-        <img src="user/images/ayobank.png" alt="Logo 4">
-        <img src="user/images/bpr.png" alt="Logo 5">
-        <img src="user/images/magetan.png" alt="Logo 6">
-        <img src="user/images/lps.png" alt="Logo 7">
-        <img src="user/images/ojk.png" alt="Logo 8">
+    </div> --}}
+    <div class="footer-banner">
+      <div class="banner-text">
+        Terdaftar dan Diawasi
+      </div>
+      <div class="logo-container">
+        <div class="logo">
+          <img src="user/images/logobank.png" alt="Logo 1">
+          <img src="user/images/bi.png" alt="Logo 2">
+          <img src="user/images/indo2.png" alt="Logo 3">
+          <img src="user/images/ayobank.png" alt="Logo 4">
+          <img src="user/images/bpr.png" alt="Logo 5">
+          <img src="user/images/magetan.png" alt="Logo 6">
+          <img src="user/images/lps.png" alt="Logo 7">
+          <img src="user/images/ojk.png" alt="Logo 8">
+
+        </div>
+        <div class="logo">
+          <img src="user/images/logobank.png" alt="Logo 1">
+          <img src="user/images/bi.png" alt="Logo 2">
+          <img src="user/images/indo2.png" alt="Logo 3">
+          <img src="user/images/ayobank.png" alt="Logo 4">
+          <img src="user/images/bpr.png" alt="Logo 5">
+          <img src="user/images/magetan.png" alt="Logo 6">
+          <img src="user/images/lps.png" alt="Logo 7">
+          <img src="user/images/ojk.png" alt="Logo 8">
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
