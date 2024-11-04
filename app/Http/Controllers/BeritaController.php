@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Berita;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -62,24 +63,28 @@ class BeritaController extends Controller
             'judul' => 'required',
             'keterangan' => 'required',
             'gambar' => 'required|image',
-            'tanggal' => 'required|date', // Tambahkan validasi untuk tanggal
+            'tanggal' => 'required|date',
         ]);
-
+    
         $input = $request->all();
         $input['user_id'] = auth()->user()->id;
         Carbon::setLocale('id');
+    
         // Mendapatkan nama hari dari tanggal
         $tanggal = Carbon::parse($request->input('tanggal'));
         $input['hari'] = $tanggal->translatedFormat('l'); // Mendapatkan nama hari dalam bahasa lokal
-
+    
+        // Membuat slug dari judul
+        $input['slug'] = Str::slug($request->input('judul'));
+    
         if ($gambar = $request->file('gambar')) {
             // Simpan gambar ke storage/app/public/admin/berita
             $gambarPath = $gambar->store('berita', 'public');
             $input['gambar'] = $gambarPath;
         }
-
+    
         Berita::create($input);
-
+    
         return redirect('/admin/berita')->with('message', 'Data berita berhasil ditambahkan');
     }
 
@@ -135,6 +140,8 @@ class BeritaController extends Controller
         // Mendapatkan nama hari dari tanggal yang diupdate
         $tanggal = Carbon::parse($request->input('tanggal'));
         $input['hari'] = $tanggal->translatedFormat('l'); // Mendapatkan nama hari
+        $input['slug'] = Str::slug($request->input('judul'));
+
 
         if ($gambar = $request->file('gambar')) {
             // Hapus gambar lama jika ada

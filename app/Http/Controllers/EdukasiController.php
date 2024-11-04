@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Edukasi;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -71,6 +72,8 @@ class EdukasiController extends Controller
         // Mendapatkan nama hari dari tanggal
         $tanggal = Carbon::parse($request->input('tanggal'));
         $input['hari'] = $tanggal->translatedFormat('l'); // Mendapatkan nama hari dalam bahasa lokal
+        $input['slug'] = Str::slug($request->input('judul'));
+
 
         if ($gambar = $request->file('gambar')) {
             // Simpan gambar ke storage/app/public/admin/edukasi
@@ -132,6 +135,8 @@ class EdukasiController extends Controller
         // Mendapatkan nama hari dari tanggal yang diupdate
         $tanggal = Carbon::parse($request->input('tanggal'));
         $input['hari'] = $tanggal->translatedFormat('l'); // Mendapatkan nama hari
+        $input['slug'] = Str::slug($request->input('judul'));
+
 
         if ($gambar = $request->file('gambar')) {
             // Hapus gambar lama jika ada

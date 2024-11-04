@@ -59,6 +59,11 @@
                             <input type="text" id="instagram" class="form-control {{ $errors->first('instagram') ? 'is-invalid' : '' }}" name="instagram" placeholder="URL Instagram" value="{{ old('instagram', $kontak->instagram) }}">
                             <div class="invalid-feedback">{{ $errors->first('instagram') }}</div>
                         </div>
+                        <div class="mb-3">
+                            <label for="youtube" class="font-weight-bold">Youtube</label>
+                            <input type="text" id="youtube" class="form-control {{ $errors->first('youtube') ? 'is-invalid' : '' }}" name="youtube" placeholder="URL youtube" value="{{ old('youtube', $kontak->youtube) }}">
+                            <div class="invalid-feedback">{{ $errors->first('youtube') }}</div>
+                        </div>
 
                         <div class="mb-3">
                             <button type="submit" class="btn btn-success">Simpan</button>
