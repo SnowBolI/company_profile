@@ -72,7 +72,7 @@
               style="color: black;">Beranda</a></li>
           <li class="{{$url == 'profile' ? 'menu-active' : ''}}"><a href="{{url('profile')}}"
               style="color: black;">Profile</a></li>
-          <li class="{{$url == 'blog' ? 'menu-active' : ''}}"><a href="{{url('blog')}}"
+          <li class="{{$url == 'blog_edukasi' ? 'menu-active' : ''}}"><a href="{{url('blog_edukasi')}}"
               style="color: black;">Edukasi</a></li>
           <li class="{{$url == 'destination' ? 'menu-active' : ''}}"><a href="{{url('destination')}}"
               style="color: black;">Berita</a></li>

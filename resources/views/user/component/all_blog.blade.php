@@ -1,11 +1,11 @@
-@if (count($articles) != 0)
+@if ($articles->count() != 0)
   @foreach ($articles as $article)
       <div class="section-header mt-3">
         <div class="article-image mb-3">
-          <a href="{{route('blog.show', [$article->slug])}}" class="decoration-none">
-            @if($article->image)
-              <img src="{{ asset('storage/' . $article->image) }}" 
-                   alt="{{ $article->title }}" 
+          <a href="{{ route('blog_edukasi.show', $article->slug) }}" class="decoration-none">
+            @if($article->gambar)
+              <img src="{{ asset('storage/' . $article->gambar) }}" 
+                   alt="{{ $article->judul }}" 
                    class="img-fluid rounded w-100" 
                    style="object-fit: cover; height: 300px;">
             @else
@@ -18,34 +18,27 @@
         </div>
 
         <div class="mb-3">
-          <a href="{{route('blog.show', [$article->slug])}}" class="decoration-none">
+          <a href="{{ route('blog_edukasi.show', $article->slug) }}" class="decoration-none">
             <div class="text-primary link-hover" style="font-size: 40px; letter-spacing: .5px; line-height: 1.3;">
-              {{$article->title}}
+              {{ $article->judul }}
             </div>
           </a>
           <div class="mt-1">
-            <small class="font-italic">Created At : {{date('d M Y', strtotime($article->created_at))}} |</small>
-            @foreach($article->categories as $value)
-                <a class="d-inline underline" href="{{route('blog', ['c' =>$value->name])}}">
-                    <small class="font-italic">
-                      {{$value->name}},
-                    </small>
-                </a>
-            @endforeach
+            <small class="font-italic">Tanggal: {{ date('d M Y', strtotime($article->tanggal)) }}</small>
           </div>
         </div>
 
           @php
-              // delete tag image;
-              $content = preg_replace('/<img .*. \/>|<p.*?.>|<\/p>/', '', $article->content);
+              // Menghapus tag <img> dan <p> dari konten
+              $content = preg_replace('/<img .*. \/>|<p.*?.>|<\/p>/', '', $article->keterangan);
           @endphp
         <p> 
           &emsp;&emsp;&emsp; {!! Str::limit($content, 725, ' . . .') !!}
         </p>
-          <a href="{{route('blog.show', [$article->slug])}}" class="ml-3"> <span class="text-primary">Read More <i class="fa fa-long-arrow-right"></i> </span></a>
+          <a href="{{ route('blog_edukasi.show', $article->slug) }}" class="ml-3"> <span class="text-primary">Baca Selengkapnya <i class="fa fa-long-arrow-right"></i> </span></a>
         <hr class="mt-3">
       </div>
-    @endforeach
+  @endforeach
 @else
   <style>
     .page {
