@@ -1308,3 +1308,42 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 14px;
   color: white;
 }
+
+/* EDUKASI */
+
+.article-box {
+  border: 1px solid red;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.article-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.article-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.article-description {
+  font-size: 14px;
+  color: #666;
+}
+
+.recent-post {
+  padding: 5px 0;
+}
+
+.recent-post a {
+  color: #333;
+  text-decoration: none;
+}
+
+.recent-post a:hover {
+  color: #007bff;
+}

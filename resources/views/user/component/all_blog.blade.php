@@ -1,6 +1,22 @@
 @if (count($articles) != 0)
   @foreach ($articles as $article)
       <div class="section-header mt-3">
+        <div class="article-image mb-3">
+          <a href="{{route('blog.show', [$article->slug])}}" class="decoration-none">
+            @if($article->image)
+              <img src="{{ asset('storage/' . $article->image) }}" 
+                   alt="{{ $article->title }}" 
+                   class="img-fluid rounded w-100" 
+                   style="object-fit: cover; height: 300px;">
+            @else
+              <img src="{{ asset('user/images/logonew.png') }}" 
+                   alt="Default Article Image" 
+                   class="img-fluid rounded w-50" 
+                   style="object-fit: cover; height: 300px;">
+            @endif
+          </a>
+        </div>
+
         <div class="mb-3">
           <a href="{{route('blog.show', [$article->slug])}}" class="decoration-none">
             <div class="text-primary link-hover" style="font-size: 40px; letter-spacing: .5px; line-height: 1.3;">
