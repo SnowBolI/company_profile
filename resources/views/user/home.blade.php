@@ -362,7 +362,7 @@
           <div class="row" id="category-wrapper">
             @foreach ($categories as $category)
                 <div class="col-md-4 col-sm-12 category-item filter-app" >
-                      <a href="blog">
+                      <a href="edukasi">
                         <img src="{{asset('category_image/'.$category->image)}}" class="image-center">
                         <div class="details">
                           <h4>{{$category->name}}</h4>

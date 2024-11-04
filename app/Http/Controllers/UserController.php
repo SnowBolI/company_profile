@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
-use App\Models\HomeBackground;
-use App\Models\HomeThumbnail;
 use App\Models\HomeYT;
 use App\Models\Article;
+use App\Models\Edukasi;
 use App\Models\Category;
 use App\Models\HomeSlider;
 use App\Models\Destination;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\EdukasiBanner;
+use App\Models\HomeThumbnail;
+use App\Models\HomeBackground;
 
 class UserController extends Controller
 {
@@ -49,40 +51,52 @@ class UserController extends Controller
 
 
 
-  public function blog(Request $request)
+  public function edukasi(Request $request)
   {
+      $edukasiSliders = EdukasiBanner::orderBy('created_at', 'desc')->take(1)->get();
 
-    $keyword = $request->get('s') ? $request->get('s') : '';
-    $category = $request->get('c') ? $request->get('c') : '';
+      // Mendapatkan kata kunci pencarian dari request (parameter s)
+      $keyword = $request->get('s') ?? '';
 
-    $articles = Article::with('categories')
-      ->whereHas('categories', function ($q) use ($category) {
-        $q->where('name', 'LIKE', "%$category%");
-      })
-      ->where('status', 'PUBLISH')
-      ->where('title', 'LIKE', "%$keyword%")
-      ->orderBy('created_at', 'desc')
-      ->paginate(10);
-    $recents = Article::select('title', 'slug')->where('status', 'PUBLISH')->orderBy('created_at', 'desc')->limit(5)->get();
+      // Mengambil data edukasi berdasarkan pencarian kata kunci pada kolom judul dan keterangan
+      $articles = Edukasi::where('judul', 'LIKE', "%$keyword%")
+          ->orWhere('keterangan', 'LIKE', "%$keyword%")
+          ->orderBy('created_at', 'desc')
+          ->paginate(10);
 
-    $data = [
-      'articles' => $articles,
-      'recents' => $recents
-    ];
+      // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
+      $recents = Edukasi::select('judul', 'slug')
+          ->orderBy('created_at', 'desc')
+          ->limit(5)
+          ->get();
 
-    return view('user/blog', $data);
+      $data = [
+          'articles' => $articles,
+          'recents' => $recents,
+          'edukasiSliders' => $edukasiSliders,
+
+      ];
+
+      return view('user.edukasi', $data);
   }
 
 
-  public function show_article($slug)
+  public function show_edukasi($slug)
   {
-    $articles = Article::where('slug', $slug)->first();
-    $recents = Article::select('title', 'slug')->where('status', 'PUBLISH')->orderBy('created_at', 'desc')->limit(5)->get();
+    // Mengambil data edukasi berdasarkan slug
+    $article = Edukasi::where('slug', $slug)->firstOrFail();
+
+    // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
+    $recents = Edukasi::select('judul', 'slug')
+        ->orderBy('created_at', 'desc')
+        ->limit(5)
+        ->get();
+
     $data = [
-      'articles' => $articles,
-      'recents' => $recents
+        'article' => $article,
+        'recents' => $recents
     ];
-    return view('user/blog', $data);
+    return view('user/edukasi', $data);
   }
 
   public function destination(Request $request)
