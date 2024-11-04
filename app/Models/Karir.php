@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Karir extends Model
 {
     use HasFactory;
-    protected $fillable = ['judul', 'keterangan', 'gambar','hari','tanggal','user_id'];
+    protected $fillable = ['judul','slug', 'keterangan', 'gambar','hari','tanggal','user_id'];
+
 
 }

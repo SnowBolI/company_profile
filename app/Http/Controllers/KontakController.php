@@ -23,6 +23,7 @@ class KontakController extends Controller
                             ->orWhere('email', 'like', "%{$search}%")
                             ->orWhere('facebook', 'like', "%{$search}%")
                             ->orWhere('instagram', 'like', "%{$search}%")
+                            ->orWhere('youtube', 'like', "%{$search}%")
                             ->orWhere('whatsapp', 'like', "%{$search}%")
                             ->orWhere('alamat', 'like', "%{$search}%");
           })->orderBy('updated_at', 'desc')->paginate(10);
@@ -57,6 +58,7 @@ class KontakController extends Controller
             'whatsapp' => 'required|string|max:20',
             'facebook' => 'nullable|string',
             'instagram' => 'nullable|string',
+            'youtube' => 'nullable|string',
         ]);
 
         Kontak::create($request->all());
@@ -104,6 +106,7 @@ class KontakController extends Controller
             'whatsapp' => 'required|string|max:20',
             'facebook' => 'nullable|string',
             'instagram' => 'nullable|string',
+            'youtube' => 'nullable|string',
         ]);
 
         $kontak->update($request->all());

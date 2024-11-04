@@ -48,6 +48,12 @@
                             <a href="{{ $kontak->instagram }}" target="_blank">{{ $kontak->instagram }}</a>
                         </p>
                     </div>
+                    <div class="mb-3">
+                        <label for="youtube" class="font-weight-bold">Youtube</label>
+                        <p id="youtube" class="form-control-plaintext">
+                            <a href="{{ $kontak->youtube }}" target="_blank">{{ $kontak->youtube }}</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
