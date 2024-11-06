@@ -76,10 +76,12 @@
               style="color: black;">Edukasi</a></li>
           <li class="{{$url == 'blog_karir' ? 'menu-active' : ''}}"><a href="{{url('blog_karir')}}"
               style="color: black;">Karir</a></li>
+          <li class="{{$url == 'blog_berita' ? 'menu-active' : ''}}"><a href="{{url('blog_berita')}}"
+              style="color: black;">Berita</a></li>
           <li class="{{$url == 'laporan' ? 'menu-active' : ''}}"><a href="{{url('laporan')}}"
               style="color: black;">Laporan</a></li>
-          <li class="{{$url == 'destination' ? 'menu-active' : ''}}"><a href="{{url('destination')}}"
-              style="color: black;">Berita</a></li>
+          {{-- <li class="{{$url == 'destination' ? 'menu-active' : ''}}"><a href="{{url('destination')}}"
+              style="color: black;">Berita</a></li> --}}
           <li class="{{$url == 'contact' ? 'menu-active' : ''}}"><a href="{{url('contact')}}"
               style="color: black;">Kontak
             </a></li>
@@ -121,8 +123,9 @@
         <ul class="quick-links">
           <li><a href="{{url('home')}}">Beranda</a></li>
           <li><a href="{{url('profile')}}">Profile BPR</a></li>
-          <li><a href="{{url('blog')}}">Edukasi</a></li>
-          <li><a href="{{url('karir')}}">Karir</a></li>
+          <li><a href="{{url('blog_karir')}}">Edukasi</a></li>
+          <li><a href="{{url('blog_karir')}}">Karir</a></li>
+          <li><a href="{{url('blog_berita')}}">berita</a></li>
           <li><a href="{{url('destination')}}">Berita</a></li>
           <li><a href="{{url('contact')}}">Contact</a></li>
           <li><a href="{{url('home')}}">FAQ</a></li>
