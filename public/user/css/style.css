@@ -1347,3 +1347,27 @@ body.mobile-nav-active #mobile-nav-toggle {
 .recent-post a:hover {
   color: #007bff;
 }
+
+/* Style Laporan */
+
+.card {
+  transition: transform 0.2s;
+  background: #fff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border: none;
+  color: #000;
+  padding: 8px 20px;
+  border-radius: 5px;
+}
+
+.btn-warning:hover {
+  background-color: #ffb300;
+  color: #000;
+}

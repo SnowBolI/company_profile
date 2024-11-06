@@ -41,6 +41,7 @@ Route::get('/blog_edukasi', 'UserController@edukasi')->name('blog_edukasi');
 Route::get('/blog_edukasi/baca/{slug}', 'UserController@show_edukasi')->name('blog_edukasi.show');
 Route::get('/blog_karir', 'UserController@karir')->name('blog_karir');
 Route::get('/blog_karir/baca/{slug}', 'UserController@show_karir')->name('blog_karir.show');
+Route::get('/laporan', 'UserController@laporan')->name('laporan');
 Route::get('/blog_karir', 'UserController@karir')->name('blog_karir');
 Route::get('/destination', 'UserController@destination')->name('destination');
 Route::get('/destination/{slug}', 'UserController@show_destination')->name('destination.show');
