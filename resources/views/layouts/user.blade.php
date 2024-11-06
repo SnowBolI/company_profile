@@ -76,6 +76,8 @@
               style="color: black;">Edukasi</a></li>
           <li class="{{$url == 'blog_karir' ? 'menu-active' : ''}}"><a href="{{url('blog_karir')}}"
               style="color: black;">Karir</a></li>
+          <li class="{{$url == 'laporan' ? 'menu-active' : ''}}"><a href="{{url('laporan')}}"
+              style="color: black;">Laporan</a></li>
           <li class="{{$url == 'destination' ? 'menu-active' : ''}}"><a href="{{url('destination')}}"
               style="color: black;">Berita</a></li>
           <li class="{{$url == 'contact' ? 'menu-active' : ''}}"><a href="{{url('contact')}}"

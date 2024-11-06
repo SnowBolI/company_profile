@@ -7,6 +7,8 @@ use App\Models\HomeYT;
 use App\Models\Article;
 use App\Models\Edukasi;
 use App\Models\Category;
+use App\Models\Laporan;
+use App\Models\LaporanBanner;
 use App\Models\HomeSlider;
 use App\Models\Destination;
 use Illuminate\Support\Str;
@@ -50,6 +52,27 @@ class UserController extends Controller
   }
 
 
+
+  public function laporan(Request $request)
+  {
+    // Ambil banner laporan
+    $laporanSliders = LaporanBanner::orderBy('created_at', 'desc')->take(1)->get();
+
+    // Ambil semua laporan dan kelompokkan berdasarkan tahun
+    $laporans = Laporan::orderBy('tanggal', 'desc')
+        ->get()
+        ->groupBy(function($item) {
+            return \Carbon\Carbon::parse($item->tanggal)->format('Y');
+        });
+
+    // Urutkan tahun dari terbaru
+    $laporans = $laporans->sortKeysDesc();
+    $data = [
+      'laporans' => $laporans,
+      'laporanSliders' => $laporanSliders,
+    ];
+    return view('user.laporan', $data);
+  }
 
   public function edukasi(Request $request)
   {

@@ -53,43 +53,28 @@
 @section('content')  
       <!--========================== Article Section ============================-->
       <section id="about">
-        <div class="container wow fadeIn">
-
-          <div class="row">
-            <div class="col-9">
-              
-              @if (empty(request()->segment(2)) )
-                @component('user.component.all_blog', ['articles'=> $articles])
-                @endcomponent
-              @else
-                @component('user.component.single_blog', ['article'=> $articles])
-                @endcomponent
-              @endif
-
-
+      @foreach($laporans as $tahun => $laporanList)
+    <h2>Laporan Tahun {{ $tahun }}</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        @foreach($laporanList as $laporan)
+        <div class="border rounded p-4">
+            <div class="flex justify-center mb-4">
+                <i class="document-icon text-red-500">📄</i>
             </div>
-            <div class="col-3">
-                <form action="{{route('blog')}}" class="mt-5">
-                  <div class="input-group mb-4 border rounded-pill shadow-lg" style="border-radius:10px; box-shadow: 3px 3px 8px grey;">
-                    <input type="text" name="s" value="{{Request::get('s')}}" placeholder="Apa yang ingin anda cari?" class="form-control bg-none border-0" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
-                    <div class="input-group-append border-0">
-                      <button type="submit" class="btn text-success"><i class="fa fa-search"></i></button>
-                    </div>
-                  </div>
-                </form>
-                <div class="mb-3 font-weight-bold">Recent Posts</div>
-                @foreach ($recents as $recent)
-                  <div>
-                      <a href="{{route('blog.show', [$recent->slug])}}"> <i class="fa fa-dot-circle-o" aria-hidden="true"></i> 
-                        {{$recent->title}}
-                      </a>
-                      <hr >
-                  </div>
-                @endforeach
+            
+            <h3 class="text-center mb-4">{{ $laporan->judul }}</h3>
+            
+            <div class="text-center">
+                <a href="{{ asset('storage/' . $laporan->file_pdf) }}" 
+                   class="bg-yellow-400 text-white px-4 py-2 rounded">
+                    Selengkapnya →
+                </a>
             </div>
-          </div>
-
         </div>
+        @endforeach
+    </div>
+@endforeach
       </section><!-- #services -->
   
      
