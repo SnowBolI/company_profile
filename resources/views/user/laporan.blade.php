@@ -45,34 +45,40 @@
 
 @section('content')  
     <!--========================== Article Section ============================-->
-    <section id="about">
-        <div class="container">
-            @foreach($laporans as $tahun => $laporanList)
-                <div class="mb-5">
-                    <h2 class="mb-4">Laporan Tahun {{ $tahun }}</h2>
-                    
-                    <div class="row g-4">
-                        @foreach($laporanList as $laporan)
-                            <div class="col-md-4">
-                                <div class="card h-100 border shadow-sm">
-                                    <div class="card-body text-center">
-                                        <div class="mb-3">
-                                            <i class="fas fa-file-alt text-danger" style="font-size: 48px;"></i>
-                                        </div>
-                                        
-                                        <h5 class="card-title mb-4">{{ $laporan->judul }}</h5>
-                                        
-                                        <a href="{{ asset('storage/' . $laporan->file_pdf) }}" 
-                                           class="btn btn-warning">
-                                            Selengkapnya →
-                                        </a>
+    <section id="about" class="py-5">
+    <div class="container">
+        @foreach($laporans as $tahun => $laporanList)
+            <div class="mb-5">
+                <h2 class="mb-4">Laporan Tahun {{ $tahun }}</h2>
+                
+                <div class="row g-4">
+                    @foreach($laporanList as $laporan)
+                    <div class="col-md-3">
+                        <div class="card h-100 border rounded shadow-sm">
+                            <div class="card-body d-flex flex-column align-items-center justify-content-between p-4">
+                                <div class="text-center w-100">
+                                    <div class="mb-4">
+                                        <i class="fas fa-file-alt text-danger" style="font-size: 48px;"></i>
                                     </div>
+                                    
+                                    <h5 class="card-title" style="font-size: 16px; line-height: 1.4; min-height: 70px;">
+                                        {{ $laporan->judul }}
+                                    </h5>
+                                </div>
+                                
+                                <div class="mt-auto w-100 text-center">
+                                    <a href="{{ asset('storage/' . $laporan->file_pdf) }}" 
+                                       class="btn btn-warning px-4 py-2 w-100">
+                                        Selengkapnya →
+                                    </a>
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
                     </div>
+                    @endforeach
                 </div>
-            @endforeach
-        </div>
+            </div>
+        @endforeach
+    </div>
     </section>
 @endsection
