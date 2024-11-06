@@ -30,22 +30,21 @@
 @endsection --}}
 
 @section('hero')
-    {{-- @if($profileSliders->isNotEmpty())
-        @foreach($profileSliders as $slider)
+    @if($karirSliders->isNotEmpty())
+        @foreach($karirSliders as $slider)
             <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
                 <div class="hero-container">
-                    <h1>Tentang Kami</h1>
-                    <h2>Informasi profil bank</h2>
+                    <h1>Karir</h1>
                 </div>
             </section>
         @endforeach
-    @else --}}
+    @else
         <section id="hero">
             <div class="hero-container">
               <h1>Karir</h1>
             </div>
         </section>
-    {{-- @endif --}}
+    @endif
 @endsection
 
 
@@ -61,14 +60,14 @@
                 @component('user.component.all_karir', ['articles'=> $articles])
                 @endcomponent
               @else
-                @component('user.component.single_karir', ['article'=> $articles])
+                @component('user.component.single_karir', ['article'=> $article])
                 @endcomponent
               @endif
 
 
             </div>
             <div class="col-3">
-                <form action="{{route('karir')}}" class="mt-5">
+                <form action="{{route('blog_karir')}}" class="mt-5">
                   <div class="input-group mb-4 border rounded-pill shadow-lg" style="border-radius:10px; box-shadow: 3px 3px 8px grey;">
                     <input type="text" name="s" value="{{Request::get('s')}}" placeholder="Apa yang ingin anda cari?" class="form-control bg-none border-0" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
                     <div class="input-group-append border-0">
@@ -79,8 +78,8 @@
                 <div class="mb-3 font-weight-bold">Recent Posts</div>
                 @foreach ($recents as $recent)
                   <div>
-                      <a href="{{route('karir.show', [$recent->slug])}}"> <i class="fa fa-dot-circle-o" aria-hidden="true"></i> 
-                        {{$recent->title}}
+                      <a href="{{route('blog_karir.show', [$recent->slug])}}"> <i class="fa fa-dot-circle-o" aria-hidden="true"></i> 
+                        {{$recent->judul}}
                       </a>
                       <hr >
                   </div>

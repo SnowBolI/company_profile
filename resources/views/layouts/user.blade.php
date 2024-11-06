@@ -122,6 +122,7 @@
           <li><a href="{{url('home')}}">Beranda</a></li>
           <li><a href="{{url('profile')}}">Profile BPR</a></li>
           <li><a href="{{url('blog')}}">Edukasi</a></li>
+          <li><a href="{{url('karir')}}">Karir</a></li>
           <li><a href="{{url('destination')}}">Berita</a></li>
           <li><a href="{{url('contact')}}">Contact</a></li>
           <li><a href="{{url('home')}}">FAQ</a></li>

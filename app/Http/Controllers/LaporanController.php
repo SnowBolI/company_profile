@@ -24,6 +24,13 @@ class LaporanController extends Controller
                 return $query->where('judul', 'like', "%{$search}%");
             })->orderBy('updated_at', 'desc')->paginate(10);
     
+            // Atur format tanggal untuk setiap item dalam koleksi
+            $laporans->getCollection()->transform(function ($laporan) {
+                Carbon::setLocale('id'); // Set lokal ke Indonesia
+                $laporan->tanggal = Carbon::parse($laporan->tanggal)->translatedFormat('l, j F Y'); // Format: hari tanggal bulan tahun
+                return $laporan;
+            });
+
             // Mengirimkan data produk dan kata kunci pencarian ke view
             return view('laporans.index', compact('laporans', 'search'));
     }
@@ -77,6 +84,8 @@ class LaporanController extends Controller
      */
     public function show(Laporan $laporan)
     {
+        $laporan->tanggal = Carbon::parse($laporan->tanggal)->translatedFormat('l, j F Y'); // Format: hari tanggal bulan tahun
+
         return view('laporans.show', compact('laporan'));
     }
 
