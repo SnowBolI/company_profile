@@ -1351,23 +1351,68 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* Style Laporan */
 
 .card {
-  transition: transform 0.2s;
-  background: #fff;
+    transition: transform 0.2s ease-in-out;
+    background-color: #fff;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
 }
 
 .btn-warning {
-  background-color: #ffc107;
-  border: none;
-  color: #000;
-  padding: 8px 20px;
-  border-radius: 5px;
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #000;
+    transition: all 0.3s ease;
 }
 
 .btn-warning:hover {
-  background-color: #ffb300;
-  color: #000;
+    background-color: #ffb300;
+    border-color: #ffb300;
+    transform: translateY(-2px);
+}
+
+.card-title {
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    min-height: 70px;
+    /* Properti untuk membatasi teks ke 3 baris dengan dukungan lintas browser */
+    display: block;
+    display: -webkit-box;
+    display: -moz-box;
+    max-height: 4.2em; /* 3 baris * 1.4 line height */
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Fallback untuk browser yang tidak mendukung -webkit-line-clamp */
+@supports not (-webkit-line-clamp: 3) {
+    .card-title {
+        position: relative;
+        max-height: 4.2em;
+        padding-right: 1em;
+    }
+    
+    .card-title:before {
+        content: '...';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+    
+    .card-title:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 1em;
+        height: 1em;
+        margin-top: 0.2em;
+        background: white;
+    }
 }

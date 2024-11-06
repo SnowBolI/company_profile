@@ -47,13 +47,12 @@
 @endsection
 
 @section('content')  
-<!--========================== Article Section ============================-->
-<section id="about">
+    <!--========================== Article Section ============================-->
+    <section id="about" class="py-5">
     <div class="container">
         @foreach($laporans as $tahun => $laporanList)
             <div class="mb-5">
                 <h2 class="mb-4">Laporan Tahun {{ $tahun }}</h2>
-
                 <div class="row g-4">
                     @foreach($laporanList as $laporan)
                         <div class="col-md-4">
@@ -71,7 +70,7 @@
                                             class="btn btn-warning px-4 py-2 w-100" target="_blank">
                                             Selengkapnya →
                                         </a>
-                                    </div>
+                                     </div>
                                 </div>
                             </div>
                         </div>
