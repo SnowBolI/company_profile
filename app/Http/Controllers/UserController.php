@@ -84,6 +84,7 @@ class UserController extends Controller
   public function show_edukasi($slug)
   {
     // Mengambil data edukasi berdasarkan slug
+    $edukasiSliders = EdukasiBanner::orderBy('created_at', 'desc')->take(1)->get();
     $article = Edukasi::where('slug', $slug)->firstOrFail();
 
     // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
@@ -94,9 +95,59 @@ class UserController extends Controller
 
     $data = [
         'article' => $article,
-        'recents' => $recents
+        'recents' => $recents,
+        'edukasiSliders' => $edukasiSliders
     ];
     return view('user/edukasi', $data);
+  }
+
+  public function karir(Request $request)
+  {
+      // $edukasiSliders = EdukasiBanner::orderBy('created_at', 'desc')->take(1)->get();
+
+      // // Mendapatkan kata kunci pencarian dari request (parameter s)
+      // $keyword = $request->get('s') ?? '';
+
+      // // Mengambil data edukasi berdasarkan pencarian kata kunci pada kolom judul dan keterangan
+      // $articles = Edukasi::where('judul', 'LIKE', "%$keyword%")
+      //     ->orWhere('keterangan', 'LIKE', "%$keyword%")
+      //     ->orderBy('created_at', 'desc')
+      //     ->paginate(10);
+
+      // // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
+      // $recents = Edukasi::select('judul', 'slug')
+      //     ->orderBy('created_at', 'desc')
+      //     ->limit(5)
+      //     ->get();
+
+      // $data = [
+      //     'articles' => $articles,
+      //     'recents' => $recents,
+      //     'edukasiSliders' => $edukasiSliders,
+
+      // ];
+
+      return view('user.karir');
+  }
+
+  public function show_karir($slug)
+  {
+    // // Mengambil data edukasi berdasarkan slug
+    // $edukasiSliders = EdukasiBanner::orderBy('created_at', 'desc')->take(1)->get();
+    // $article = Edukasi::where('slug', $slug)->firstOrFail();
+
+    // // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
+    // $recents = Edukasi::select('judul', 'slug')
+    //     ->orderBy('created_at', 'desc')
+    //     ->limit(5)
+    //     ->get();
+
+    // $data = [
+    //     'article' => $article,
+    //     'recents' => $recents,
+    //     'edukasiSliders' => $edukasiSliders
+    // ];
+    return view('user/karir');
   }
 
   public function destination(Request $request)

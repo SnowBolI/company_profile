@@ -74,6 +74,8 @@
               style="color: black;">Profile</a></li>
           <li class="{{$url == 'blog_edukasi' ? 'menu-active' : ''}}"><a href="{{url('blog_edukasi')}}"
               style="color: black;">Edukasi</a></li>
+          <li class="{{$url == 'blog_karir' ? 'menu-active' : ''}}"><a href="{{url('blog_karir')}}"
+              style="color: black;">Karir</a></li>
           <li class="{{$url == 'destination' ? 'menu-active' : ''}}"><a href="{{url('destination')}}"
               style="color: black;">Berita</a></li>
           <li class="{{$url == 'contact' ? 'menu-active' : ''}}"><a href="{{url('contact')}}"
@@ -173,26 +175,25 @@
         Terdaftar dan Diawasi
       </div>
       <div class="logo-container">
-        <div class="logo">
-          <img src="user/images/logobank.png" alt="Logo 1">
-          <img src="user/images/bi.png" alt="Logo 2">
-          <img src="user/images/indo2.png" alt="Logo 3">
-          <img src="user/images/ayobank.png" alt="Logo 4">
-          <img src="user/images/bpr.png" alt="Logo 5">
-          <img src="user/images/magetan.png" alt="Logo 6">
-          <img src="user/images/lps.png" alt="Logo 7">
-          <img src="user/images/ojk.png" alt="Logo 8">
-
+      <div class="logo">
+          <img src="{{ asset('user/images/logobank.png') }}" alt="Logo 1">
+          <img src="{{ asset('user/images/bi.png') }}" alt="Logo 2">
+          <img src="{{ asset('user/images/indo2.png') }}" alt="Logo 3">
+          <img src="{{ asset('user/images/ayobank.png') }}" alt="Logo 4">
+          <img src="{{ asset('user/images/bpr.png') }}" alt="Logo 5">
+          <img src="{{ asset('user/images/magetan.png') }}" alt="Logo 6">
+          <img src="{{ asset('user/images/lps.png') }}" alt="Logo 7">
+          <img src="{{ asset('user/images/ojk.png') }}" alt="Logo 8">
         </div>
         <div class="logo">
-          <img src="user/images/logobank.png" alt="Logo 1">
-          <img src="user/images/bi.png" alt="Logo 2">
-          <img src="user/images/indo2.png" alt="Logo 3">
-          <img src="user/images/ayobank.png" alt="Logo 4">
-          <img src="user/images/bpr.png" alt="Logo 5">
-          <img src="user/images/magetan.png" alt="Logo 6">
-          <img src="user/images/lps.png" alt="Logo 7">
-          <img src="user/images/ojk.png" alt="Logo 8">
+          <img src="{{ asset('user/images/logobank.png') }}" alt="Logo 1">
+          <img src="{{ asset('user/images/bi.png') }}" alt="Logo 2">
+          <img src="{{ asset('user/images/indo2.png') }}" alt="Logo 3">
+          <img src="{{ asset('user/images/ayobank.png') }}" alt="Logo 4">
+          <img src="{{ asset('user/images/bpr.png') }}" alt="Logo 5">
+          <img src="{{ asset('user/images/magetan.png') }}" alt="Logo 6">
+          <img src="{{ asset('user/images/lps.png') }}" alt="Logo 7">
+          <img src="{{ asset('user/images/ojk.png') }}" alt="Logo 8">
         </div>
       </div>
     </div>
