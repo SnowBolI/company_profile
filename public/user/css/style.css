@@ -265,7 +265,8 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .section-header {
-      text-align: center;
+      max-width: 100%;
+      overflow-wrap: break-word;
       margin-bottom: 40px;
     }
     

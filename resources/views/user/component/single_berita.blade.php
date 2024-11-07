@@ -1,10 +1,10 @@
 @if ($article != null)
   <div class="section-header mt-3">
     <div class="mb-3">
-      <div class="text-dark" style="font-size: 40px; letter-spacing: .5px; line-height: 1.3;">
+      <div class="text-dark text-center" style="font-size: 40px; letter-spacing: .5px; line-height: 1.3;">
         {{ $article->judul }}
       </div>
-      <div class="mt-1">
+      <div class="text-center mt-1">
         <small class="font-italic">Tanggal: {{ date('d M Y', strtotime($article->tanggal)) }}</small>
       </div>
     </div>
