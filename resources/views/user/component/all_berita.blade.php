@@ -17,13 +17,13 @@
           </a>
         </div>
 
-        <div class="mb-3">
+        <div class="text-center mb-3">
           <a href="{{ route('blog_berita.show', $article->slug) }}" class="decoration-none">
             <div class="text-primary link-hover" style="font-size: 40px; letter-spacing: .5px; line-height: 1.3;">
               {{ $article->judul }}
             </div>
           </a>
-          <div class="mt-1">
+          <div class="text-center mt-1">
             <small class="font-italic">Tanggal: {{ date('d M Y', strtotime($article->tanggal)) }}</small>
           </div>
         </div>
