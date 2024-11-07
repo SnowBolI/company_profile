@@ -117,7 +117,7 @@
 
       <!--========================== About Us Section ============================-->
       <section id="about">
-      <div class="section-header">
+      <div class="about-header">
         <p>PRODUK UNGGULAN</p>
         <h2>Nikmati Produk & Layanan<br>Terbaik Kami</h2>
       </div>
