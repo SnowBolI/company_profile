@@ -11,6 +11,8 @@ use App\Models\Edukasi;
 use App\Models\Laporan;
 use App\Models\Category;
 use App\Models\HomeSlider;
+use App\Models\KantorBanner;
+use App\Models\KantorCabang;
 use App\Models\Destination;
 use App\Models\KarirBanner;
 use Illuminate\Support\Str;
@@ -55,10 +57,22 @@ class UserController extends Controller
     return view('user.home', compact('homeSliders','homeBackgrounds', 'homeThumbnails', 'youtubeId', 'categories', 'about'));
   }
 
-  public function cabang()
-  {
-    return view('user.cabang');
-  }
+  public function cabang(Request $request)
+    {
+        // Ambil banner cabang
+        $cabangSliders = KantorBanner::orderBy('created_at', 'desc')->take(1)->get();
+
+        // Ambil semua data kantor cabang
+        // Urutkan berdasarkan nama untuk konsistensi tampilan
+        $cabangs = KantorCabang::orderBy('nama', 'asc')->get();
+
+        $data = [
+            'cabangs' => $cabangs,
+            'cabangSliders' => $cabangSliders,
+        ];
+
+        return view('user.cabang', $data);
+    }
 
   public function laporan(Request $request)
   {
@@ -110,6 +124,24 @@ class UserController extends Controller
       return view('user.edukasi', $data);
   }
 
+  public function show_cabang($id)
+{
+    // Mengambil data edukasi berdasarkan id
+    $cabangSliders = KantorBanner::orderBy('created_at', 'desc')->take(1)->get();
+    $cabang = KantorCabang::where('id', $id)->firstOrFail();
+
+    // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
+    $cabangs = Edukasi::select('nama', 'id')
+        ->orderBy('created_at', 'desc')
+        ->limit(5)
+        ->get();
+
+    $data = [
+        'cabang' => $cabangs,
+        'edukasiSliders' => $cabangSliders
+    ];
+    return view('user/cabang', $data);
+}
 
   public function show_edukasi($slug)
   {
