@@ -13,6 +13,7 @@ use App\Models\Category;
 use App\Models\HomeSlider;
 use App\Models\KantorBanner;
 use App\Models\KantorCabang;
+use App\Models\KantorKas;
 use App\Models\Destination;
 use App\Models\KarirBanner;
 use Illuminate\Support\Str;
@@ -128,17 +129,16 @@ class UserController extends Controller
 {
     // Mengambil data edukasi berdasarkan id
     $cabangSliders = KantorBanner::orderBy('created_at', 'desc')->take(1)->get();
-    $cabang = KantorCabang::where('id', $id)->firstOrFail();
+    $cabang = KantorKas::where('id', $id)->firstOrFail();
 
     // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
-    $cabangs = Edukasi::select('nama', 'id')
+    $cabang = KantorKas::select('nama', 'id')
         ->orderBy('created_at', 'desc')
-        ->limit(5)
         ->get();
 
     $data = [
-        'cabang' => $cabangs,
-        'edukasiSliders' => $cabangSliders
+        'cabang' => $cabang,
+        'cabangSliders' => $cabangSliders
     ];
     return view('user/cabang', $data);
 }
