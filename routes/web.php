@@ -39,6 +39,7 @@ Route::get('/', function(){return redirect('/home');});
 Route::get('/home', 'UserController@home')->name('home');
 Route::get('/blog_edukasi', 'UserController@edukasi')->name('blog_edukasi');
 Route::get('/blog_edukasi/baca/{slug}', 'UserController@show_edukasi')->name('blog_edukasi.show');
+Route::get('/cabang', 'UserController@cabang')->name('cabang');
 Route::get('/blog_karir', 'UserController@karir')->name('blog_karir');
 Route::get('/blog_karir/baca/{slug}', 'UserController@show_karir')->name('blog_karir.show');
 Route::get('/blog_berita', 'UserController@berita')->name('blog_berita');

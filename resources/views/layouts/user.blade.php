@@ -74,6 +74,8 @@
               style="color: black;">Profile</a></li>
           <li class="{{$url == 'blog_edukasi' ? 'menu-active' : ''}}"><a href="{{url('blog_edukasi')}}"
               style="color: black;">Edukasi</a></li>
+          <li class="{{$url == 'cabang' ? 'menu-active' : ''}}"><a href="{{url('cabang')}}"
+              style="color: black;">Cabang</a></li>
           <li class="{{$url == 'blog_karir' ? 'menu-active' : ''}}"><a href="{{url('blog_karir')}}"
               style="color: black;">Karir</a></li>
           <li class="{{$url == 'blog_berita' ? 'menu-active' : ''}}"><a href="{{url('blog_berita')}}"
@@ -82,6 +84,7 @@
               style="color: black;">Laporan</a></li>
           {{-- <li class="{{$url == 'destination' ? 'menu-active' : ''}}"><a href="{{url('destination')}}"
               style="color: black;">Berita</a></li> --}}
+
           <li class="{{$url == 'contact' ? 'menu-active' : ''}}"><a href="{{url('contact')}}"
               style="color: black;">Kontak
             </a></li>
