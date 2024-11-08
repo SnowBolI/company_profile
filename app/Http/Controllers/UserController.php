@@ -55,7 +55,10 @@ class UserController extends Controller
     return view('user.home', compact('homeSliders','homeBackgrounds', 'homeThumbnails', 'youtubeId', 'categories', 'about'));
   }
 
-
+  public function cabang()
+  {
+    return view('user.cabang');
+  }
 
   public function laporan(Request $request)
   {
