@@ -211,6 +211,7 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
+  <script src="https://kit.fontawesome.com/fc596df623.js" crossorigin="anonymous"></script>
   <script src="{{asset('user/lib/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('user/lib/easing/easing.min.js')}}"></script>
   <script src="{{asset('user/lib/wow/wow.min.js')}}"></script>

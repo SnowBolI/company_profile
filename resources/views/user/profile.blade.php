@@ -369,18 +369,30 @@
                     </div>
 
                     <div class="tab-pane fade" id="pills-milestone" role="tabpanel"
-                        aria-labelledby="pills-milestone-tab" tabindex="0">
-                        <h3>Milestone</h3>
-                        @if($profileMilestones->isEmpty())
-                            <p>Tidak ada data yang ditemukan</p>
-                        @else
-                            <ul class="list-unstyled">
-                                @foreach($profileMilestones as $milestone)
-                                    <li><strong>{{ $milestone->tahun }}</strong>: {{ $milestone->keterangan }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
+    aria-labelledby="pills-milestone-tab" tabindex="0">
+    <h3>Milestone</h3>
+    @if($profileMilestones->isEmpty())
+        <p>Tidak ada data yang ditemukan</p>
+    @else
+        <div class="timeline">
+            @foreach($profileMilestones as $milestone)
+                <div class="timeline__event animated fadeInUp timeline__event--type1">
+                    <div class="timeline__event__icon">
+                        <i class="fas fa-star"></i>
                     </div>
+                    <div class="timeline__event__date">
+                        {{ $milestone->tahun }}
+                    </div>
+                    <div class="timeline__event__content">
+                        <div class="timeline__event__description">
+                            <p>{{ $milestone->keterangan }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
+</div>
                 </div>
             </div>
         </div>
