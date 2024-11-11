@@ -72,6 +72,14 @@
               style="color: black;">Beranda</a></li>
           <li class="{{$url == 'profile' ? 'menu-active' : ''}}"><a href="{{url('profile')}}"
               style="color: black;">Profile</a></li>
+          <li class="{{$url == 'produk' ? 'menu-active' : ''}}"><a href=""
+              style="color: black;">Produk</a>
+              <ul class="dropdown-menu">
+                        <li><a href="{{url('/tabungan')}}" style="color: black;">Tabungan</a></li>
+                        <li><a href="{{url('/deposito')}}" style="color: black;">Deposito</a></li>
+                        <li><a href="{{url('/kredit')}}" style="color: black;">Kredit</a></li>
+                        <li><a href="{{url('/ppob')}}" style="color: black;">PPOB</a></li>
+                    </ul></li>
           <li class="{{$url == 'blog_edukasi' ? 'menu-active' : ''}}"><a href="{{url('blog_edukasi')}}"
               style="color: black;">Edukasi</a></li>
           <li class="{{$url == 'blog_karir' ? 'menu-active' : ''}}"><a href="{{url('blog_karir')}}"
