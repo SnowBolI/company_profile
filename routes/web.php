@@ -39,8 +39,12 @@ Route::get('/', function(){return redirect('/home');});
 Route::get('/home', 'UserController@home')->name('home');
 Route::get('/blog_edukasi', 'UserController@edukasi')->name('blog_edukasi');
 Route::get('/blog_edukasi/baca/{slug}', 'UserController@show_edukasi')->name('blog_edukasi.show');
+// Route::get('/cabang', 'UserController@cabang')->name('cabang');
+// Route::get('/cabang/kas/{id}', 'UserController@show_cabang')->name('cabang.show');
 Route::get('/cabang', 'UserController@cabang')->name('cabang');
-Route::get('/cabang/kas/{id}', 'UserController@show_cabang')->name('cabang.show');
+Route::get('/cabang/{id}', 'UserController@kas')->name('cabang.single');
+
+
 // Route::get('/blog_karir/kantorkas/{id}', 'UserController@show_karir')->name('blog_karir.show');
 Route::get('/blog_karir', 'UserController@karir')->name('blog_karir');
 Route::get('/blog_karir/baca/{slug}', 'UserController@show_karir')->name('blog_karir.show');

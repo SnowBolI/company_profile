@@ -59,21 +59,80 @@ class UserController extends Controller
   }
 
   public function cabang(Request $request)
+  {
+      // Ambil banner cabang
+      $cabangSliders = KantorBanner::orderBy('created_at', 'desc')->take(1)->get();
+
+      // Ambil semua data kantor cabang dan urutkan sehingga yang memiliki kata 'pusat' di awal
+      $cabangs = KantorCabang::orderByRaw("CASE WHEN LOWER(nama) LIKE '%pusat%' THEN 0 ELSE 1 END")
+          ->orderBy('nama', 'asc')
+          ->get();
+      // Ambil data kantor kas berdasarkan ID cabang
+
+      $data = [
+          'cabangs' => $cabangs,
+          'cabangSliders' => $cabangSliders,
+      ];
+
+      return view('user.cabang', $data);
+  }
+  public function kas(Request $request, $id)
+{ 
+  $kantorkas = KantorKas::where('kantor_cabang_id', $id)->get();
+
+
+    if (!$kantorkas) {
+        abort(404, 'Kantor Kas tidak ditemukan');
+    }
+
+    $cabangSliders = KantorBanner::orderBy('created_at', 'desc')->take(1)->get();
+
+    return view('user.cabang', [
+        'kantorkas' => $kantorkas,
+        'cabangSliders' => $cabangSliders,
+    ]);
+}
+  
+
+    public function show_cabang($id)
     {
-        // Ambil banner cabang
+        $cabang = KantorKas::where('id', $id)->firstOrFail();
+
+        // Mengambil data edukasi berdasarkan id
         $cabangSliders = KantorBanner::orderBy('created_at', 'desc')->take(1)->get();
-
-        // Ambil semua data kantor cabang
-        // Urutkan berdasarkan nama untuk konsistensi tampilan
-        $cabangs = KantorCabang::orderBy('nama', 'asc')->get();
-
+    
+        // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
+        $cabang = KantorKas::select('nama', 'id')
+            ->orderBy('created_at', 'desc')
+            ->get();
+    
         $data = [
-            'cabangs' => $cabangs,
+            'cabang' => $cabang,
             'cabangSliders' => $cabangSliders,
         ];
-
-        return view('user.cabang', $data);
+        return view('user/cabang', $data);
     }
+
+    
+  public function show_edukasi($slug)
+  {
+    // Mengambil data edukasi berdasarkan slug
+    $edukasiSliders = EdukasiBanner::orderBy('created_at', 'desc')->take(1)->get();
+    $article = Edukasi::where('slug', $slug)->firstOrFail();
+
+    // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
+    $recents = Edukasi::select('judul', 'slug')
+        ->orderBy('created_at', 'desc')
+        ->limit(5)
+        ->get();
+
+    $data = [
+        'article' => $article,
+        'recents' => $recents,
+        'edukasiSliders' => $edukasiSliders
+    ];
+    return view('user/edukasi', $data);
+  }
 
   public function laporan(Request $request)
   {
@@ -95,6 +154,7 @@ class UserController extends Controller
     ];
     return view('user.laporan', $data);
   }
+
 
   public function edukasi(Request $request)
   {
@@ -125,43 +185,8 @@ class UserController extends Controller
       return view('user.edukasi', $data);
   }
 
-  public function show_cabang($id)
-{
-    // Mengambil data edukasi berdasarkan id
-    $cabangSliders = KantorBanner::orderBy('created_at', 'desc')->take(1)->get();
-    $cabang = KantorKas::where('id', $id)->firstOrFail();
 
-    // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
-    $cabang = KantorKas::select('nama', 'id')
-        ->orderBy('created_at', 'desc')
-        ->get();
 
-    $data = [
-        'cabang' => $cabang,
-        'cabangSliders' => $cabangSliders
-    ];
-    return view('user/cabang', $data);
-}
-
-  public function show_edukasi($slug)
-  {
-    // Mengambil data edukasi berdasarkan slug
-    $edukasiSliders = EdukasiBanner::orderBy('created_at', 'desc')->take(1)->get();
-    $article = Edukasi::where('slug', $slug)->firstOrFail();
-
-    // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
-    $recents = Edukasi::select('judul', 'slug')
-        ->orderBy('created_at', 'desc')
-        ->limit(5)
-        ->get();
-
-    $data = [
-        'article' => $article,
-        'recents' => $recents,
-        'edukasiSliders' => $edukasiSliders
-    ];
-    return view('user/edukasi', $data);
-  }
 
   public function karir(Request $request)
   {
