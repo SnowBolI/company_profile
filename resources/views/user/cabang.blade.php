@@ -89,7 +89,7 @@
                     @component('user.component.all_cabang', ['cabangs' => $cabangs])
                     @endcomponent
                 @else
-                    @component('user.component.single_cabang', ['cabang' => $cabang])
+                    @component('user.component.single_cabang', ['kantorkas' => $kantorkas])
                     @endcomponent
                 @endif
             </div>

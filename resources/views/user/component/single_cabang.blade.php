@@ -1,66 +1,48 @@
-@if ($cabang != null)
-    <div class="section-header mt-3">
-        <div class="mb-3">
-            <div class="text-dark text-center" style="font-size: 40px; letter-spacing: .5px; line-height: 1.3;">
-                {{ $cabang->nama }}
-            </div>
-        </div>
+@if ($kantorkas != null && $kantorkas->count() > 0)
+<div class="container mt-4">
+    <div class="row">
+        @foreach ($kantorkas as $kas)
+            @if($kas) <!-- Cek apakah $k adalah objek yang valid -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="section-header">
+                    <div class="article-image mb-3">
+                        @if($kas->gambar) <!-- Cek apakah gambar ada -->
+                            <img src="{{ asset('storage/' . $kas->gambar) }}"
+                                alt="{{ $kas->nama }}" 
+                                class="img-fluid rounded"
+                                style="object-fit: cover; width: 400px; height: 400px;">
+                        @else
+                            <img src="{{ asset('user/images/logonew.png') }}"
+                                alt="Default cabang Image"
+                                class="img-fluid rounded w-50"
+                                style="object-fit: cover; height: 300px;">
+                        @endif
+                    </div>
 
-        @if($cabang->gambar)
-            <div class="article-image mb-3">
-                <img src="{{ asset('storage/' . $cabang->gambar) }}" 
-                     alt="{{ $cabang->nama }}" 
-                     class="img-fluid rounded w-100" 
-                     style="object-fit: cover; height: 400px;">
-            </div>
-        @else
-            <div class="article-image mb-3">
-                <img src="{{ asset('user/images/default-image.png') }}" 
-                     alt="Default Image" 
-                     class="img-fluid rounded w-100" 
-                     style="object-fit: cover; height: 400px;">
-            </div>
-        @endif
-
-        <div class="cabang-info text-center mb-4">
-            <p>
-                <i class="fas fa-map-marker-alt me-2"></i>
-                {{ $cabang->alamat }}
-            </p>
-            <p>
-                <i class="fas fa-phone me-2"></i>
-                {{ $cabang->telepon }}
-            </p>
-        </div>
-
-        <p class="mb-3 article text-justify"> 
-            {!! $cabang->gmap !!}
-        </p>
-
-        <!-- Kantor Kas Section -->
-        @if($cabang->kantor_kas && count($cabang->kantor_kas) > 0)
-            <div class="mt-5">
-                <h3 class="text-center mb-4">Kantor Kas</h3>
-                @foreach($cabang->kantor_kas as $kas)
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ $kas->nama }}</h4>
-                            <div class="cabang-info">
-                                <p>
-                                    <i class="fas fa-map-marker-alt me-2"></i>
-                                    {{ $kas->alamat }}
-                                </p>
-                                <p>
-                                    <i class="fas fa-phone me-2"></i>
-                                    {{ $kas->telepon }}
-                                </p>
-                            </div>
+                    <div class="mb-3">
+                        <div class="text-dark text-center" style="font-size: 30px; letter-spacing: .5px; line-height: 1.3;">
+                            {{ $kas->nama }}
                         </div>
                     </div>
-                @endforeach
+
+                    <div class="cabang-info text-center">
+                        <a href="https://maps.google.com/?q={{ urlencode($kas->alamat) }}" target="_blank" class="text-decoration-none">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            {{ $kas->alamat }}
+                        </a>
+                        <a href="tel:{{ $kas->telepon }}" class="text-decoration-none d-block mt-2">
+                            <i class="fas fa-phone me-2"></i>
+                            {{ $kas->telepon }}
+                        </a>
+                    </div>
+
+                    <hr class="mt-3">
+                </div>
             </div>
-        @endif
-    </div>    
+            @endif
+        @endforeach
+    </div>
+</div>
 @else
     <style>
         .page {
@@ -77,5 +59,5 @@
         <div class="text-center" style="padding: 10px; font-size: 46px;">
             Not Found
         </div>
-    </div>    
+    </div>
 @endif

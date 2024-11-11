@@ -16,21 +16,21 @@ class KantorKasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request, $idkantorcabang)
-{
-    // Mendapatkan kata kunci pencarian dari request
-    $search = $request->input('search');
+    {
+        // Mendapatkan kata kunci pencarian dari request
+        $search = $request->input('search');
 
-    // Query untuk mengambil data kantor kas berdasarkan pencarian dan pagination
-    $kantorKass = KantorKas::where('kantor_cabang_id', $idkantorcabang)
-        ->when($search, function ($query, $search) {
-            return $query->where('nama', 'like', "%{$search}%");
-        })
-        ->orderBy('updated_at', 'desc')
-        ->paginate(10);
+        // Query untuk mengambil data kantor kas berdasarkan pencarian dan pagination
+        $kantorKass = KantorKas::where('kantor_cabang_id', $idkantorcabang)
+            ->when($search, function ($query, $search) {
+                return $query->where('nama', 'like', "%{$search}%");
+            })
+            ->orderBy('updated_at', 'desc')
+            ->paginate(10);
 
-    // Mengirimkan data kantor kas, kata kunci pencarian, dan id kantor cabang ke view
-    return view('kantorKass.index', compact('kantorKass', 'idkantorcabang', 'search'));
-}
+        // Mengirimkan data kantor kas, kata kunci pencarian, dan id kantor cabang ke view
+        return view('kantorKass.index', compact('kantorKass', 'idkantorcabang', 'search'));
+    }
 
 
     /**
