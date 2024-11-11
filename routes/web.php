@@ -54,6 +54,11 @@ Route::get('/laporan', 'UserController@laporan')->name('laporan');
 Route::get('/destination', 'UserController@destination')->name('destination');
 Route::get('/destination/{slug}', 'UserController@show_destination')->name('destination.show');
 Route::get('/contact', 'UserController@contact')->name('contact');
+// route produk
+Route::get('/tabungan', 'UserController@tabungan')->name('tabungan');
+Route::get('/deposito', 'UserController@deposito')->name('deposito');
+Route::get('/kredit', 'UserController@kredit')->name('kredit');
+Route::get('/ppob', 'UserController@ppob')->name('ppob');
 
 // route profile
 Route::get('/profile', 'ProfileController@index')->name('profile.index');

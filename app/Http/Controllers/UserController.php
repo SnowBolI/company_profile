@@ -314,6 +314,25 @@ class UserController extends Controller
     return view('user/destination', $data);
   }
 
+    public function tabungan()
+  {
+      return view('user.tabungan');
+  }
+
+  public function deposito() 
+  {
+      return view('user.deposito');
+  }
+
+  public function kredit()
+  {
+      return view('user.kredit');
+  }
+
+  public function ppob()
+  {
+      return view('user.ppob');
+  }
   public function contact()
   {
     return view('user/contact');
