@@ -1583,3 +1583,127 @@ body {
       border-radius: 0 0 6px 6px;
   }
 }
+
+/* PENGHARGAAN SECTION */
+
+@font-face {
+  font-family: "ja-med";
+  src: url("https://cdn.jsdelivr.net/gh/codetheworld-io/static-files/ja-med.otf");
+}
+
+.penghargaan-container {
+  position: relative;
+  display: grid;
+  width: 800px;
+  height: 500px;
+  display: grid;
+  font-family: "ja-med", sans-serif;
+}
+
+.box {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: all 400ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.penghargaan-container {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1em;
+  transition: all 400ms;
+
+}
+
+.penghargaan-container:hover .box {
+  filter: grayscale(100%) 
+  opacity(24%);
+}
+
+.penghargaan-container .box:hover {
+  filter: grayscale(0%) 
+  opacity(100%);
+}
+
+.penghargaan-container {
+  --layout-1 : 3fr 1fr 1fr 1fr 1fr;
+  --layout-2 : 1fr 3fr 1fr 1fr 1fr;
+  --layout-3 : 1fr 1fr 3fr 1fr 1fr;
+  --layout-4 : 1fr 1fr 1fr 3fr 1fr;
+  --layout-5 : 1fr 1fr 1fr 1fr 3fr;
+
+  &:has(.box-1:hover) {
+    grid-template-columns: var(--layout-1);
+  }
+
+  &:has(.box-2:hover) {
+    grid-template-columns: var(--layout-2);
+  }
+
+  &:has(.box-3:hover) {
+    grid-template-columns: var(--layout-3);
+  }
+
+  &:has(.box-4:hover) {
+    grid-template-columns: var(--layout-4);
+  }
+
+  &:has(.box-5:hover) {
+    grid-template-columns: var(--layout-5);
+  }
+}
+
+.box {
+  &:nth-child(odd) {
+    transform: translateY(-16px);
+  }
+
+  &:nth-child(even) {
+    transform: translateY(16px);
+  }
+
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    font-size: large;
+    color: #fff;
+    background: #000;
+    bottom: 20px;
+    padding: 10px 10px 10px 14px;
+    letter-spacing:  40px;
+    text-transform: uppercase;
+    transition: all 400ms;
+    transform: translateY(60px);
+    opacity: 0;
+  }
+
+  &:hover::after {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 200ms;
+  
+  }
+
+  @media (max-width: 1024px) {
+    .penghargaan-container {
+      width: 100%;
+      height: auto;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .penghargaan-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .penghargaan-container {
+      grid-template-columns: 1fr;
+    }
+  }
+}
