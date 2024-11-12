@@ -387,19 +387,19 @@
   
         <div class="penghargaan-container wow fadeInUp">
           <div class="box box-1"
-          style="background-image: url('/user/images/fua.png');" data-text="gambar1">
+          style="background-image: url('/user/images/fua.png');">
           </div>
           <div class="box box-2"
-          style="background-image: url('/user/images/fua.png');" data-text="gambar2">
+          style="background-image: url('/user/images/fua.png');">
           </div>
           <div class="box box-3"
-          style="background-image: url('/user/images/fua.png');" data-text="gambar3">
+          style="background-image: url('/user/images/fua.png');">
           </div>
           <div class="box box-4"
-          style="background-image: url('/user/images/fua.png');" data-text="gambar4">
+          style="background-image: url('/user/images/fua.png');">
           </div>
           <div class="box box-5"
-          style="background-image: url('/user/images/fua.png');" data-text="gambar5">
+          style="background-image: url('/user/images/fua.png');">
           </div>
         </div>
       </section>
