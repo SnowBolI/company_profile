@@ -1666,7 +1666,6 @@ body {
   }
 
   &::after {
-    content: attr(data-text);
     position: absolute;
     font-size: large;
     color: #fff;
