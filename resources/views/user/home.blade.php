@@ -377,40 +377,30 @@
       </section>
   
       <!--========================== Gallery Section ============================-->
-      <section id="contact" style="padding-bottom:85px">
+      <section id="penghargaan" style="padding-bottom: 85px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
         <div class="container wow fadeInUp">
           <div class="section-header">
-            <h3 class="section-title">Galeri</h3>
+            <h3 class="section-title">Penghargaan</h3>
             <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
           </div>
         </div>
   
-        <div class="container wow fadeInUp">
-          <div class="row justify-content-center">
-  
-            <div class="col-lg-12 col-md-4">
-              <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6 full-img" style="background-image: url({{asset('user/images/gallery/prambanan.png')}})">
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 full-img" style="background-image: url({{asset('user/images/gallery/wisata2.png')}})">
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 full-img" style="background-image: url({{asset('user/images/gallery/wisata3.png')}})">
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 full-img" style="background-image: url({{asset('user/images/gallery/wisata4.png')}})">
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 full-img" style="background-image: url({{asset('user/images/gallery/wisata5.png')}})">
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 full-img" style="background-image: url({{asset('user/images/gallery/wisata6.png')}})">
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 full-img" style="background-image: url({{asset('user/images/gallery/wisata7.png')}})">
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 full-img" style="background-image: url({{asset('user/images/gallery/wisata8.png')}})">
-                </div>
-              </div>
-            </div>
-  
+        <div class="penghargaan-container wow fadeInUp">
+          <div class="box box-1"
+          style="background-image: url('/user/images/fua.png');" data-text="gambar1">
           </div>
-  
+          <div class="box box-2"
+          style="background-image: url('/user/images/fua.png');" data-text="gambar2">
+          </div>
+          <div class="box box-3"
+          style="background-image: url('/user/images/fua.png');" data-text="gambar3">
+          </div>
+          <div class="box box-4"
+          style="background-image: url('/user/images/fua.png');" data-text="gambar4">
+          </div>
+          <div class="box box-5"
+          style="background-image: url('/user/images/fua.png');" data-text="gambar5">
+          </div>
         </div>
       </section>
 @endsection
