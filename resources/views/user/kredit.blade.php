@@ -158,7 +158,7 @@
                 background-color: #f8f9fa;
             }
 
-            .deposito-content {
+            .kredit-content {
                 background-color: #ffffff;
                 border-radius: 10px;
                 padding: 30px;
@@ -166,25 +166,25 @@
             }
 
             /* Info Box Styling */
-            .deposit-info-box {
+            .kredit-info-box {
                 background-color: #E3F2FD;
                 padding: 20px;
                 border-radius: 8px;
                 margin: 15px 0;
             }
 
-            .deposit-info-box ul {
+            .kredit-info-box ul {
                 list-style-type: none;
                 padding-left: 0;
             }
 
-            .deposit-info-box ul li {
+            .kredit-info-box ul li {
                 margin-bottom: 10px;
                 padding-left: 25px;
                 position: relative;
             }
 
-            .deposit-info-box ul li:before {
+            .kredit-info-box ul li:before {
                 content: '✓';
                 color: #1976D2;
                 position: absolute;
@@ -268,7 +268,7 @@
             }
 
             /* Button Styling */
-            .deposit-cta-button {
+            .kredit-cta-button {
                 background-color: #1976D2;
                 color: white;
                 padding: 12px 25px;
@@ -278,7 +278,7 @@
                 cursor: pointer;
             }
 
-            .deposit-cta-button:hover {
+            .kredit-cta-button:hover {
                 background-color: #1565C0;
                 transform: translateY(-2px);
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -286,7 +286,7 @@
 
             /* Responsive Adjustments */
             @media (max-width: 768px) {
-                .deposito-content {
+                .kredit-content {
                     padding: 20px;
                 }
 
@@ -330,12 +330,23 @@
 
 
 @section('hero')
+@if($produkSliders->isNotEmpty())
+@foreach($produkSliders as $slider)
+    <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
+        <div class="hero-container">
+            <h1>Tentang Kami</h1>
+            <h2>Informasi profil bank</h2>
+        </div>
+    </section>
+@endforeach
+@else
 <section id="hero">
     <div class="hero-container">
-        <h1>Kredit</h1>
-        <h2>Produk kredit kami</h2>
+        <h1>Tentang Kami</h1>
+        <h2>Informasi profil bank</h2>
     </div>
 </section>
+@endif
 @endsection
 
 @section('content')
@@ -357,41 +368,60 @@
                         <i class="fas fa-calculator"></i> Simulasi Kredit <!-- Icon for credit simulation -->
                     </button>
                 </li>
+                @foreach($kreditData as $index => $kredit)
+                @if(strtolower($kredit->judul) === 'modal usaha')
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-modal-usaha-tab" data-bs-toggle="pill" 
-                            data-bs-target="#pills-modal-usaha" type="button" role="tab" 
-                            aria-controls="pills-modal-usaha" aria-selected="false">
-                        <i class="fas fa-briefcase"></i> Modal Usaha <!-- Icon for business capital -->
+                    <button class="nav-link" id="pills-{{ Str::slug($kredit->judul) }}-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-{{ Str::slug($kredit->judul) }}" type="button" role="tab"
+                        aria-controls="pills-{{ Str::slug($kredit->judul) }}"
+                        aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
+                        <i class="fas fa-briefcase"></i> {{ $kredit->judul }}
                     </button>
                 </li>
+                @endif
+
+                @if(strtolower($kredit->judul) === 'kredit komsumtif')
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-kredit-konsumtif-tab" data-bs-toggle="pill" 
-                            data-bs-target="#pills-kredit-konsumtif" type="button" role="tab" 
-                            aria-controls="pills-kredit-konsumtif" aria-selected="false">
-                        <i class="fas fa-shopping-cart"></i> Kredit Konsumtif <!-- Icon for consumer credit -->
+                    <button class="nav-link" id="pills-{{ Str::slug($kredit->judul) }}-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-{{ Str::slug($kredit->judul) }}" type="button" role="tab"
+                        aria-controls="pills-{{ Str::slug($kredit->judul) }}"
+                        aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
+                        <i class="fas fa-shopping-cart"></i> {{ $kredit->judul }}
                     </button>
                 </li>
+                @endif
+
+                @if(strtolower($kredit->judul) === 'kredit sepeda motor')
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-kredit-motor-tab" data-bs-toggle="pill" 
-                            data-bs-target="#pills-kredit-motor" type="button" role="tab" 
-                            aria-controls="pills-kredit-motor" aria-selected="false">
-                        <i class="fas fa-motorcycle"></i> Kredit Sepeda Motor <!-- Icon for motorcycle loan -->
+                    <button class="nav-link" id="pills-{{ Str::slug($kredit->judul) }}-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-{{ Str::slug($kredit->judul) }}" type="button" role="tab"
+                        aria-controls="pills-{{ Str::slug($kredit->judul) }}"
+                        aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
+                        <i class="fas fa-motorcycle"></i> {{ $kredit->judul }}
                     </button>
                 </li>
+                @endif
+                @if(strtolower($kredit->judul) === 'sertifikasi guru')
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-sertifikasi-guru-tab" data-bs-toggle="pill" 
-                            data-bs-target="#pills-sertifikasi-guru" type="button" role="tab" 
-                            aria-controls="pills-sertifikasi-guru" aria-selected="false">
-                        <i class="fas fa-chalkboard-teacher"></i> Sertifikasi Guru <!-- Icon for teacher certification -->
+                    <button class="nav-link" id="pills-{{ Str::slug($kredit->judul) }}-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-{{ Str::slug($kredit->judul) }}" type="button" role="tab"
+                        aria-controls="pills-{{ Str::slug($kredit->judul) }}"
+                        aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
+                        <i class="fas fa-chalkboard-teacher"></i> {{ $kredit->judul }}
                     </button>
                 </li>
+                @endif
+                @if(strtolower($kredit->judul) === 'multiguna')
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-multiguna-tab" data-bs-toggle="pill" 
-                            data-bs-target="#pills-multiguna" type="button" role="tab" 
-                            aria-controls="pills-multiguna" aria-selected="false">
-                        <i class="fas fa-people-carry"></i> Multiguna <!-- Icon for multipurpose credit -->
+                    <button class="nav-link" id="pills-{{ Str::slug($kredit->judul) }}-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-{{ Str::slug($kredit->judul) }}" type="button" role="tab"
+                        aria-controls="pills-{{ Str::slug($kredit->judul) }}"
+                        aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
+                        <i class="fas fa-people-carry"></i> {{ $kredit->judul }}
                     </button>
                 </li>
+                @endif
+                @endforeach
 
                 </ul>
             </div>
@@ -401,9 +431,9 @@
             <!-- Pengajuan Kredit Content -->
             <div class="tab-pane fade show active" id="pills-pengajuan-kredit" role="tabpanel" 
                 aria-labelledby="pills-pengajuan-kredit-tab">
-                <div class="tabungan-content">
+                <div class="kredit-content">
                     <h3>Pengajuan Kredit</h3>
-                    <form class="tabungan-form mt-4">
+                    <form class="kredit-form mt-4">
                         <div class="form-group">
                             <label for="nama">Nama Lengkap</label>
                             <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap">
@@ -615,163 +645,102 @@
                     </div>
                 </div>
             </div>
-                
-
-                
-
-            <!-- Modal Usaha Content -->
-            <div class="tab-pane fade" id="pills-modal-usaha" role="tabpanel" 
-                aria-labelledby="pills-modal-usaha-tab">
+            @foreach($kreditData as $index => $kredit)
+            @if(strtolower($kredit->judul) === 'modal usaha')
+            <div class="tab-pane fade" id="pills-{{ Str::slug($kredit->judul) }}" role="tabpanel"
+                aria-labelledby="pills-{{ Str::slug($kredit->judul) }}-tab">
                 <div class="kredit-content">
-                <div class="modal-usaha-image mb-4 d-flex justify-content-center">
-                    <img src="/user/images/destination.png" alt="modal usaha" class="img-fluid">
-                </div>
-                    <h3>Kredit Modal Usaha</h3>
+                    <!-- Menampilkan Gambar -->
+                    <div class="kredit-image mb-4 d-flex justify-content-center">
+                        <img src="{{ asset('storage/' . $kredit->gambar) }}" alt="{{ $kredit->judul }}"
+                            class="img-fluid">
+                    </div>
+    
+                    <h3>{{ $kredit->judul }}</h3>
                     <div class="kredit-info-box">
-                        <h4>Keunggulan:</h4>
-                        <ul>
-                            <li>Suku bunga kompetitif mulai 9% p.a</li>
-                            <li>Plafon hingga Rp 500 juta</li>
-                            <li>Jangka waktu maksimal 5 tahun</li>
-                            <li>Proses cepat dan mudah</li>
-                        </ul>
-                    </div>
-                    <div class="requirement-box mt-4">
-                        <h4>Persyaratan Tambahan:</h4>
-                        <ul>
-                            <li>SIUP/NIB</li>
-                            <li>Laporan keuangan 6 bulan terakhir</li>
-                            <li>Bukti kepemilikan jaminan</li>
-                            <li>Rencana usaha (business plan)</li>
-                        </ul>
+                        <h4>Keunggulan {{ $kredit->judul }}:</h4>
+                        <p>{!! $kredit->keterangan !!}</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Kredit Konsumtif Content -->
-            <div class="tab-pane fade" id="pills-kredit-konsumtif" role="tabpanel" 
-                aria-labelledby="pills-kredit-konsumtif-tab">
+            @endif
+            @if(strtolower($kredit->judul) === 'kredit komsumtif')
+            <div class="tab-pane fade" id="pills-{{ Str::slug($kredit->judul) }}" role="tabpanel"
+                aria-labelledby="pills-{{ Str::slug($kredit->judul) }}-tab">
                 <div class="kredit-content">
-                <div class="kredit-konsumtif-image mb-4 d-flex justify-content-center">
-                    <img src="/user/images/destination.png" alt="kredit konsumtif" class="img-fluid">
-                </div>
-                    <h3>Kredit Konsumtif</h3>
-                    <div class="benefit-box">
-                        <h4>Manfaat:</h4>
-                        <ul>
-                            <li>Bunga ringan mulai 10% p.a</li>
-                            <li>Plafon hingga Rp 300 juta</li>
-                            <li>Jangka waktu fleksibel sampai 5 tahun</li>
-                            <li>Persyaratan mudah</li>
-                        </ul>
+                    <!-- Menampilkan Gambar -->
+                    <div class="kredit-image mb-4 d-flex justify-content-center">
+                        <img src="{{ asset('storage/' . $kredit->gambar) }}" alt="{{ $kredit->judul }}"
+                            class="img-fluid">
                     </div>
-                    <div class="feature-info mt-4">
-                        <h4>Kegunaan:</h4>
-                        <ul>
-                            <li>Renovasi rumah</li>
-                            <li>Biaya pendidikan</li>
-                            <li>Pembelian elektronik</li>
-                            <li>Kebutuhan konsumtif lainnya</li>
-                        </ul>
+    
+                    <h3>{{ $kredit->judul }}</h3>
+                    <div class="kredit-info-box">
+                        <h4>Keunggulan {{ $kredit->judul }}:</h4>
+                        <p>{!! $kredit->keterangan !!}</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Kredit Sepeda Motor Content -->
-            <div class="tab-pane fade" id="pills-kredit-motor" role="tabpanel" 
-                aria-labelledby="pills-kredit-motor-tab">
+            @endif
+            @if(strtolower($kredit->judul) === 'kredit sepeda motor')
+            <div class="tab-pane fade" id="pills-{{ Str::slug($kredit->judul) }}" role="tabpanel"
+                aria-labelledby="pills-{{ Str::slug($kredit->judul) }}-tab">
                 <div class="kredit-content">
-                <div class="kredit-motor-image mb-4 d-flex justify-content-center">
-                    <img src="/user/images/destination.png" alt="kredit motor" class="img-fluid">
-                </div>
-                    <h3>Kredit Sepeda Motor</h3>
-                    <div class="benefit-box">
-                        <h4>Keunggulan:</h4>
-                        <ul>
-                            <li>Bunga mulai 8% p.a</li>
-                            <li>Uang muka ringan mulai 10%</li>
-                            <li>Proses 1 hari kerja</li>
-                            <li>Tersedia untuk motor baru dan bekas</li>
-                        </ul>
+                    <!-- Menampilkan Gambar -->
+                    <div class="kredit-image mb-4 d-flex justify-content-center">
+                        <img src="{{ asset('storage/' . $kredit->gambar) }}" alt="{{ $kredit->judul }}"
+                            class="img-fluid">
                     </div>
-                    <div class="requirement-box mt-4">
-                        <h4>Persyaratan Khusus:</h4>
-                        <ul>
-                            <li>BPKB asli (untuk motor bekas)</li>
-                            <li>Faktur pembelian (untuk motor baru)</li>
-                            <li>Survei tempat tinggal</li>
-                            <li>Minimal usia motor 5 tahun (untuk motor bekas)</li>
-                        </ul>
+    
+                    <h3>{{ $kredit->judul }}</h3>
+                    <div class="kredit-info-box">
+                        <h4>Keunggulan {{ $kredit->judul }}:</h4>
+                        <p>{!! $kredit->keterangan !!}</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Sertifikasi Guru Content -->
-            <div class="tab-pane fade" id="pills-sertifikasi-guru" role="tabpanel" 
-                aria-labelledby="pills-sertifikasi-guru-tab">
+            @endif
+            @if(strtolower($kredit->judul) === 'sertifikasi guru')
+            <div class="tab-pane fade" id="pills-{{ Str::slug($kredit->judul) }}" role="tabpanel"
+                aria-labelledby="pills-{{ Str::slug($kredit->judul) }}-tab">
                 <div class="kredit-content">
-                <div class="sertifikasi-image mb-4 d-flex justify-content-center">
-                    <img src="/user/images/destination.png" alt="sertifikasi guru" class="img-fluid">
-                </div>
-                    <h3>Kredit Sertifikasi Guru</h3>
-                    <div class="benefit-box">
-                        <h4>Keunggulan:</h4>
-                        <ul>
-                            <li>Bunga khusus 7% p.a</li>
-                            <li>Plafon sesuai kebutuhan sertifikasi</li>
-                            <li>Jangka waktu maksimal 3 tahun</li>
-                            <li>Tanpa biaya provisi</li>
-                        </ul>
+                    <!-- Menampilkan Gambar -->
+                    <div class="kredit-image mb-4 d-flex justify-content-center">
+                        <img src="{{ asset('storage/' . $kredit->gambar) }}" alt="{{ $kredit->judul }}"
+                            class="img-fluid">
                     </div>
-                    <div class="requirement-box mt-4">
-                        <h4>Persyaratan Khusus:</h4>
-                        <ul>
-                            <li>SK Pengangkatan Guru</li>
-                            <li>Surat Keterangan mengikuti program sertifikasi</li>
-                            <li>Bukti pembayaran sertifikasi</li>
-                            <li>Rekomendasi dari kepala sekolah</li>
-                        </ul>
+    
+                    <h3>{{ $kredit->judul }}</h3>
+                    <div class="kredit-info-box">
+                        <h4>Keunggulan {{ $kredit->judul }}:</h4>
+                        <p>{!! $kredit->keterangan !!}</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Multiguna Content -->
-            <div class="tab-pane fade" id="pills-multiguna" role="tabpanel" 
-                aria-labelledby="pills-multiguna-tab">
+            @endif
+            @if(strtolower($kredit->judul) === 'multiguna')
+            <div class="tab-pane fade" id="pills-{{ Str::slug($kredit->judul) }}" role="tabpanel"
+                aria-labelledby="pills-{{ Str::slug($kredit->judul) }}-tab">
                 <div class="kredit-content">
-                <div class="multiguna-image mb-4 d-flex justify-content-center">
-                    <img src="/user/images/destination.png" alt="multiguna" class="img-fluid">
-                </div>
-                    <h3>Kredit Multiguna</h3>
-                    <div class="benefit-box">
-                        <h4>Keunggulan:</h4>
-                        <ul>
-                            <li>Bunga kompetitif mulai 11% p.a</li>
-                            <li>Plafon hingga Rp 300 juta</li>
-                            <li>Jangka waktu sampai 8 tahun</li>
-                            <li>Fleksibel untuk berbagai keperluan</li>
-                        </ul>
+                    <!-- Menampilkan Gambar -->
+                    <div class="kredit-image mb-4 d-flex justify-content-center">
+                        <img src="{{ asset('storage/' . $kredit->gambar) }}" alt="{{ $kredit->judul }}"
+                            class="img-fluid">
                     </div>
-                    <div class="feature-info mt-4">
-                        <h4>Fitur:</h4>
-                        <ul>
-                            <li>Agunan berupa tanah, rumah, atau kendaraan</li>
-                            <li>Perlindungan asuransi</li>
-                            <li>Take over dari bank lain</li>
-                            <li>Bebas penggunaan dana</li>
-                        </ul>
-                    </div>
-                    <div class="terms-info mt-4">
-                        <h4>Syarat Pengajuan:</h4>
-                        <ul>
-                            <li>Usia minimal 21 tahun</li>
-                            <li>Penghasilan minimal 3x angsuran</li>
-                            <li>Jaminan bebas sengketa</li>
-                            <li>Memiliki pekerjaan tetap minimal 2 tahun</li>
-                        </ul>
+    
+                    <h3>{{ $kredit->judul }}</h3>
+                    <div class="kredit-info-box">
+                        <h4>Keunggulan {{ $kredit->judul }}:</h4>
+                        <p>{!! $kredit->keterangan !!}</p>
                     </div>
                 </div>
             </div>
+            @endif
+            @endforeach
+
+                
+
+            
         </div>
 
 @endsection
