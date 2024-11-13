@@ -11,29 +11,24 @@
     </style>    
 @endsection
 
-{{-- @section('hero')
-    <h1>Contact Jogja-Travel</h1>
-    <h2>Bergabung dan liburan bersama Kami</h2>
-@endsection --}}
-
 @section('hero')
-    {{-- @if($profileSliders->isNotEmpty())
-        @foreach($profileSliders as $slider)
+    @if($kontakSliders->isNotEmpty())
+        @foreach($kontakSliders as $slider)
             <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
                 <div class="hero-container">
-                    <h1>Tentang Kami</h1>
-                    <h2>Informasi profil bank</h2>
+                    <h1>{{ $slider->judul ?? 'Tentang Kami' }}</h1>
+                    <h2>{{ $slider->keterangan ?? 'Informasi profil bank' }}</h2>
                 </div>
             </section>
         @endforeach
-    @else --}}
+    @else
         <section id="hero">
             <div class="hero-container">
               <h1>Contact Jogja-Travel</h1>
               <h2>Bergabung dan liburan bersama Kami</h2>
             </div>
         </section>
-    {{-- @endif --}}
+    @endif
 @endsection
 
 @section('content')
@@ -48,48 +43,44 @@
         <!-- Contact Info Section -->
         <div class="contact-info-section">
             <div class="info">
-            <div class="info-address">
-    <i class="fa fa-map-marker" style="font-size:24px; color:#2dc997;"></i>
-    <p>
-      Jl. Raya Jaranan
-      Ngadirejo, Kecamatan Kawedanan, Kabupaten Magetan
-      Provinsi Jawa Timur
-      63382
-    </p>
+                <div class="info-address">
+                    <i class="fa fa-map-marker" style="font-size:24px; color:#2dc997;"></i>
+                    <p>{{ $kontakInfo->alamat ?? 'Alamat tidak tersedia' }}</p>
                 </div>
 
                 <div>
                     <i class="fas fa-envelope"></i>
-                    <p>bank.ekadharma@gmail.com</p>
+                    <p>{{ $kontakInfo->email ?? 'Email tidak tersedia' }}</p>
                 </div>
 
                 <div>
                     <i class="fas fa-phone"></i>
-                    <p>(0351) 439872</p>
+                    <p>{{ $kontakInfo->telepon ?? '(Nomor telepon tidak tersedia)' }}</p>
                 </div>
             </div>
 
             <div class="social-links">
-                <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a>
+                @if($kontakInfo->whatsapp)
+                    <a href="https://wa.me/{{ $kontakInfo->whatsapp }}" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                @endif
+                @if($kontakInfo->facebook)
+                    <a href="{{ $kontakInfo->facebook }}" class="facebook"><i class="fab fa-facebook"></i></a>
+                @endif
+                @if($kontakInfo->instagram)
+                    <a href="{{ $kontakInfo->instagram }}" class="instagram"><i class="fab fa-instagram"></i></a>
+                @endif
+                @if($kontakInfo->youtube)
+                    <a href="{{ $kontakInfo->youtube }}" class="youtube"><i class="fab fa-youtube"></i></a>
+                @endif
             </div>
         </div>
 
-        <!-- Map and Form Container -->
         <div class="map-form-container">
-            <!-- Map Section -->
             <div class="map-section">
-            <iframe 
-                src="https://www.google.com/maps?q=Bank%20Ekadharma,%20Jl.%20Raya%20Jaranan%20%E2%80%93%20Ngadirejo,%20Kecamatan%20Kawedanan,%20Kabupaten%20Magetan,%20Jawa%20Timur%2063382&output=embed" 
-                width="100%" 
-                height="450" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+                    <!-- Gunakan link embed langsung jika formatnya benar -->
+                    
+                        {!! $kontakInfo->gmap !!}
+    
             </div>
 
             <!-- Form Section -->
