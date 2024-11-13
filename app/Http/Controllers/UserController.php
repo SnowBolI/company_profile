@@ -8,25 +8,27 @@ use App\Models\Berita;
 use App\Models\HomeYT;
 use App\Models\Article;
 use App\Models\Edukasi;
+use App\Models\Kontak;
 use App\Models\Laporan;
 use App\Models\Category;
 use App\Models\KantorKas;
 use App\Models\HomeSlider;
+use App\Models\ProdukPPOB;
 use App\Models\Destination;
 use App\Models\KarirBanner;
-use App\Models\ProdukDeposito;
-use App\Models\ProdukKredit;
-use App\Models\ProdukPPOB;
 use Illuminate\Support\Str;
 use App\Models\BeritaBanner;
 use App\Models\KantorBanner;
 use App\Models\KantorCabang;
+use App\Models\KontakBanner;
 use App\Models\ProdukBanner;
+use App\Models\ProdukKredit;
 use Illuminate\Http\Request;
 use App\Models\EdukasiBanner;
 use App\Models\HomeThumbnail;
 use App\Models\LaporanBanner;
 use App\Models\HomeBackground;
+use App\Models\ProdukDeposito;
 use App\Models\ProdukTabungan;
 
 class UserController extends Controller
@@ -360,6 +362,12 @@ class UserController extends Controller
   }
   public function contact()
   {
-    return view('user/contact');
+    $kontakSliders = KontakBanner::orderBy('created_at', 'desc')->take(1)->get();
+
+    // Mengambil semua data tabungan untuk semua tab
+    $kontakInfo = Kontak::first();
+
+        // Return the view with the data
+    return view('user.contact', compact('kontakSliders', 'kontakInfo'));
   }
 }
