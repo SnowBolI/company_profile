@@ -173,12 +173,12 @@ class UserController extends Controller
       // Mengambil data edukasi berdasarkan pencarian kata kunci pada kolom judul dan keterangan
       $articles = Edukasi::where('judul', 'LIKE', "%$keyword%")
           ->orWhere('keterangan', 'LIKE', "%$keyword%")
-          ->orderBy('created_at', 'desc')
+          ->orderBy('tanggal', 'desc')
           ->paginate(10);
 
       // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
       $recents = Edukasi::select('judul', 'slug')
-          ->orderBy('created_at', 'desc')
+          ->orderBy('tanggal', 'desc')
           ->limit(5)
           ->get();
 
@@ -205,12 +205,12 @@ class UserController extends Controller
       // Mengambil data edukasi berdasarkan pencarian kata kunci pada kolom judul dan keterangan
       $articles = Karir::where('judul', 'LIKE', "%$keyword%")
           ->orWhere('keterangan', 'LIKE', "%$keyword%")
-          ->orderBy('created_at', 'desc')
+          ->orderBy('tanggal', 'desc')
           ->paginate(10);
 
       // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
       $recents = Karir::select('judul', 'slug')
-          ->orderBy('created_at', 'desc')
+          ->orderBy('tanggal', 'desc')
           ->limit(5)
           ->get();
 
@@ -254,12 +254,12 @@ class UserController extends Controller
       // Mengambil data edukasi berdasarkan pencarian kata kunci pada kolom judul dan keterangan
       $articles = Berita::where('judul', 'LIKE', "%$keyword%")
           ->orWhere('keterangan', 'LIKE', "%$keyword%")
-          ->orderBy('created_at', 'desc')
+          ->orderBy('tanggal', 'desc')
           ->paginate(10);
 
       // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
-      $recents = Karir::select('judul', 'slug')
-          ->orderBy('created_at', 'desc')
+      $recents = Berita::select('judul', 'slug')
+          ->orderBy('tanggal', 'desc')
           ->limit(5)
           ->get();
 

@@ -2,7 +2,7 @@
 
 @section('title', 'Create Kantor Kas')
 
-@section('breadcrumbs', 'Kantor Kas')
+@section('breadcrumbs', 'Kantor Kas '. $namaCabang->nama)
 
 @section('second-breadcrumb')
     <li>Create</li>

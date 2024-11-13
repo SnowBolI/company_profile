@@ -1,7 +1,8 @@
 @extends('layouts.admin') {{-- Sesuaikan dengan layout Ela Admin --}}
 
 @section('title', 'Kantor Kas')
-@section('breadcrumbs', 'Kantor Kas')
+@section('breadcrumbs', 'Kantor Kas '. $namaCabang->nama)
+
 
 @section('content')
     {{-- <div class="content"> --}}

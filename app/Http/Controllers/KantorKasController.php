@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\KantorKas;
+use Illuminate\Support\Str;
 use App\Models\KantorCabang;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,7 +20,7 @@ class KantorKasController extends Controller
     {
         // Mendapatkan kata kunci pencarian dari request
         $search = $request->input('search');
-
+        $namaCabang =  KantorCabang::findOrFail($idkantorcabang);
         // Query untuk mengambil data kantor kas berdasarkan pencarian dan pagination
         $kantorKass = KantorKas::where('kantor_cabang_id', $idkantorcabang)
             ->when($search, function ($query, $search) {
@@ -29,7 +30,7 @@ class KantorKasController extends Controller
             ->paginate(10);
 
         // Mengirimkan data kantor kas, kata kunci pencarian, dan id kantor cabang ke view
-        return view('kantorKass.index', compact('kantorKass', 'idkantorcabang', 'search'));
+        return view('kantorKass.index', compact('kantorKass', 'idkantorcabang', 'search', 'namaCabang'));
     }
 
 
@@ -39,12 +40,16 @@ class KantorKasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create($idkantorcabang)
+
     {
+        $namaCabang =  KantorCabang::findOrFail($idkantorcabang);
+
         // Dapatkan data cabang berdasarkan ID
         $kantorCabang = KantorCabang::findOrFail($idkantorcabang);
 
+
         // Kirim data cabang ke form create kantor kas
-        return view('kantorKass.create', compact('kantorCabang'));
+        return view('kantorKass.create', compact('kantorCabang','namaCabang'));
     }
 
     /**
@@ -73,6 +78,8 @@ class KantorKasController extends Controller
             $input['gambar'] = $gambarPath;
         }
         $input['kantor_cabang_id'] = $idkantorcabang;
+        $input['slug'] = Str::slug($request->input('nama'));
+
         KantorKas::create($input);
 
         return redirect()->route('kantor_kas.index', $idkantorcabang)
@@ -92,9 +99,11 @@ class KantorKasController extends Controller
     // }
     public function show($idkantorcabang, $idkantorKas)
     {
+        $namaCabang =  KantorCabang::findOrFail($idkantorcabang);
+
         $kantorKas = KantorKas::find($idkantorKas); // Query manual
         // dd($kantorKas, $idkantorcabang);
-        return view('kantorKass.show', compact('kantorKas', 'idkantorcabang'));
+        return view('kantorKass.show', compact('kantorKas', 'idkantorcabang','namaCabang'));
     }
 
     /**
@@ -105,9 +114,11 @@ class KantorKasController extends Controller
      */
     public function edit($idkantorcabang, $idkantorKas)
     {
+        $namaCabang =  KantorCabang::findOrFail($idkantorcabang);
+
         $kantorKas = KantorKas::find($idkantorKas); // Query manual
         // dd($kantorKas, $idkantorcabang);
-        return view('kantorKass.edit', compact('kantorKas', 'idkantorcabang'));
+        return view('kantorKass.edit', compact('kantorKas', 'idkantorcabang', 'namaCabang'));
     }
     
 
@@ -130,6 +141,7 @@ class KantorKasController extends Controller
             'gambar' => 'image'
         ]);
         $input = $request->all();
+        $input['slug'] = Str::slug($request->input('nama'));
         
         if ($gambar = $request->file('gambar')) {
             // Hapus gambar lama jika ada
