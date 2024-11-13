@@ -378,31 +378,31 @@
   
       <!--========================== Gallery Section ============================-->
       <section id="penghargaan" style="padding-bottom: 85px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-        <div class="container wow fadeInUp">
-          <div class="section-header">
+    <div class="container wow fadeInUp">
+        <div class="section-header">
             <h3 class="section-title">Penghargaan</h3>
             <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-          </div>
         </div>
-  
-        <div class="penghargaan-container wow fadeInUp">
-          <div class="box box-1"
-          style="background-image: url('/user/images/fua.png');">
-          </div>
-          <div class="box box-2"
-          style="background-image: url('/user/images/fua.png');">
-          </div>
-          <div class="box box-3"
-          style="background-image: url('/user/images/fua.png');">
-          </div>
-          <div class="box box-4"
-          style="background-image: url('/user/images/fua.png');">
-          </div>
-          <div class="box box-5"
-          style="background-image: url('/user/images/fua.png');">
-          </div>
+    </div>
+
+    <div class="penghargaan-container wow fadeInUp">
+        <div class="box box-1"
+            style="background-image: url('{{ asset('user/images/bank1.jpeg') }}');">
         </div>
-      </section>
+        <div class="box box-2"
+            style="background-image: url('{{ asset('user/images/bank2.jpg') }}');">
+        </div>
+        <div class="box box-3"
+            style="background-image: url('{{ asset('user/images/bank3.jpeg') }}');">
+        </div>
+        <div class="box box-4"
+            style="background-image: url('{{ asset('user/images/fua.png') }}');">
+        </div>
+        <div class="box box-5"
+            style="background-image: url('{{ asset('user/images/fua.png') }}');">
+        </div>
+    </div>
+</section>
 @endsection
 
 @section('scripts')
