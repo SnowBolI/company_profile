@@ -166,25 +166,25 @@
             }
 
             /* Info Box Styling */
-            .deposit-info-box {
+            .deposito-info-box {
                 background-color: #E3F2FD;
                 padding: 20px;
                 border-radius: 8px;
                 margin: 15px 0;
             }
 
-            .deposit-info-box ul {
+            .deposito-info-box ul {
                 list-style-type: none;
                 padding-left: 0;
             }
 
-            .deposit-info-box ul li {
+            .deposito-info-box ul li {
                 margin-bottom: 10px;
                 padding-left: 25px;
                 position: relative;
             }
 
-            .deposit-info-box ul li:before {
+            .deposito-info-box ul li:before {
                 content: '✓';
                 color: #1976D2;
                 position: absolute;
@@ -268,7 +268,7 @@
             }
 
             /* Button Styling */
-            .deposit-cta-button {
+            .deposito-cta-button {
                 background-color: #1976D2;
                 color: white;
                 padding: 12px 25px;
@@ -278,7 +278,7 @@
                 cursor: pointer;
             }
 
-            .deposit-cta-button:hover {
+            .deposito-cta-button:hover {
                 background-color: #1565C0;
                 transform: translateY(-2px);
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -303,12 +303,23 @@
 
 
 @section('hero')
+@if($produkSliders->isNotEmpty())
+@foreach($produkSliders as $slider)
+    <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
+        <div class="hero-container">
+            <h1>Tentang Kami</h1>
+            <h2>Informasi profil bank</h2>
+        </div>
+    </section>
+@endforeach
+@else
 <section id="hero">
     <div class="hero-container">
-        <h1>Deposito</h1>
-        <h2>Produk deposito kami</h2>
+        <h1>Tentang Kami</h1>
+        <h2>Informasi profil bank</h2>
     </div>
 </section>
+@endif
 @endsection
 
 @section('content')
@@ -330,34 +341,51 @@
                             <i class="fas fa-calculator"></i> Simulasi Deposito <!-- Ikon kalkulator -->
                         </button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-DeBesT-tab" data-bs-toggle="pill" 
-                                data-bs-target="#pills-DeBesT" type="button" role="tab" 
-                                aria-controls="pills-DeBesT" aria-selected="false">
-                            <i class="fas fa-star"></i> DeBesT <!-- Ikon bintang untuk produk unggulan -->
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-deposito-6bulan-tab" data-bs-toggle="pill" 
-                                data-bs-target="#pills-deposito-6bulan" type="button" role="tab" 
-                                aria-controls="pills-deposito-6bulan" aria-selected="false">
-                            <i class="fas fa-calendar-alt"></i> Deposito Berjangka 6 bulan <!-- Ikon kalender -->
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-deposito-3bulan-tab" data-bs-toggle="pill" 
-                                data-bs-target="#pills-deposito-3bulan" type="button" role="tab" 
-                                aria-controls="pills-deposito-3bulan" aria-selected="false">
-                            <i class="fas fa-calendar-check"></i> Deposito Berjangka 3 bulan <!-- Ikon kalender cek -->
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-deposito-1bulan-tab" data-bs-toggle="pill" 
-                                data-bs-target="#pills-deposito-1bulan" type="button" role="tab" 
-                                aria-controls="pills-deposito-1bulan" aria-selected="false">
-                            <i class="fas fa-calendar-day"></i> Deposito Berjangka 1 bulan <!-- Ikon kalender harian -->
-                        </button>
-                    </li>
+                    @foreach($depositoData as $index => $deposito)
+                @if(strtolower($deposito->judul) === 'debest')
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-{{ Str::slug($deposito->judul) }}-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-{{ Str::slug($deposito->judul) }}" type="button" role="tab"
+                        aria-controls="pills-{{ Str::slug($deposito->judul) }}"
+                        aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
+                        <i class="fas fa-star"></i> {{ $deposito->judul }}
+                    </button>
+                </li>
+                @endif
+
+                @if(strtolower($deposito->judul) === 'deposito berjangka 6 bulan')
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-{{ Str::slug($deposito->judul) }}-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-{{ Str::slug($deposito->judul) }}" type="button" role="tab"
+                        aria-controls="pills-{{ Str::slug($deposito->judul) }}"
+                        aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
+                        <i class="fas fa-calender-alt"></i> {{ $deposito->judul }}
+                    </button>
+                </li>
+                @endif
+
+                @if(strtolower($deposito->judul) === 'deposito berjangka 3 bulan')
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-{{ Str::slug($deposito->judul) }}-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-{{ Str::slug($deposito->judul) }}" type="button" role="tab"
+                        aria-controls="pills-{{ Str::slug($deposito->judul) }}"
+                        aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
+                        <i class="fas fa-calender-check"></i> {{ $deposito->judul }}
+                    </button>
+                </li>
+                @endif
+                @if(strtolower($deposito->judul) === 'deposito berjangka 1 bulan')
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-{{ Str::slug($deposito->judul) }}-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-{{ Str::slug($deposito->judul) }}" type="button" role="tab"
+                        aria-controls="pills-{{ Str::slug($deposito->judul) }}"
+                        aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
+                        <i class="fas fa-calender-day"></i> {{ $deposito->judul }}
+                    </button>
+                </li>
+                @endif
+                @endforeach
+                    
                 </ul>
             </div>
         </div>
@@ -366,9 +394,9 @@
             <!-- Pengajuan Deposito Content -->
             <div class="tab-pane fade show active" id="pills-pengajuan-deposito" role="tabpanel" 
                 aria-labelledby="pills-pengajuan-deposito-tab">
-                <div class="tabungan-content">
+                <div class="deposito-content">
                     <h3>Pengajuan Deposito</h3>
-                    <form class="tabungan-form mt-4">
+                    <form class="deposito-form mt-4">
                         <div class="form-group">
                             <label for="nama">Nama Lengkap</label>
                             <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap">
@@ -474,117 +502,79 @@
 
 
             <!-- DeBesT Content -->
-            <div class="tab-pane fade" id="pills-DeBesT" role="tabpanel" 
-                aria-labelledby="pills-DeBesT-tab">
-                <div class="deposito-content">
+            @foreach($depositoData as $index => $deposito)
+        @if(strtolower($deposito->judul) === 'debest')
+        <div class="tab-pane fade" id="pills-{{ Str::slug($deposito->judul) }}" role="tabpanel"
+            aria-labelledby="pills-{{ Str::slug($deposito->judul) }}-tab">
+            <div class="deposito-content">
+                <!-- Menampilkan Gambar -->
                 <div class="deposito-image mb-4 d-flex justify-content-center">
-                    <img src="/user/images/destination.png" alt="debest" class="img-fluid">
+                    <img src="{{ asset('storage/' . $deposito->gambar) }}" alt="{{ $deposito->judul }}"
+                        class="img-fluid">
                 </div>
-                    <h3>DeBesT (Deposito Berjangka Special Rate)</h3>
-                    <div class="deposit-info-box">
-                        <h4>Keunggulan DeBesT:</h4>
-                        <ul>
-                            <li>Suku bunga special hingga 7% p.a</li>
-                            <li>Jangka waktu fleksibel</li>
-                            <li>Pembayaran bunga di muka</li>
-                            <li>Dapat dijadikan jaminan kredit</li>
-                        </ul>
-                    </div>
-                    <div class="rate-table mt-4">
-                        <h4>Special Rate:</h4>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Nominal</th>
-                                    <th>Rate</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>> Rp 100 Juta</td>
-                                    <td>6.5% p.a</td>
-                                </tr>
-                                <tr>
-                                    <td>> Rp 500 Juta</td>
-                                    <td>7.0% p.a</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Deposito 6 Bulan Content -->
-            <div class="tab-pane fade" id="pills-deposito-6bulan" role="tabpanel" 
-                aria-labelledby="pills-deposito-6bulan-tab">
-                <div class="deposito-content">
-                <div class="deposito-image mb-4 d-flex justify-content-center">
-                    <img src="/user/images/destination.png" alt="deposito 6 bulan" class="img-fluid">
-                </div>
-                    <h3>Deposito Berjangka 6 Bulan</h3>
-                    <div class="benefit-box">
-                        <h4>Manfaat:</h4>
-                        <ul>
-                            <li>Suku bunga kompetitif</li>
-                            <li>Jangka waktu optimal</li>
-                            <li>Bunga dapat ditransfer ke rekening tabungan</li>
-                        </ul>
-                    </div>
-                    <div class="interest-info mt-4">
-                        <h4>Suku Bunga:</h4>
-                        <div class="interest-rate">5.75% p.a</div>
-                        <p class="mt-3">*Suku bunga dapat berubah sewaktu-waktu</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Deposito 3 Bulan Content -->
-            <div class="tab-pane fade" id="pills-deposito-3bulan" role="tabpanel" 
-                aria-labelledby="pills-deposito-3bulan-tab">
-                <div class="deposito-content">
-                <div class="deposito-image mb-4 d-flex justify-content-center">
-                    <img src="/user/images/destination.png" alt="deposito 3 bulan" class="img-fluid">
-                </div>
-                    <h3>Deposito Berjangka 3 Bulan</h3>
-                    <div class="benefit-box">
-                        <h4>Manfaat:</h4>
-                        <ul>
-                            <li>Fleksibilitas lebih tinggi</li>
-                            <li>Suku bunga menarik</li>
-                            <li>Perpanjangan otomatis (ARO)</li>
-                        </ul>
-                    </div>
-                    <div class="interest-info mt-4">
-                        <h4>Suku Bunga:</h4>
-                        <div class="interest-rate">5.50% p.a</div>
-                        <p class="mt-3">*Suku bunga dapat berubah sewaktu-waktu</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Deposito 1 Bulan Content -->
-            <div class="tab-pane fade" id="pills-deposito-1bulan" role="tabpanel" 
-                aria-labelledby="pills-deposito-1bulan-tab">
-                <div class="deposito-content">
-                <div class="deposito-image mb-4 d-flex justify-content-center">
-                    <img src="/user/images/destination.png" alt="deposito 1 bulan" class="img-fluid">
-                </div>
-                    <h3>Deposito Berjangka 1 Bulan</h3>
-                    <div class="benefit-box">
-                        <h4>Manfaat:</h4>
-                        <ul>
-                            <li>Jangka waktu pendek</li>
-                            <li>Likuiditas tinggi</li>
-                            <li>Pengelolaan dana lebih fleksibel</li>
-                        </ul>
-                    </div>
-                    <div class="interest-info mt-4">
-                        <h4>Suku Bunga:</h4>
-                        <div class="interest-rate">5.25% p.a</div>
-                        <p class="mt-3">*Suku bunga dapat berubah sewaktu-waktu</p>
-                    </div>
+                <h3>{{ $deposito->judul }}</h3>
+                <div class="deposito-info-box">
+                    <h4>Keunggulan {{ $deposito->judul }}:</h4>
+                    <p>{!! $deposito->keterangan !!}</p>
                 </div>
             </div>
         </div>
+        @endif
+        @if(strtolower($deposito->judul) === 'deposito berjangka 6 bulan')
+        <div class="tab-pane fade" id="pills-{{ Str::slug($deposito->judul) }}" role="tabpanel"
+            aria-labelledby="pills-{{ Str::slug($deposito->judul) }}-tab">
+            <div class="deposito-content">
+                <!-- Menampilkan Gambar -->
+                <div class="deposito-image mb-4 d-flex justify-content-center">
+                    <img src="{{ asset('storage/' . $deposito->gambar) }}" alt="{{ $deposito->judul }}"
+                        class="img-fluid">
+                </div>
+
+                <h3>{{ $deposito->judul }}</h3>
+                <div class="deposito-info-box">
+                    <h4>Keunggulan {{ $deposito->judul }}:</h4>
+                    <p>{!! $deposito->keterangan !!}</p>
+                </div>
+            </div>
+        </div>
+        @endif
+        @if(strtolower($deposito->judul) === 'deposito berjangka 3 bulan')
+        <div class="tab-pane fade" id="pills-{{ Str::slug($deposito->judul) }}" role="tabpanel"
+            aria-labelledby="pills-{{ Str::slug($deposito->judul) }}-tab">
+            <div class="deposito-content">
+                <!-- Menampilkan Gambar -->
+                <div class="deposito-image mb-4 d-flex justify-content-center">
+                    <img src="{{ asset('storage/' . $deposito->gambar) }}" alt="{{ $deposito->judul }}"
+                        class="img-fluid">
+                </div>
+
+                <h3>{{ $deposito->judul }}</h3>
+                <div class="deposito-info-box">
+                    <h4>Keunggulan {{ $deposito->judul }}:</h4>
+                    <p>{!! $deposito->keterangan !!}</p>
+                </div>
+            </div>
+        </div>
+        @endif
+        @if(strtolower($deposito->judul) === 'deposito berjangka 1 bulan')
+        <div class="tab-pane fade" id="pills-{{ Str::slug($deposito->judul) }}" role="tabpanel"
+            aria-labelledby="pills-{{ Str::slug($deposito->judul) }}-tab">
+            <div class="deposito-content">
+                <!-- Menampilkan Gambar -->
+                <div class="deposito-image mb-4 d-flex justify-content-center">
+                    <img src="{{ asset('storage/' . $deposito->gambar) }}" alt="{{ $deposito->judul }}"
+                        class="img-fluid">
+                </div>
+
+                <h3>{{ $deposito->judul }}</h3>
+                <div class="deposito-info-box">
+                    <h4>Keunggulan {{ $deposito->judul }}:</h4>
+                    <p>{!! $deposito->keterangan !!}</p>
+                </div>
+            </div>
+        </div>
+        @endif
+        @endforeach
 
 @endsection

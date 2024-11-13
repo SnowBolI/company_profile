@@ -10,19 +10,24 @@ use App\Models\Article;
 use App\Models\Edukasi;
 use App\Models\Laporan;
 use App\Models\Category;
-use App\Models\HomeSlider;
-use App\Models\KantorBanner;
-use App\Models\KantorCabang;
 use App\Models\KantorKas;
+use App\Models\HomeSlider;
 use App\Models\Destination;
 use App\Models\KarirBanner;
+use App\Models\ProdukDeposito;
+use App\Models\ProdukKredit;
+use App\Models\ProdukPPOB;
 use Illuminate\Support\Str;
 use App\Models\BeritaBanner;
+use App\Models\KantorBanner;
+use App\Models\KantorCabang;
+use App\Models\ProdukBanner;
 use Illuminate\Http\Request;
 use App\Models\EdukasiBanner;
 use App\Models\HomeThumbnail;
 use App\Models\LaporanBanner;
 use App\Models\HomeBackground;
+use App\Models\ProdukTabungan;
 
 class UserController extends Controller
 {
@@ -315,23 +320,43 @@ class UserController extends Controller
   }
 
     public function tabungan()
-  {
-      return view('user.tabungan');
-  }
+    {
+        $produkSliders = ProdukBanner::orderBy('created_at', 'desc')->take(1)->get();
+
+        // Mengambil semua data tabungan untuk semua tab
+        $tabunganData = ProdukTabungan::all();
+
+        return view('user.tabungan', compact('tabunganData', 'produkSliders'));
+    }
 
   public function deposito() 
   {
-      return view('user.deposito');
-  }
+    $produkSliders = ProdukBanner::orderBy('created_at', 'desc')->take(1)->get();
+
+    // Mengambil semua data tabungan untuk semua tab
+    $depositoData = ProdukDeposito::all();
+
+    return view('user.deposito', compact('depositoData', 'produkSliders'));
+}
 
   public function kredit()
   {
-      return view('user.kredit');
-  }
+    $produkSliders = ProdukBanner::orderBy('created_at', 'desc')->take(1)->get();
+
+    // Mengambil semua data tabungan untuk semua tab
+    $kreditData = ProdukKredit::all();
+
+    return view('user.kredit', compact('kreditData', 'produkSliders'));
+}
 
   public function ppob()
   {
-      return view('user.ppob');
+      $produkSliders = ProdukBanner::orderBy('created_at', 'desc')->take(1)->get();
+
+      // Mengambil semua data tabungan untuk semua tab
+      $ppobData = ProdukPPOB::all();
+
+      return view('user.ppob', compact('ppobData', 'produkSliders'));
   }
   public function contact()
   {

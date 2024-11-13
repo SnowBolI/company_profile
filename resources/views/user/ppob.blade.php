@@ -158,7 +158,7 @@
                 background-color: #f8f9fa;
             }
 
-            .deposito-content {
+            .ppob-content {
                 background-color: #ffffff;
                 border-radius: 10px;
                 padding: 30px;
@@ -166,25 +166,25 @@
             }
 
             /* Info Box Styling */
-            .deposit-info-box {
+            .ppob-info-box {
                 background-color: #E3F2FD;
                 padding: 20px;
                 border-radius: 8px;
                 margin: 15px 0;
             }
 
-            .deposit-info-box ul {
+            .ppob-info-box ul {
                 list-style-type: none;
                 padding-left: 0;
             }
 
-            .deposit-info-box ul li {
+            .ppob-info-box ul li {
                 margin-bottom: 10px;
                 padding-left: 25px;
                 position: relative;
             }
 
-            .deposit-info-box ul li:before {
+            .ppob-info-box ul li:before {
                 content: '✓';
                 color: #1976D2;
                 position: absolute;
@@ -268,7 +268,7 @@
             }
 
             /* Button Styling */
-            .deposit-cta-button {
+            .ppob-cta-button {
                 background-color: #1976D2;
                 color: white;
                 padding: 12px 25px;
@@ -278,7 +278,7 @@
                 cursor: pointer;
             }
 
-            .deposit-cta-button:hover {
+            .ppob-cta-button:hover {
                 background-color: #1565C0;
                 transform: translateY(-2px);
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -286,7 +286,7 @@
 
             /* Responsive Adjustments */
             @media (max-width: 768px) {
-                .deposito-content {
+                .ppob-content {
                     padding: 20px;
                 }
 
@@ -305,12 +305,23 @@
 
 
 @section('hero')
-<section id="hero">
-    <div class="hero-container">
-        <h1>PPOB</h1>
-        <h2>Layanan pembayaran online</h2>
-    </div>
-</section>
+@if($produkSliders->isNotEmpty())
+    @foreach($produkSliders as $slider)
+        <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
+            <div class="hero-container">
+                <h1>Tentang Kami</h1>
+                <h2>Informasi profil bank</h2>
+            </div>
+        </section>
+    @endforeach
+@else
+    <section id="hero">
+        <div class="hero-container">
+            <h1>Tentang Kami</h1>
+            <h2>Informasi profil bank</h2>
+        </div>
+    </section>
+@endif
 @endsection
 
 @section('content')
@@ -318,48 +329,43 @@
         <div class="nav-wrapper">
             <div class="container">
                 <ul class="nav nav-pills mb-0 justify-content-center" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-ppob-tab" data-bs-toggle="pill" 
-                                data-bs-target="#pills-ppob" type="button" role="tab" 
-                                aria-controls="pills-ppob" aria-selected="true">
-                            <i class="fas fa-receipt"></i> PPOB <!-- Icon for payment transactions -->
-                        </button>
-                    </li>
+                    @foreach($ppobData as $index => $ppob)
+                        @if(strtolower($ppob->judul) === 'ppob')
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-{{ Str::slug($ppob->judul) }}-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-{{ Str::slug($ppob->judul) }}" type="button" role="tab"
+                                    aria-controls="pills-{{ Str::slug($ppob->judul) }}"
+                                    aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
+                                    <i class="fas fa-briefcase"></i> {{ $ppob->judul }}
+                                </button>
+                            </li>
+                        @endif
+                    @endforeach
                 </ul>
             </div>
         </div>
 
-
-        <div class="ppob-content">
-                <h3>PPOB</h3>
-                
-                <!-- Image at the Top -->
-                <div class="ppob-image mb-4 d-flex justify-content-center">
-                    <img src="/user/images/destination.png" alt="ppob" class="img-fluid">
-                </div>
-
-                <!-- Benefits Section -->
-                <div class="benefit-box mt-4">
-                    <h4>Manfaat PPOB:</h4>
-                    <ul>
-                        <li>Transaksi pembayaran tagihan lebih mudah</li>
-                        <li>Terintegrasi dengan berbagai penyedia layanan</li>
-                        <li>Notifikasi pembayaran instan</li>
-                        <li>Akses 24/7 melalui mobile banking</li>
-                    </ul>
-                </div>
-                
-                <!-- Features Section -->
-                <div class="feature-info mt-4">
-                    <h4>Fitur PPOB:</h4>
-                    <ul>
-                        <li>Pembayaran listrik, air, internet, dan lainnya</li>
-                        <li>Riwayat transaksi yang lengkap</li>
-                        <li>Akses cepat dan mudah</li>
-                        <li>Keamanan data terjamin</li>
-                    </ul>
+        <div class="tab-content" id="pills-tabContent">
+            @foreach($ppobData as $index => $ppob)
+            @if(strtolower($ppob->judul) === 'ppob')
+            <div class="tab-pane fade" id="pills-{{ Str::slug($ppob->judul) }}" role="tabpanel"
+                aria-labelledby="pills-{{ Str::slug($ppob->judul) }}-tab">
+                <div class="ppob-content">
+                    <!-- Menampilkan Gambar -->
+                    <div class="ppob-image mb-4 d-flex justify-content-center">
+                        <img src="{{ asset('storage/' . $ppob->gambar) }}" alt="{{ $ppob->judul }}"
+                            class="img-fluid">
+                    </div>
+    
+                    <h3>{{ $ppob->judul }}</h3>
+                    <div class="ppob-info-box">
+                        <h4>Keunggulan {{ $ppob->judul }}:</h4>
+                        <p>{!! $ppob->keterangan !!}</p>
+                    </div>
                 </div>
             </div>
+            @endif
+            @endforeach
         </div>
-
+    </section>
 @endsection
