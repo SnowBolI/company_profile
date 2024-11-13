@@ -47,6 +47,10 @@ class UserController extends Controller
     $homeYoutubes = HomeYT::orderBy('created_at', 'desc')->first();
     $homeThumbnails = HomeThumbnail::orderBy('created_at', 'desc')->first();
     $homeBackgrounds = HomeBackground::orderBy('created_at', 'desc')->take(1)->get();
+    $recents = Edukasi::select('judul', 'slug')
+          ->orderBy('created_at', 'desc')
+          ->limit(5)
+          ->get();
 
     if ($homeYoutubes) {
       $url = $homeYoutubes->linkyt;
@@ -61,8 +65,9 @@ class UserController extends Controller
     // Ambil data kategori dan about
     $categories = Category::all();
     $about = About::all();
+    $recents = Berita::all();
 
-    return view('user.home', compact('homeSliders','homeBackgrounds', 'homeThumbnails', 'youtubeId', 'categories', 'about'));
+    return view('user.home', compact('homeSliders','homeBackgrounds', 'homeThumbnails', 'youtubeId', 'categories', 'about', 'recents'));
   }
 
   public function cabang(Request $request)

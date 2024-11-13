@@ -121,7 +121,7 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-section">
-        <h3>Contact Us</h3>
+        <h3>Hubungi Kami</h3>
         <ul class="contact-info">
           <li><i class="fas fa-map-marker-alt"></i>
             Jl. Raya Jaranan – Ngadirejo, Kecamatan Kawedanan Kabupaten Magetan Provinsi Jawa Timur 63382</li>
@@ -136,24 +136,29 @@
           <li><a href="{{url('profile')}}">Profile BPR</a></li>
           <li><a href="{{url('blog_karir')}}">Edukasi</a></li>
           <li><a href="{{url('blog_karir')}}">Karir</a></li>
-          <li><a href="{{url('blog_berita')}}">berita</a></li>
-          <li><a href="{{url('destination')}}">Berita</a></li>
+          <li><a href="{{url('blog_berita')}}">Berita</a></li>
+          <li><a href="{{url('tabungan')}}">Tabungan</a></li>
+          <li><a href="{{url('deposito')}}">Deposito</a></li>
+          <li><a href="{{url('ppob')}}">PPOB</a></li>
+          <li><a href="{{url('kredit')}}">Kredit</a></li>
           <li><a href="{{url('contact')}}">Contact</a></li>
           <li><a href="{{url('home')}}">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-section">
-        <h3>Newsletter</h3>
-        <p>Subscribe to our newsletter for updates.</p>
-        <div class="email-subscribe">
-          <input type="email" placeholder="Enter your email">
-          <button><i class="fas fa-paper-plane"></i></button>
-        </div>
+      <h3>Berita Terbaru</h3>
+                @foreach ($recents as $recent)
+                  <div>
+                      <a href="{{route('blog_berita.show', [$recent->slug])}}"> <i class="fa fa-dot-circle-o" aria-hidden="true"></i> 
+                        {{$recent->judul}}
+                      </a>
+                      <hr >
+                  </div>
+                @endforeach
         <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.facebook.com/bankekadharma/"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/bankekadharma/"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/pt-bpr-ekadharma-bhinaraharja/"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
     </div>

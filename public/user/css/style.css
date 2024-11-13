@@ -1130,7 +1130,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   transform: translateY(-50%);
   width: 15px;
   height: 15px;
-  background: #E91E63;
+  background: yellow;
   border-radius: 50%;
 }
 
@@ -1200,7 +1200,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .contact-info i {
-  color: #E91E63;
+  color: yellow;
 }
 
 
@@ -1223,7 +1223,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .quick-links a:hover {
-  color: #E91E63;
+  color: yellowgreen;
 }
 
 /* Email Subscribe Styles */
@@ -1278,7 +1278,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .social-icons a:hover {
-  background: #E91E63;
+  background: yellowgreen;
   transform: translateY(-3px);
 }
 
