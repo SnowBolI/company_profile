@@ -100,12 +100,14 @@
                             </a>
                             <ul class="sub-menu children dropdown-menu {{ 
                         Request::is('admin/profile_banner*') || 
+                        Request::is('admin/profile_penhargaan*') || 
                         Request::is('admin/profile_tentang*') ||
                         Request::is('admin/profile_sejarah_visi*') ||
                         Request::is('admin/profile_struktur*') ||
                         Request::is('admin/profile_milestone*')? 'show' : ''  
                         }}">
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_banner')}}">Banner</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_penghargaan')}}">Penghargaan</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_tentang')}}">Tentang Kami</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_sejarah_visi')}}">Sejarah Visi</a></li>
                                 <li><i class="fa fa-angle-right"></i><a href="{{url('admin/profile_struktur')}}">Gambar Struktur</a></li>
