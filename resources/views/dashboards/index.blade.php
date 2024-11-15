@@ -17,7 +17,7 @@
 @section('content')
         <!-- Widgets  -->
             <div class="row">
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-3 col-md-12">
                     <a href="{{route('articles.index', ['status' => 'publish'])}}">
                         <div class="card">
                             <div class="card-body">
@@ -37,7 +37,7 @@
                     </a>
                 </div>
 
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-3 col-md-12">
                     <a href="{{route('articles.index', ['status'=>'draft'])}}">
                         <div class="card">
                             <div class="card-body">
@@ -56,7 +56,24 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-3 col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-4">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">298</span></div>
+                                        <div class="stat-heading">Visitor</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="stat-widget-five">
@@ -109,7 +126,7 @@
             // Traffic Chart using chartist
             if ($('#traffic-chart').length) {
                 var chart = new Chartist.Line('#traffic-chart', {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Agu','Sep', 'Okt', 'Nov','Des'],
                 series: [
                 [0, 18000, 33000,  25000,  22000,  30000] ]
             }, {
@@ -145,7 +162,7 @@
                 var myChart = new Chart( ctx, {
                     type: 'line',
                     data: {
-                        labels: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul" ],
+                        labels: [ "Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Agu','Sep', 'Okt', 'Nov','Des" ],
                         datasets: [
                             {
                                 label: "Visit",

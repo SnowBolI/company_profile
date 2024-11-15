@@ -22,6 +22,7 @@ class KontakController extends Controller
               return $query->where('telepon', 'like', "%{$search}%")
                             ->orWhere('email', 'like', "%{$search}%")
                             ->orWhere('facebook', 'like', "%{$search}%")
+                            ->orWhere('linkedin', 'like', "%{$search}%")
                             ->orWhere('instagram', 'like', "%{$search}%")
                             ->orWhere('youtube', 'like', "%{$search}%")
                             ->orWhere('whatsapp', 'like', "%{$search}%")
@@ -57,6 +58,7 @@ class KontakController extends Controller
             'gmap' => 'required|string',
             'whatsapp' => 'required|string|max:20',
             'facebook' => 'nullable|string',
+            'linkedin' => 'nullable|string',
             'instagram' => 'nullable|string',
             'youtube' => 'nullable|string',
         ]);
@@ -105,6 +107,7 @@ class KontakController extends Controller
             'gmap' => 'required|string',
             'whatsapp' => 'required|string|max:20',
             'facebook' => 'nullable|string',
+            'linkedin' => 'nullable|string',
             'instagram' => 'nullable|string',
             'youtube' => 'nullable|string',
         ]);

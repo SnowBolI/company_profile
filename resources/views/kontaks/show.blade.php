@@ -43,6 +43,12 @@
                         </p>
                     </div>
                     <div class="mb-3">
+                        <label for="linkedin" class="font-weight-bold">LinkedIn</label>
+                        <p id="linkedin" class="form-control-plaintext">
+                            <a href="{{ $kontak->linkedin }}" target="_blank">{{ $kontak->linkedin }}</a>
+                        </p>
+                    </div>
+                    <div class="mb-3">
                         <label for="instagram" class="font-weight-bold">Instagram</label>
                         <p id="instagram" class="form-control-plaintext">
                             <a href="{{ $kontak->instagram }}" target="_blank">{{ $kontak->instagram }}</a>

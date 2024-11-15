@@ -53,6 +53,11 @@
                             <input type="text" id="facebook" class="form-control {{ $errors->first('facebook') ? 'is-invalid' : '' }}" name="facebook" placeholder="URL Facebook" value="{{ old('facebook', $kontak->facebook) }}">
                             <div class="invalid-feedback">{{ $errors->first('facebook') }}</div>
                         </div>
+                        <div class="mb-3">
+                            <label for="linkedin" class="font-weight-bold">LinkedIn</label>
+                            <input type="text" id="linkedin" class="form-control {{ $errors->first('linkedin') ? 'is-invalid' : '' }}" name="linkedin" placeholder="URL Facebook" value="{{ old('linkedin', $kontak->linkedin) }}">
+                            <div class="invalid-feedback">{{ $errors->first('linkedin') }}</div>
+                        </div>
 
                         <div class="mb-3">
                             <label for="instagram" class="font-weight-bold">Instagram</label>

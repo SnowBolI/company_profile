@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Berita;
+use App\Models\Kontak;
 use Illuminate\Http\Request;
 use App\Models\ProfileBanner;
 use App\Models\ProfileTentang;
@@ -50,6 +51,8 @@ class ProfileController extends Controller
         ->orderBy('created_at', 'desc')
         ->limit(5)
         ->get();
+        $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+
 
 
         // Cek apakah data ditemukan untuk sejarah
@@ -84,7 +87,8 @@ class ProfileController extends Controller
             'profileStrukturs' => $profileStrukturs,     
             'profileTentangs' => $profileTentangs,     
             'profileMilestones' => $profileMilestones,
-            'recents'=>$recents
+            'recents'=>$recents,
+            'kontaks'=>$kontaks
 
         ]);
     }
