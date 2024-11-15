@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\KantorCabang;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class KantorCabangController extends Controller
@@ -60,6 +61,7 @@ class KantorCabangController extends Controller
             $gambarPath = $gambar->store('kantor_cabang', 'public');
             $input['gambar'] = $gambarPath;
         }
+        $input['slug'] = Str::slug($request->input('nama'));
 
         KantorCabang::create($input);
 
@@ -110,6 +112,7 @@ class KantorCabangController extends Controller
         ]);
 
         $input = $request->all();
+        $input['slug'] = Str::slug($request->input('nama'));
         
         if ($gambar = $request->file('gambar')) {
             // Hapus gambar lama jika ada

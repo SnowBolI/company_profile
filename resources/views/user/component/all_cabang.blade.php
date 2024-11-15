@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="text-center mt-3">
-                            <a href="{{ route('cabang.single', $cabang->id) }}" class="btn btn-primary">
+                            <a href="{{ route('cabang.single', $cabang->slug) }}" class="btn btn-primary">
                                 Kantor Kas
                             </a>
                         </div>

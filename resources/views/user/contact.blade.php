@@ -14,7 +14,7 @@
 @section('hero')
     @if($kontakSliders->isNotEmpty())
         @foreach($kontakSliders as $slider)
-            <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
+            <section id="hero" style="background-image: url('{{ asset('storage/' . ($slider->gambar ?? 'default-image.jpg')) }}');">
                 <div class="hero-container">
                     <h1>{{ $slider->judul ?? 'Tentang Kami' }}</h1>
                     <h2>{{ $slider->keterangan ?? 'Informasi profil bank' }}</h2>
@@ -32,7 +32,6 @@
 @endsection
 
 @section('content')
-
 <section id="contact">
     <div class="container">
         <div class="section-header">
@@ -55,33 +54,40 @@
 
                 <div>
                     <i class="fas fa-phone"></i>
-                    <p>{{ $kontakInfo->telepon ?? '(Nomor telepon tidak tersedia)' }}</p>
+                    <p>{{ $kontakInfo->telepon ?? 'Nomor telepon tidak tersedia' }}</p>
                 </div>
             </div>
 
+            <!-- Social Links -->
             <div class="social-links">
-                @if($kontakInfo->whatsapp)
-                    <a href="https://wa.me/{{ $kontakInfo->whatsapp }}" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-                @endif
-                @if($kontakInfo->facebook)
-                    <a href="{{ $kontakInfo->facebook }}" class="facebook"><i class="fab fa-facebook"></i></a>
-                @endif
-                @if($kontakInfo->instagram)
-                    <a href="{{ $kontakInfo->instagram }}" class="instagram"><i class="fab fa-instagram"></i></a>
-                @endif
-                @if($kontakInfo->youtube)
-                    <a href="{{ $kontakInfo->youtube }}" class="youtube"><i class="fab fa-youtube"></i></a>
-                @endif
+                <a href="https://wa.me/{{ $kontakInfo->whatsapp ?? '00000000000' }}" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                <a href="{{ $kontakInfo->facebook ?? '#' }}" class="facebook"><i class="fab fa-facebook"></i></a>
+                <a href="{{ $kontakInfo->instagram ?? '#' }}" class="instagram"><i class="fab fa-instagram"></i></a>
+                <a href="{{ $kontakInfo->youtube ?? '#' }}" class="youtube"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
 
         <div class="map-form-container">
-            <div class="map-section">
+            <!-- Map Section -->
+            <<div class="map-section">
+                @if($kontakInfo && $kontakInfo->gmap)
                     <!-- Gunakan link embed langsung jika formatnya benar -->
-                    
-                        {!! $kontakInfo->gmap !!}
-    
+                    {!! $kontakInfo->gmap !!}
+                @else
+                    <!-- Map default jika gmap kosong atau tidak dalam format embed -->
+                    <iframe 
+                        src="https://www.google.com/maps?q=default+location&output=embed" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                @endif
             </div>
+            
+            
 
             <!-- Form Section -->
             <div class="form-section">
@@ -100,4 +106,4 @@
         </div>
     </div>
 </section>
-    @endsection
+@endsection
