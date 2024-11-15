@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\ProfileTentang;
+use App\Models\Berita;
 use Illuminate\Http\Request;
 use App\Models\ProfileBanner;
+use App\Models\ProfileTentang;
 use App\Models\ProfileStruktur;
 use App\Models\ProfileMilestone;
 use App\Models\ProfileSejarahVisi;
@@ -45,6 +46,10 @@ class ProfileController extends Controller
         $profileStrukturs = ProfileStruktur::orderBy('created_at', 'desc')->take(1)->get();
         $profileMilestones = ProfileMilestone::orderBy('tahun', 'asc')->get();
         $profileTentangs = ProfileTentang::orderBy('created_at', 'desc')->take(4)->get();
+        $recents = Berita::select('judul', 'slug')
+        ->orderBy('created_at', 'desc')
+        ->limit(5)
+        ->get();
 
 
         // Cek apakah data ditemukan untuk sejarah
@@ -78,7 +83,8 @@ class ProfileController extends Controller
             'profileSliders' => $profileSliders,
             'profileStrukturs' => $profileStrukturs,     
             'profileTentangs' => $profileTentangs,     
-            'profileMilestones' => $profileMilestones
+            'profileMilestones' => $profileMilestones,
+            'recents'=>$recents
 
         ]);
     }
