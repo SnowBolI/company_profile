@@ -51,6 +51,8 @@ class UserController extends Controller
           ->orderBy('created_at', 'desc')
           ->limit(5)
           ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+    
 
     if ($homeYoutubes) {
       $url = $homeYoutubes->linkyt;
@@ -67,7 +69,7 @@ class UserController extends Controller
     $about = About::all();
     $recents = Berita::all();
 
-    return view('user.home', compact('homeSliders','homeBackgrounds', 'homeThumbnails', 'youtubeId', 'categories', 'about', 'recents'));
+    return view('user.home', compact('kontaks','homeSliders','homeBackgrounds', 'homeThumbnails', 'youtubeId', 'categories', 'about', 'recents'));
   }
 
   public function cabang(Request $request)
@@ -84,12 +86,15 @@ class UserController extends Controller
       ->orderBy('created_at', 'desc')
       ->limit(5)
       ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+
 
 
       $data = [
           'cabangs' => $cabangs,
           'cabangSliders' => $cabangSliders,
-          'recents'=>$recents
+          'recents'=>$recents,
+          'kontaks'=>$kontaks
       ];
 
       return view('user.cabang', $data);
@@ -106,35 +111,19 @@ class UserController extends Controller
     ->orderBy('created_at', 'desc')
     ->limit(5)
     ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+
 
     $cabangSliders = KantorBanner::orderBy('created_at', 'desc')->take(1)->get();
 
     return view('user.cabang', [
         'kantorkas' => $kantorkas,
         'cabangSliders' => $cabangSliders,
-        'recents'=>$recents
+        'recents'=>$recents,
+        'kontaks'=>$kontaks
     ]);
 }
   
-
-    public function show_cabang($id)
-    {
-        $cabang = KantorKas::where('id', $id)->firstOrFail();
-
-        // Mengambil data edukasi berdasarkan id
-        $cabangSliders = KantorBanner::orderBy('created_at', 'desc')->take(1)->get();
-    
-        // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
-        $cabang = KantorKas::select('nama', 'id')
-            ->orderBy('created_at', 'desc')
-            ->get();
-    
-        $data = [
-            'cabang' => $cabang,
-            'cabangSliders' => $cabangSliders,
-        ];
-        return view('user/cabang', $data);
-    }
 
     
   public function show_edukasi($slug)
@@ -148,11 +137,14 @@ class UserController extends Controller
         ->orderBy('created_at', 'desc')
         ->limit(5)
         ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+    
 
     $data = [
         'article' => $article,
         'recents' => $recents,
-        'edukasiSliders' => $edukasiSliders
+        'edukasiSliders' => $edukasiSliders,
+        'kontaks'=>$kontaks
     ];
     return view('user/edukasi', $data);
   }
@@ -173,6 +165,8 @@ class UserController extends Controller
         ->orderBy('created_at', 'desc')
         ->limit(5)
         ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+      
 
 
     // Urutkan tahun dari terbaru
@@ -180,7 +174,8 @@ class UserController extends Controller
     $data = [
       'laporans' => $laporans,
       'laporanSliders' => $laporanSliders,
-      'recents'=>$recents
+      'recents'=>$recents,
+      'kontaks'=>$kontaks
     ];
     return view('user.laporan', $data);
   }
@@ -204,11 +199,14 @@ class UserController extends Controller
           ->orderBy('created_at', 'desc')
           ->limit(5)
           ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+      
 
       $data = [
           'articles' => $articles,
           'recents' => $recents,
           'edukasiSliders' => $edukasiSliders,
+          'kontaks'=>$kontaks
 
       ];
 
@@ -236,11 +234,15 @@ class UserController extends Controller
           ->orderBy('created_at', 'desc')
           ->limit(5)
           ->get();
+          $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+
 
       $data = [
           'articles' => $articles,
           'recents' => $recents,
           'karirSliders' => $karirSliders,
+          'kontaks'=>$kontaks
+
 
       ];
 
@@ -258,11 +260,14 @@ class UserController extends Controller
         ->orderBy('created_at', 'desc')
         ->limit(5)
         ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+      
 
     $data = [
         'article' => $article,
         'recents' => $recents,
-        'karirSliders' => $karirSliders
+        'karirSliders' => $karirSliders,
+        'kontaks'=>$kontaks
     ];
     return view('user/karir', $data);
   }
@@ -285,11 +290,14 @@ class UserController extends Controller
           ->orderBy('created_at', 'desc')
           ->limit(5)
           ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+      
 
       $data = [
           'articles' => $articles,
           'recents' => $recents,
           'beritaSliders' => $beritaSliders,
+          'kontaks'=>$kontaks
 
       ];
 
@@ -307,11 +315,14 @@ class UserController extends Controller
         ->orderBy('created_at', 'desc')
         ->limit(5)
         ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+      
 
     $data = [
         'article' => $article,
         'recents' => $recents,
-        'beritaSliders' => $beritaSliders
+        'beritaSliders' => $beritaSliders,
+        'kontaks'=>$kontaks
     ];
     return view('user/berita', $data);
   }
@@ -354,9 +365,11 @@ class UserController extends Controller
         ->orderBy('created_at', 'desc')
         ->limit(5)
         ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
 
 
-        return view('user.tabungan', compact('tabunganData', 'produkSliders','recents'));
+
+        return view('user.tabungan', compact('kontaks','tabunganData', 'produkSliders','recents'));
     }
 
   public function deposito() 
@@ -369,9 +382,11 @@ class UserController extends Controller
     ->orderBy('created_at', 'desc')
     ->limit(5)
     ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
 
 
-    return view('user.deposito', compact('depositoData', 'produkSliders','recents'));
+
+    return view('user.deposito', compact('kontaks','depositoData', 'produkSliders','recents'));
 }
 
   public function kredit()
@@ -384,9 +399,11 @@ class UserController extends Controller
     ->orderBy('created_at', 'desc')
     ->limit(5)
     ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
 
 
-    return view('user.kredit', compact('kreditData', 'produkSliders', 'recents'));
+
+    return view('user.kredit', compact('kontaks','kreditData', 'produkSliders', 'recents'));
 }
 
   public function ppob()
@@ -399,9 +416,11 @@ class UserController extends Controller
       ->orderBy('created_at', 'desc')
       ->limit(5)
       ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
 
 
-      return view('user.ppob', compact('ppobData', 'produkSliders', 'recents'));
+
+      return view('user.ppob', compact('kontaks','ppobData', 'produkSliders', 'recents'));
   }
   public function contact()
   {
@@ -413,8 +432,10 @@ class UserController extends Controller
     ->orderBy('created_at', 'desc')
     ->limit(5)
     ->get();
+    $kontaks = Kontak::orderBy('created_at', 'desc')->first();
+
 
         // Return the view with the data
-    return view('user.contact', compact('kontakSliders', 'kontakInfo', 'recents'));
+    return view('user.contact', compact('kontaks','kontakSliders', 'kontakInfo', 'recents'));
   }
 }

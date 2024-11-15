@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('gmap');
             $table->string('whatsapp');
             $table->string('facebook');
+            $table->string('linkedin');
             $table->string('instagram');
             $table->string('youtube');
             $table->timestamps();

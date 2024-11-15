@@ -93,12 +93,12 @@
             <div class="form-section">
                 <div class="form">
                     <form action="" method="post" role="form" class="contactForm">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <input type="text" name="subject" placeholder="Subject" required>
-                        <textarea name="message" placeholder="Message" required></textarea>
+                        <input type="text" name="name" placeholder="Nama" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="text" name="subject" placeholder="Subjek" required>
+                        <textarea name="message" placeholder="Pesan" required></textarea>
                         <div style="text-align: center;">
-                            <button type="submit">Send Message</button>
+                            <button type="submit">Kirim Pesan</button>
                         </div>
                     </form>
                 </div>

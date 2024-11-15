@@ -124,11 +124,42 @@
             <div class="footer-section">
                 <h3>Hubungi Kami</h3>
                 <ul class="contact-info">
-                    <li><i class="fas fa-map-marker-alt"></i>
-                        Jl. Raya Jaranan – Ngadirejo, Kecamatan Kawedanan Kabupaten Magetan Provinsi Jawa Timur 63382
-                    </li>
-                    <li><i class="fas fa-envelope"></i>bank.ekadharma@gmail.com</li>
-                    <li><i class="fas fa-phone"></i>Telepon/FAX: (0351) 439872</li>
+                    @if($kontaks && $kontaks->alamat)
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            {{ $kontaks->alamat }}
+                        </li>
+                    @else
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            Alamat tidak tersedia
+                        </li>
+                    @endif
+                
+                    @if($kontaks && $kontaks->email)
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            {{ $kontaks->email }}
+                        </li>
+                    @else
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            Email tidak tersedia
+                        </li>
+                    @endif
+                
+                    @if($kontaks && $kontaks->telepon)
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            Telepon/FAX: {{ $kontaks->telepon }}
+                        </li>
+                    @else
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            Telepon tidak tersedia
+                        </li>
+                    @endif
+                
                 </ul>
             </div>
             <div class="footer-section">
@@ -159,10 +190,25 @@
                 </div>
                 @endforeach
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/bankekadharma/"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/bankekadharma/"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/company/pt-bpr-ekadharma-bhinaraharja/"><i
-                            class="fab fa-linkedin-in"></i></a>
+                    @if($kontaks && $kontaks->whatsapp)
+                        <a href="https://wa.me/{{ $kontaks->whatsapp }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    @endif
+                
+                    @if($kontaks && $kontaks->facebook)
+                        <a href="{{ $kontaks->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    @endif
+                
+                    @if($kontaks && $kontaks->instagram)
+                        <a href="{{ $kontaks->instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                    @endif
+                
+                    @if($kontaks && $kontaks->linkedin)
+                        <a href="{{ $kontaks->linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    @endif
+                
+                    @if($kontaks && $kontaks->youtube)
+                        <a href="{{ $kontaks->youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
+                    @endif
                 </div>
             </div>
         </div>
