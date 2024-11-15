@@ -80,10 +80,16 @@ class UserController extends Controller
           ->orderBy('nama', 'asc')
           ->get();
       // Ambil data kantor kas berdasarkan ID cabang
+      $recents = Karir::select('judul', 'slug')
+      ->orderBy('created_at', 'desc')
+      ->limit(5)
+      ->get();
+
 
       $data = [
           'cabangs' => $cabangs,
           'cabangSliders' => $cabangSliders,
+          'recents'=>$recents
       ];
 
       return view('user.cabang', $data);
@@ -96,12 +102,17 @@ class UserController extends Controller
     if (!$kantorkas) {
         abort(404, 'Kantor Kas tidak ditemukan');
     }
+    $recents = Karir::select('judul', 'slug')
+    ->orderBy('created_at', 'desc')
+    ->limit(5)
+    ->get();
 
     $cabangSliders = KantorBanner::orderBy('created_at', 'desc')->take(1)->get();
 
     return view('user.cabang', [
         'kantorkas' => $kantorkas,
         'cabangSliders' => $cabangSliders,
+        'recents'=>$recents
     ]);
 }
   
@@ -158,11 +169,18 @@ class UserController extends Controller
             return \Carbon\Carbon::parse($item->tanggal)->format('Y');
         });
 
+        $recents = Berita::select('judul', 'slug')
+        ->orderBy('created_at', 'desc')
+        ->limit(5)
+        ->get();
+
+
     // Urutkan tahun dari terbaru
     $laporans = $laporans->sortKeysDesc();
     $data = [
       'laporans' => $laporans,
       'laporanSliders' => $laporanSliders,
+      'recents'=>$recents
     ];
     return view('user.laporan', $data);
   }
@@ -178,12 +196,12 @@ class UserController extends Controller
       // Mengambil data edukasi berdasarkan pencarian kata kunci pada kolom judul dan keterangan
       $articles = Edukasi::where('judul', 'LIKE', "%$keyword%")
           ->orWhere('keterangan', 'LIKE', "%$keyword%")
-          ->orderBy('tanggal', 'desc')
+          ->orderBy('created_at', 'desc')
           ->paginate(10);
 
       // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
       $recents = Edukasi::select('judul', 'slug')
-          ->orderBy('tanggal', 'desc')
+          ->orderBy('created_at', 'desc')
           ->limit(5)
           ->get();
 
@@ -210,12 +228,12 @@ class UserController extends Controller
       // Mengambil data edukasi berdasarkan pencarian kata kunci pada kolom judul dan keterangan
       $articles = Karir::where('judul', 'LIKE', "%$keyword%")
           ->orWhere('keterangan', 'LIKE', "%$keyword%")
-          ->orderBy('tanggal', 'desc')
+          ->orderBy('created_at', 'desc')
           ->paginate(10);
 
       // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
       $recents = Karir::select('judul', 'slug')
-          ->orderBy('tanggal', 'desc')
+          ->orderBy('created_at', 'desc')
           ->limit(5)
           ->get();
 
@@ -259,12 +277,12 @@ class UserController extends Controller
       // Mengambil data edukasi berdasarkan pencarian kata kunci pada kolom judul dan keterangan
       $articles = Berita::where('judul', 'LIKE', "%$keyword%")
           ->orWhere('keterangan', 'LIKE', "%$keyword%")
-          ->orderBy('tanggal', 'desc')
+          ->orderBy('created_at', 'desc')
           ->paginate(10);
 
       // Mengambil 5 data edukasi terbaru untuk ditampilkan sebagai artikel terbaru
       $recents = Berita::select('judul', 'slug')
-          ->orderBy('tanggal', 'desc')
+          ->orderBy('created_at', 'desc')
           ->limit(5)
           ->get();
 
@@ -332,8 +350,13 @@ class UserController extends Controller
 
         // Mengambil semua data tabungan untuk semua tab
         $tabunganData = ProdukTabungan::all();
+        $recents = Berita::select('judul', 'slug')
+        ->orderBy('created_at', 'desc')
+        ->limit(5)
+        ->get();
 
-        return view('user.tabungan', compact('tabunganData', 'produkSliders'));
+
+        return view('user.tabungan', compact('tabunganData', 'produkSliders','recents'));
     }
 
   public function deposito() 
@@ -342,8 +365,13 @@ class UserController extends Controller
 
     // Mengambil semua data tabungan untuk semua tab
     $depositoData = ProdukDeposito::all();
+    $recents = Berita::select('judul', 'slug')
+    ->orderBy('created_at', 'desc')
+    ->limit(5)
+    ->get();
 
-    return view('user.deposito', compact('depositoData', 'produkSliders'));
+
+    return view('user.deposito', compact('depositoData', 'produkSliders','recents'));
 }
 
   public function kredit()
@@ -352,8 +380,13 @@ class UserController extends Controller
 
     // Mengambil semua data tabungan untuk semua tab
     $kreditData = ProdukKredit::all();
+    $recents = Berita::select('judul', 'slug')
+    ->orderBy('created_at', 'desc')
+    ->limit(5)
+    ->get();
 
-    return view('user.kredit', compact('kreditData', 'produkSliders'));
+
+    return view('user.kredit', compact('kreditData', 'produkSliders', 'recents'));
 }
 
   public function ppob()
@@ -362,8 +395,13 @@ class UserController extends Controller
 
       // Mengambil semua data tabungan untuk semua tab
       $ppobData = ProdukPPOB::all();
+      $recents = Berita::select('judul', 'slug')
+      ->orderBy('created_at', 'desc')
+      ->limit(5)
+      ->get();
 
-      return view('user.ppob', compact('ppobData', 'produkSliders'));
+
+      return view('user.ppob', compact('ppobData', 'produkSliders', 'recents'));
   }
   public function contact()
   {
@@ -371,8 +409,12 @@ class UserController extends Controller
 
     // Mengambil semua data tabungan untuk semua tab
     $kontakInfo = Kontak::first();
+    $recents = Berita::select('judul', 'slug')
+    ->orderBy('created_at', 'desc')
+    ->limit(5)
+    ->get();
 
         // Return the view with the data
-    return view('user.contact', compact('kontakSliders', 'kontakInfo'));
+    return view('user.contact', compact('kontakSliders', 'kontakInfo', 'recents'));
   }
 }

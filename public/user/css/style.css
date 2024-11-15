@@ -1100,6 +1100,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #ffffff;
   padding: 4rem 2rem 0;
   position: relative;
+  padding-bottom: 1rem;
 }
 
 .footer-container {
@@ -1133,56 +1134,90 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: yellow;
   border-radius: 50%;
 }
-
-/* Footer Banner and Logo Scroll */
-.footer-banner {
-  width: 100vw;
-  background-color: #0b2f1e;
-  padding: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  margin-top: 3rem;
-}
-
-.banner-text {
-  text-align: center;
-  padding: 1rem;
-  font-size: 1.2rem;
-  color: #ffffff;
+.regulator-header {
   background-color: rgba(0, 0, 0, 0.2);
+
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 18px;         /* ukuran font */
+  letter-spacing: 1px;     /* jarak antar huruf */
+  mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,0),
+    rgba(0,0,0,1) 20%,
+    rgba(0,0,0,1) 80%,
+    rgba(0,0,0,0)
+
+  );
 }
 
-.logo-container {
+.footer-banner {
+  margin-inline: auto;
+  height: 100px;
+  background-color: #0b2f1e;
+  position: relative;
   overflow: hidden;
-  display: flex;
-  padding: 1rem 0;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,0),
+    rgba(0,0,0,1) 20%,
+    rgba(0,0,0,1) 80%,
+    rgba(0,0,0,0)
+
+  );
+  
 }
 
-.logo {
-  display: flex;
-  gap: 11rem;
-  flex-shrink: 0;
-  padding: 0 5.5rem;
-  animation: infinite-scroll 20s linear infinite;
-}
-
-.logo img {
-  height: 6rem;
-}
-
-/* Logo Animation */
-@keyframes infinite-scroll {
-  from {
-    transform: translateX(0);
-  }
+@keyframes scrollLeft {
   to {
-    transform: translateX(-100%);
+    left:-200px;
   }
+}
+
+
+.logo-item {
+  width: 200px;
+  height: 100px;
+  border-radius: 6px;
+  position: absolute;
+  left: max(calc(200px * 8), 100%);
+  animation-name: scrollLeft;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+}
+
+.item1 {
+  animation-delay: calc(30s / 8 * ( 8 - 1 ) * -1);
+}
+.item2{
+  animation-delay: calc(30s / 8 * ( 8 - 2 ) * -1);
+}
+.item3{
+  animation-delay: calc(30s / 8 * ( 8 - 3 ) * -1);
+}
+.item4{
+  animation-delay: calc(30s / 8 * ( 8 - 4 ) * -1);
+}
+.item5{
+  animation-delay: calc(30s / 8 * ( 8 - 5 ) * -1);
+}
+.item6{
+  animation-delay: calc(30s / 8 * ( 8 - 6 ) * -1);
+}
+.item7{
+  animation-delay: calc(30s / 8 * ( 8 - 7 ) * -1);
+}
+.item8{
+  animation-delay: calc(30s / 8 * ( 8 - 8 ) * -1);
+}
+.logo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* Contact Info Styles */
