@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('karirs', function (Blueprint $table) {
+        Schema::create('beritas', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
             $table->text('slug');
             $table->text('keterangan');
-            $table->string('gambar');
+            $table->string('gambar_utama');
+            $table->string('gambar_1');
+            $table->string('gambar_2')->nullable();
+            $table->string('gambar_3')->nullable();
             $table->date('tanggal');
             $table->string('hari');
             $table->foreignId('user_id')->nullable();
@@ -34,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('karirs');
+        Schema::dropIfExists('beritas');
     }
 };

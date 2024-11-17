@@ -281,7 +281,7 @@
                             </ul>
                     </li>
 
-                    <li class="{{$url=='categories'?'active':''}}">
+                    {{-- <li class="{{$url=='categories'?'active':''}}">
                         <a href="{{url('admin/categories')}}"><i class="menu-icon fa fa-list-ul"></i>Categories </a>
                     </li>
                     <li class="{{$url=='articles'?'active':''}}">
@@ -292,7 +292,7 @@
                     </li>
                     <li class="{{$url=='abouts'?'active':''}}">
                         <a href="{{url('admin/abouts')}}"><i class="menu-icon fa fa-user"></i>About </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -314,29 +314,68 @@
                 </div>
                 <div class="top-right">
                     <div class="header-menu">
-                        <div class="user-area dropdown float-right">
-                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="user-avatar rounded-circle" src="{{asset('ElaAdmin/images/admin.jpg')}}" alt="User Avatar">
-                            </a>
-
-                            <div class="user-menu dropdown-menu">
-                                <a class="nav-link" href="#"><i class="fa fa-cog"></i>Ganti Password</a>
-                                {{-- <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();"> 
-                                    <i class="fa fa-power-off"></i> Logout
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form> --}}
-
-                                <div class="nav-link" style="cursor:pointer" onclick="logout()" data-target="#modalLogout" data-toggle="modal"> 
-                                    <i class="fa fa-power-off"></i> Logout
+                        <div class="header-left">
+                            <div class="dropdown for-notification">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-bell"></i>
+                                    <span class="count {{ $dashboardData['total'] > 0 ? 'bg-danger' : '' }}">{{ $dashboardData['total'] }}</span>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="notification">
+                                    @if ($dashboardData['total'] > 0)
+                                        <p class="red">{{ $dashboardData['total'] }} Notifikasi Baru</p>
+                                        @foreach ($dashboardData['notifications'] as $notification)
+                                            @php
+                                                $route = '#'; // Default route
+                                                if (strtolower($notification->subjek) === 'tabungan') {
+                                                    $route = route('pesan_tabungan.index');
+                                                } elseif (strtolower($notification->subjek) === 'deposito') {
+                                                    $route = route('pesan_deposito.index'); // Replace with actual route for deposito
+                                                } elseif (strtolower($notification->subjek) === 'kredit') {
+                                                    $route = route('pesan_kredit.index'); // Replace with actual route for kredit
+                                                } else {
+                                                    $route = route('pesan_kontak.index');
+                                                }
+                                            @endphp
+                                            <a class="dropdown-item media" href="{{ $route }}">
+                                                <i class="fa fa-info"></i> 
+                                                <p>{{ $notification->nama }}</p> 
+                                            </a>
+                                        @endforeach
+                                    @else
+                                        <p class="text-center">Tidak ada notifikasi baru</p>
+                                    @endif
                                 </div>
-
-
-
+                                
+                            </div>
+                            
+                            
+                            
+                            
+                            <div class="user-area dropdown float-right">
+                                <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="user-avatar rounded-circle" src="{{asset('ElaAdmin/images/admin.jpg')}}" alt="User Avatar">
+                                </a>
+    
+                                <div class="user-menu dropdown-menu">
+                                    <a class="nav-link" href="#"><i class="fa fa-cog"></i>Ganti Password</a>
+                                    {{-- <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"> 
+                                        <i class="fa fa-power-off"></i> Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form> --}}
+    
+                                    <div class="nav-link" style="cursor:pointer" onclick="logout()" data-target="#modalLogout" data-toggle="modal"> 
+                                        <i class="fa fa-power-off"></i> Logout
+                                    </div>
+    
+    
+    
+                                </div>
                             </div>
                         </div>
+                        
 
                     </div>
                 </div>

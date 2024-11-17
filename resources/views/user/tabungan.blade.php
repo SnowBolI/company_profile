@@ -317,16 +317,16 @@
 @foreach($produkSliders as $slider)
     <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
         <div class="hero-container">
-            <h1>Tentang Kami</h1>
-            <h2>Informasi profil bank</h2>
+            <h1>Tabungan</h1>
+            <h2></h2>
         </div>
     </section>
 @endforeach
 @else
 <section id="hero">
     <div class="hero-container">
-        <h1>Tentang Kami</h1>
-        <h2>Informasi profil bank</h2>
+        <h1>Tabungan</h1>
+        <h2></h2>
     </div>
 </section>
 @endif
@@ -397,39 +397,49 @@
             aria-labelledby="pills-pembukaan-tabungan-tab">
             <div class="tabungan-content">
                 <h3>Pembukaan Tabungan</h3>
-                <form class="tabungan-form mt-4">
+                @if (($message = Session::get('message')))
+                <div class="alert alert-success alert-dismissible fade show">
+                    <strong>Berhasil!</strong>
+                    <p>{{ $message }}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+                <form action="{{ route('tabungan.store') }}" method="post"  class="tabungan-form mt-4">
+                    @csrf
                     <div class="form-group">
                         <label for="nama">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan nama lengkap" required>
                     </div>
                     <div class="form-group mt-3">
                         <label for="ktp">No. KTP</label>
-                        <input type="text" class="form-control" id="ktp" placeholder="Masukkan nomor KTP">
+                        <input type="number" class="form-control" name="ktp" id="ktp" placeholder="Masukkan nomor KTP" required>
                     </div>
                     <div class="form-group mt-3">
                         <label for="alamat">Alamat</label>
-                        <textarea class="form-control" id="alamat" rows="2" placeholder="Masukkan alamat"></textarea>
+                        <textarea class="form-control" id="alamat" name="alamat" rows="2" placeholder="Masukkan alamat" required></textarea>
                     </div>
                     <div class="form-group mt-3">
                         <label for="hp">No. HP</label>
-                        <input type="text" class="form-control" id="hp" placeholder="Masukkan nomor HP">
+                        <input type="number" class="form-control" name="hp" id="hp" placeholder="Masukkan nomor HP" required>
                     </div>
                     <div class="form-group mt-3">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Masukkan email">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan email" required>
                     </div>
                     <div class="form-group mt-3">
-                        <label for="jenis-tabungan">Pilih Tabungan</label>
-                        <select class="form-control" id="jenis-tabungan">
-                            <option value="simPel">SIMPEL</option>
-                            <option value="sisaBelanja">Tabungan Sisa Belanja</option>
-                            <option value="sukarela">Tabungan Sukarela</option>
+                        <label for="tipe_tabungan">Pilih Tabungan</label>
+                        <select class="form-control" name="tipe_tabungan" id="tipe_tabungan" required>
+                            <option value="SIMPEL">SIMPEL</option>
+                            <option value="Tabungan Sisa Belanja">Tabungan Sisa Belanja</option>
+                            <option value="Tabungan Sukarela">Tabungan Sukarela</option>
                         </select>
                     </div>
                     <div class="form-group mt-3">
-                        <label for="setoran">Besar Setoran Awal</label>
-                        <input type="number" class="form-control" id="setoran"
-                            placeholder="Masukkan besar setoran awal">
+                        <label for="setoran_awal">Besar Setoran Awal</label>
+                        <input type="number" class="form-control" name="setoran_awal" id="setoran_awal"
+                            placeholder="Masukkan besar setoran awal" required>
                     </div>
                     <button type="submit" class="btn btn-primary mt-4 w-100">Kirim</button>
                 </form>

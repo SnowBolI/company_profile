@@ -334,16 +334,16 @@
 @foreach($produkSliders as $slider)
     <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
         <div class="hero-container">
-            <h1>Tentang Kami</h1>
-            <h2>Informasi profil bank</h2>
+            <h1>Kredit</h1>
+            <h2></h2>
         </div>
     </section>
 @endforeach
 @else
 <section id="hero">
     <div class="hero-container">
-        <h1>Tentang Kami</h1>
-        <h2>Informasi profil bank</h2>
+        <h1>Kredit</h1>
+        <h2></h2>
     </div>
 </section>
 @endif
@@ -433,43 +433,53 @@
                 aria-labelledby="pills-pengajuan-kredit-tab">
                 <div class="kredit-content">
                     <h3>Pengajuan Kredit</h3>
-                    <form class="kredit-form mt-4">
+                    @if (($message = Session::get('message')))
+                    <div class="alert alert-success alert-dismissible fade show">
+                        <strong>Berhasil!</strong>
+                        <p>{{ $message }}</p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    <form action="{{ route('kredit.store') }}" method="post"  class="kredit-form mt-4">
+                        @csrf
                         <div class="form-group">
                             <label for="nama">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap">
+                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan nama lengkap">
                         </div>
                         <div class="form-group mt-3">
                             <label for="ktp">No. KTP</label>
-                            <input type="text" class="form-control" id="ktp" placeholder="Masukkan nomor KTP">
+                            <input type="text" class="form-control" name="ktp" id="ktp" placeholder="Masukkan nomor KTP">
                         </div>
                         <div class="form-group mt-3">
                             <label for="alamat">Alamat</label>
-                            <textarea class="form-control" id="alamat" rows="2" placeholder="Masukkan alamat"></textarea>
+                            <textarea class="form-control" id="alamat" name="alamat" rows="2" placeholder="Masukkan alamat"></textarea>
                         </div>
                         <div class="form-group mt-3">
                             <label for="hp">No. HP</label>
-                            <input type="text" class="form-control" id="hp" placeholder="Masukkan nomor HP">
+                            <input type="text" class="form-control" name="hp" id="hp" placeholder="Masukkan nomor HP">
                         </div>
                         <div class="form-group mt-3">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Masukkan email">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan email">
                         </div>
                         <!-- Additional Loan Fields -->
                         <div class="form-group mt-3">
-                            <label for="jumlah-pinjaman">Jumlah Pinjaman</label>
-                            <input type="number" class="form-control" id="jumlah-pinjaman" placeholder="Masukkan jumlah pinjaman">
+                            <label for="jumlah_pinjaman">Jumlah Pinjaman</label>
+                            <input type="number" class="form-control" id="jumlah_pinjaman" name="jumlah_pinjaman" placeholder="Masukkan jumlah pinjaman">
                         </div>
                         <div class="form-group mt-3">
-                            <label for="jangka-waktu">Jangka Waktu Pinjaman (Bulan)</label>
-                            <input type="number" class="form-control" id="jangka-waktu" placeholder="Masukkan jangka waktu pinjaman dalam bulan">
+                            <label for="waktu_pinjaman">Jangka Waktu Pinjaman (Bulan)</label>
+                            <input type="number" class="form-control" id="waktu_pinjaman" name="waktu_pinjaman" placeholder="Masukkan jangka waktu pinjaman dalam bulan">
                         </div>
                         <div class="form-group mt-3">
-                            <label for="tujuan-pinjaman">Tujuan Pinjaman</label>
-                            <textarea class="form-control" id="tujuan-pinjaman" rows="2" placeholder="Masukkan tujuan pinjaman"></textarea>
+                            <label for="tujuan_pinjaman">Tujuan Pinjaman</label>
+                            <textarea class="form-control" id="tujuan_pinjaman" name="tujuan_pinjaman" rows="2" placeholder="Masukkan tujuan pinjaman"></textarea>
                         </div>
                         <div class="form-group mt-3">
                             <label for="jaminan">Jaminan</label>
-                            <textarea class="form-control" id="jaminan" rows="2" placeholder="Masukkan jaminan"></textarea>
+                            <textarea class="form-control" id="jaminan" name="jaminan" rows="2" placeholder="Masukkan jaminan"></textarea>
                         </div>
                         <!-- Submit Button -->
                         <button type="submit" class="btn btn-primary mt-4 w-100">Kirim</button>

@@ -62,8 +62,10 @@ class EdukasiController extends Controller
         $request->validate([
             'judul' => 'required',
             'keterangan' => 'required',
-            'gambar' => 'required|image',
-            'tanggal' => 'required|date', // Tambahkan validasi untuk tanggal
+            'gambar_utama' => 'required|image',
+            'gambar_2' => 'nullable|image',
+            'gambar_3' => 'nullable|image',
+            'tanggal' => 'required|date',
         ]);
 
         $input = $request->all();
@@ -75,10 +77,24 @@ class EdukasiController extends Controller
         $input['slug'] = Str::slug($request->input('judul'));
 
 
-        if ($gambar = $request->file('gambar')) {
-            // Simpan gambar ke storage/app/public/admin/edukasi
-            $gambarPath = $gambar->store('edukasi', 'public');
-            $input['gambar'] = $gambarPath;
+        // Proses upload gambar utama dan gambar 1 (dengan path berbeda)
+        if ($gambarUtama = $request->file('gambar_utama')) {
+            $gambarUtamaPath = $gambarUtama->store('edukasi/utama', 'public'); // Path untuk gambar utama
+            $gambar1Path = $gambarUtama->store('edukasi/gambar_1', 'public'); // Path untuk gambar 1
+            $input['gambar_utama'] = $gambarUtamaPath;
+            $input['gambar_1'] = $gambar1Path;
+        }
+
+        // Proses upload gambar 2 (opsional)
+        if ($gambar2 = $request->file('gambar_2')) {
+            $gambar2Path = $gambar2->store('edukasi/gambar2', 'public');
+            $input['gambar_2'] = $gambar2Path;
+        }
+
+        // Proses upload gambar 3 (opsional)
+        if ($gambar3 = $request->file('gambar_3')) {
+            $gambar3Path = $gambar3->store('edukasi/gambar3', 'public');
+            $input['gambar_3'] = $gambar3Path;
         }
 
         Edukasi::create($input);
@@ -125,30 +141,60 @@ class EdukasiController extends Controller
         $request->validate([
             'judul' => 'required',
             'keterangan' => 'required',
-            'gambar' => 'image',
-            'tanggal' => 'required|date', // Tambahkan validasi untuk tanggal
+            'gambar_utama' => 'nullable|image',
+            'gambar_2' => 'nullable|image',
+            'gambar_3' => 'nullable|image',
+            'tanggal' => 'required|date',
         ]);
-
+    
         $input = $request->all();
         $input['user_id'] = auth()->user()->id;
-        Carbon::setLocale('id');
+    
         // Mendapatkan nama hari dari tanggal yang diupdate
+        Carbon::setLocale('id');
         $tanggal = Carbon::parse($request->input('tanggal'));
         $input['hari'] = $tanggal->translatedFormat('l'); // Mendapatkan nama hari
         $input['slug'] = Str::slug($request->input('judul'));
-
-
-        if ($gambar = $request->file('gambar')) {
+    
+        // Update gambar utama dan gambar 1
+        if ($gambarUtama = $request->file('gambar_utama')) {
             // Hapus gambar lama jika ada
-            if ($edukasi->gambar) {
-                Storage::disk('public')->delete($edukasi->gambar);
+            if ($edukasi->gambar_utama) {
+                Storage::disk('public')->delete($edukasi->gambar_utama);
             }
-
-            // Simpan gambar baru ke storage/app/public/admin/edukasi
-            $gambarPath = $gambar->store('edukasi', 'public');
-            $input['gambar'] = $gambarPath;
-        } else {
-            unset($input['gambar']);
+            if ($edukasi->gambar_1) {
+                Storage::disk('public')->delete($edukasi->gambar_1);
+            }
+    
+            // Simpan gambar baru ke path yang berbeda
+            $gambarUtamaPath = $gambarUtama->store('edukasi/utama', 'public');
+            $gambar1Path = $gambarUtama->store('edukasi/gambar_1', 'public');
+            $input['gambar_utama'] = $gambarUtamaPath;
+            $input['gambar_1'] = $gambar1Path;
+        }
+    
+        // Update gambar 2
+        if ($gambar2 = $request->file('gambar_2')) {
+            // Hapus gambar lama jika ada
+            if ($edukasi->gambar_2) {
+                Storage::disk('public')->delete($edukasi->gambar_2);
+            }
+    
+            // Simpan gambar baru
+            $gambar2Path = $gambar2->store('edukasi/gambar2', 'public');
+            $input['gambar_2'] = $gambar2Path;
+        }
+    
+        // Update gambar 3
+        if ($gambar3 = $request->file('gambar_3')) {
+            // Hapus gambar lama jika ada
+            if ($edukasi->gambar_3) {
+                Storage::disk('public')->delete($edukasi->gambar_3);
+            }
+    
+            // Simpan gambar baru
+            $gambar3Path = $gambar3->store('edukasi/gambar3', 'public');
+            $input['gambar_3'] = $gambar3Path;
         }
 
         $edukasi->update($input);
@@ -164,11 +210,19 @@ class EdukasiController extends Controller
      */
     public function destroy(Edukasi $edukasi)
     {
-         // Hapus file gambar dari disk storage jika ada
-        if ($edukasi->gambar) {
-            Storage::disk('public')->delete($edukasi->gambar);
-        }
-
+       // Hapus file gambar utama dan gambar terkait dari disk storage jika ada
+       if ($edukasi->gambar_utama) {
+        Storage::disk('public')->delete($edukasi->gambar_utama);
+    }
+    if ($edukasi->gambar_1) {
+        Storage::disk('public')->delete($edukasi->gambar_1);
+    }
+    if ($edukasi->gambar_2) {
+        Storage::disk('public')->delete($edukasi->gambar_2);
+    }
+    if ($edukasi->gambar_3) {
+        Storage::disk('public')->delete($edukasi->gambar_3);
+    }
         // Hapus data dari database
         $edukasi->delete();
 

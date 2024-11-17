@@ -11,184 +11,179 @@
         .traffic-chart {
             min-height: 335px;
         }
+        .charts-container {
+        display: grid;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+        .ct-chart {
+            height: 300px;
+        }
+
+        .card-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
     </style>
 @endsection
 
 @section('content')
         <!-- Widgets  -->
-            <div class="row">
-                <div class="col-lg-3 col-md-12">
-                    <a href="{{route('articles.index', ['status' => 'publish'])}}">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-1">
-                                        <i class="fa fa-file-o"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$data ["publish"]}}</span></div>
-                                            <div class="stat-heading">Article Publish</div>
-                                        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <a href="{{ route('pesan_kontak.index') }}">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-1">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">{{ $dashboardData['kontak'] }}</span></div>
+                                        <div class="stat-heading">Pesan Kontak</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-12">
-                    <a href="{{route('articles.index', ['status'=>'draft'])}}">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-2">
-                                        <i class="fa fa-clipboard"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$data ["draft"]}}</span></div>
-                                            <div class="stat-heading">Article Draf</div>
-                                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="{{ route('pesan_tabungan.index') }}">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-2">
+                                    <i class="fa fa-thumbs-up"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">{{ $dashboardData['tabungan'] }}</span></div>
+                                        <div class="stat-heading">Pesan Tabungan</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-12">
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="{{ route('pesan_deposito.index') }}">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-3">
+                                    <i class="fa fa-bank"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">{{ $dashboardData['deposito'] }}</span></div>
+                                        <div class="stat-heading">Pesan Deposito</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="{{ route('pesan_kredit.index') }}">
                     <div class="card">
                         <div class="card-body">
                             <div class="stat-widget-five">
                                 <div class="stat-icon dib flat-color-4">
-                                    <i class="fa fa-users"></i>
+                                    <i class="fa fa-money"></i>
                                 </div>
                                 <div class="stat-content">
                                     <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">298</span></div>
-                                        <div class="stat-heading">Visitor</div>
+                                        <div class="stat-text"><span class="count">{{ $dashboardData['kredit'] }}</span></div>
+                                        <div class="stat-heading">Pesan Kredit</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-4">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">298</span></div>
-                                        <div class="stat-heading">Visitor</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="charts-container">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Pesan Kontak</h4>
+                    <div id="chart-kontak" class="ct-chart"></div>
                 </div>
             </div>
-        <!-- /Widgets -->
-        <!--  Traffic  -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="box-title">Traffic </h4>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card-body">
-                                    <!-- <canvas id="TrafficChart"></canvas>   -->
-                                    <div id="traffic-chart" class="traffic-chart"></div>
-                                </div>
-                            </div>
-                        </div> <!-- /.row -->
-                        <div class="card-body"></div>
-                    </div>
-                </div><!-- /# column -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Pesan Tabungan</h4>
+                    <div id="chart-tabungan" class="ct-chart"></div>
+                </div>
             </div>
-        <!--  /Traffic -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Pesan Deposito</h4>
+                    <div id="chart-deposito" class="ct-chart"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Pesan Kredit</h4>
+                    <div id="chart-kredit" class="ct-chart"></div>
+                </div>
+            </div>
+        </div>
+        
 @endsection
+
 
 @section('script')
 
-    <!--Chartist Chart-->
+    <!-- Chartist Chart -->
     <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.js"></script>
 
     <script>
         jQuery(document).ready(function($) {
             "use strict";
-            
-            // Traffic Chart using chartist
-            if ($('#traffic-chart').length) {
-                var chart = new Chartist.Line('#traffic-chart', {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Agu','Sep', 'Okt', 'Nov','Des'],
-                series: [
-                [0, 18000, 33000,  25000,  22000,  30000] ]
-            }, {
-                low: 0,
-                showArea: true,
-                showLine: false,
-                showPoint: false,
-                fullWidth: true,
-                axisX: {
-                    showGrid: true
-                }
-            });
-
-                chart.on('draw', function(data) {
-                    if(data.type === 'line' || data.type === 'area') {
-                        data.element.animate({
-                            d: {
-                                begin: 2000 * data.index,
-                                dur: 2000,
-                                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-                                to: data.path.clone().stringify(),
-                                easing: Chartist.Svg.Easing.easeOutQuint
-                            }
-                        });
+    
+            // Function to generate charts dynamically
+            function generateChart(elementId, chartData) {
+                if ($(elementId).length) {
+                    var labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                    var series = new Array(12).fill(0); // Initialize with 0
+    
+                    // Fill series data based on `chartData`
+                    for (const [month, count] of Object.entries(chartData)) {
+                        series[month - 1] = count; // `month - 1` to map correctly to 0-indexed array
                     }
-                });
-            }
-            // Traffic Chart using chartist End
-            //Traffic chart chart-js
-            if ($('#TrafficChart').length) {
-                var ctx = document.getElementById( "TrafficChart" );
-                ctx.height = 150;
-                var myChart = new Chart( ctx, {
-                    type: 'line',
-                    data: {
-                        labels: [ "Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Agu','Sep', 'Okt', 'Nov','Des" ],
-                        datasets: [
-                            {
-                                label: "Visit",
-                                borderColor: "rgba(4, 73, 203,.09)",
-                                borderWidth: "1",
-                                backgroundColor: "rgba(4, 73, 203,.5)",
-                                data: [ 0, 2900, 5000, 3300, 6000, 3250, 0 ]
-                            },
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        tooltips: {
-                            mode: 'index',
-                            intersect: false
-                        },
-                        hover: {
-                            mode: 'nearest',
-                            intersect: true
+    
+                    new Chartist.Line(elementId, {
+                        labels: labels,
+                        series: [series]
+                    }, {
+                        low: 0,
+                        showArea: true,
+                        fullWidth: true,
+                        axisX: {
+                            showGrid: true
                         }
-
-                    }
-                } );
+                    });
+                }
             }
-            //Traffic chart chart-js  End
-            
+    
+            // Generate charts for each category
+            generateChart('#chart-kontak', @json($data['charts']['kontak']));
+            generateChart('#chart-tabungan', @json($data['charts']['tabungan']));
+            generateChart('#chart-deposito', @json($data['charts']['deposito']));
+            generateChart('#chart-kredit', @json($data['charts']['kredit']));
         });
     </script>
+    
 @endsection

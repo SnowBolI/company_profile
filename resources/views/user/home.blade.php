@@ -355,37 +355,68 @@
         <div class="container wow fadeInUp">
           <div class="section-header">
             <h3 class="section-title">Blog Kami</h3>
-            <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+            {{-- <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p> --}}
           </div>
           <div class="row">
   
-          <div class="row" id="category-wrapper">
-            @foreach ($categories as $category)
-                <div class="col-md-4 col-sm-12 category-item filter-app" >
-                      <a href="edukasi">
-                        <img src="{{asset('category_image/'.$category->image)}}" class="image-center">
-                        <div class="details">
-                          <h4>{{$category->name}}</h4>
-                          <span>{{$category->description}}</span>
-                        </div>
-                      </a>
-                </div>
-            @endforeach  
+            <div class="row" id="category-wrapper">
+              @if ($karirs && $karirs->count() > 0)
+                  @foreach ($karirs as $karir)
+                      <div class="col-md-4 col-sm-12 category-item">
+                          <a href="{{ route('blog_karir.show', $karir->slug) }}">
+                              <img src="{{ $karir->gambar ? Storage::url($karir->gambar) : asset('images/default.jpg') }}" class="image-center">
+                              <div class="details">
+                                  <h4>{{ $karir->judul ?? 'Karir' }}</h4>
+                                  <span>{!! $karir->keterangan ?? 'Tidak ada keterangan' !!}</span>
+                              </div>
+                          </a>
+                      </div>
+                  @endforeach
+              @endif
+          
+              @if ($edukasis && $edukasis->count() > 0)
+                  @foreach ($edukasis as $edukasi)
+                      <div class="col-md-4 col-sm-12 category-item">
+                          <a href="{{ route('blog_edukasi.show', $edukasi->slug) }}">
+                              <img src="{{ $edukasi->gambar ? Storage::url($edukasi->gambar) : asset('images/default.jpg') }}" class="image-center">
+                              <div class="details">
+                                  <h4>{{ $edukasi->judul ?? 'Edukasi' }}</h4>
+                                  <span>{!! $edukasi->keterangan ?? 'Tidak ada keterangan' !!}</span>
+                              </div>
+                          </a>
+                      </div>
+                  @endforeach
+              @endif
+          
+              @if ($beritas && $beritas->count() > 0)
+                  @foreach ($beritas as $berita)
+                      <div class="col-md-4 col-sm-12 category-item">
+                          <a href="{{ route('blog_berita.show', $berita->slug) }}">
+                              <img src="{{ $berita->gambar ? Storage::url($berita->gambar) : asset('images/default.jpg') }}" class="image-center">
+                              <div class="details">
+                                  <h4>{{ $berita->judul ?? 'Berita' }}</h4>
+                                  <span>{!! $berita->keterangan ?? 'Tidak ada keterangan' !!}</span>
+                              </div>
+                          </a>
+                      </div>
+                  @endforeach
+              @endif
           </div>
+          
   
         </div>
       </section>
   
       <!--========================== Gallery Section ============================-->
-      <section id="penghargaan" style="padding-bottom: 85px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <section id="penghargaan" style="padding-bottom: 85px; padding-top: 85px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
     <div class="container wow fadeInUp">
         <div class="section-header">
             <h3 class="section-title">Penghargaan</h3>
-            <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+            {{-- <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p> --}}
         </div>
     </div>
 
-    <div class="penghargaan-container wow fadeInUp">
+    {{-- <div class="penghargaan-container wow fadeInUp">
         <div class="box box-1"
             style="background-image: url('{{ asset('user/images/bank1.jpeg') }}');">
         </div>
@@ -401,7 +432,20 @@
         <div class="box box-5"
             style="background-image: url('{{ asset('user/images/fua.png') }}');">
         </div>
-    </div>
+    </div> --}}
+    <div class="penghargaan-container wow fadeInUp">
+      @if ($penghargaans && $penghargaans->count() > 0)
+          @foreach ($penghargaans as $penghargaan)
+              <div class="box box-{{ $loop->iteration }}"
+                  style="background-image: url('{{ $penghargaan->gambar ? Storage::url($penghargaan->gambar) : asset('user/images/default.png') }}');">
+              </div>
+          @endforeach
+      @else
+          <!-- Jika tidak ada data, tampilkan placeholder -->
+          <p>Tidak ada penghargaan yang tersedia saat ini.</p>
+      @endif
+  </div>
+  
 </section>
 @endsection
 

@@ -58,7 +58,7 @@
                                                 <td class="text-truncate" style="max-width: 150px;">{{ $karir->tanggal }}</td>
                                                 <td class="text-truncate" style="max-width: 150px;">{!! $karir->keterangan !!}</td>
                                                 <td>
-                                                    <img class="img-fluid rounded mx-auto d-block" src="{{ Storage::url($karir->gambar) }}" alt="Gambar karir" style="max-width: 90px;" data-toggle="modal" data-target="#modalGambar{{ $karir->id }}">
+                                                    <img class="img-fluid rounded mx-auto d-block" src="{{ Storage::url($karir->gambar_utama) }}" alt="Gambar karir" style="max-width: 90px;" data-toggle="modal" data-target="#modalGambar{{ $karir->id }}">
                                                 </td>
                                                 <td>
                                                     <div class="btn-group">
@@ -113,7 +113,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <img class="img-fluid" src="{{ Storage::url($karir->gambar) }}" alt="Gambar karir">
+                                                            <img class="img-fluid" src="{{ Storage::url($karir->gambar_utama) }}" alt="Gambar karir">
                                                         </div>
                                                     </div>
                                                 </div>

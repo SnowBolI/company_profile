@@ -35,9 +35,19 @@
                             <div class="invalid-feedback">{{ $errors->first('keterangan') }}</div>
                         </div>
                         <div class="form-group">
-                            <label for="gambar" class="font-weight-bold">Gambar</label>
-                            <input type="file" id="gambar" class="form-control {{ $errors->first('gambar') ? 'is-invalid' : '' }}" name="gambar" required>
-                            <div class="invalid-feedback">{{ $errors->first('gambar') }}</div>
+                            <label for="gambar_utama" class="font-weight-bold">Gambar 1 dan Utama</label>
+                            <input type="file" id="gambar_utama" class="form-control {{ $errors->first('gambar_utama') ? 'is-invalid' : '' }}" name="gambar_utama" required>
+                            <div class="invalid-feedback">{{ $errors->first('gambar_utama') }}</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="gambar_2" class="font-weight-bold">Gambar 2</label>
+                            <input type="file" id="gambar_2" class="form-control {{ $errors->first('gambar_2') ? 'is-invalid' : '' }}" name="gambar_2" >
+                            <div class="invalid-feedback">{{ $errors->first('gambar_2') }}</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="gambar_3" class="font-weight-bold">Gambar 3</label>
+                            <input type="file" id="gambar_3" class="form-control {{ $errors->first('gambar_3') ? 'is-invalid' : '' }}" name="gambar_3" >
+                            <div class="invalid-feedback">{{ $errors->first('gambar_3') }}</div>
                         </div>
                         <div class="form-group mt-4">
                             <a href="{{ route('karir.index') }}" class="btn btn-secondary">Kembali</a>

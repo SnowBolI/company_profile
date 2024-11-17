@@ -16,16 +16,16 @@
         @foreach($kontakSliders as $slider)
             <section id="hero" style="background-image: url('{{ asset('storage/' . ($slider->gambar ?? 'default-image.jpg')) }}');">
                 <div class="hero-container">
-                    <h1>{{ $slider->judul ?? 'Tentang Kami' }}</h1>
-                    <h2>{{ $slider->keterangan ?? 'Informasi profil bank' }}</h2>
+                    <h1>Kontak</h1>
+                    {{-- <h2>Bergabung dan liburan bersama Kami</h2> --}}
                 </div>
             </section>
         @endforeach
     @else
         <section id="hero">
             <div class="hero-container">
-              <h1>Contact Jogja-Travel</h1>
-              <h2>Bergabung dan liburan bersama Kami</h2>
+              <h1>Kontak</h1>
+              {{-- <h2>Bergabung dan liburan bersama Kami</h2> --}}
             </div>
         </section>
     @endif
@@ -91,12 +91,23 @@
 
             <!-- Form Section -->
             <div class="form-section">
+                @if (($message = Session::get('message')))
+                <div class="alert alert-success alert-dismissible fade show">
+                    <strong>Berhasil!</strong>
+                    <p>{{ $message }}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
                 <div class="form">
-                    <form action="" method="post" role="form" class="contactForm">
-                        <input type="text" name="name" placeholder="Nama" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="text" name="subject" placeholder="Subjek" required>
-                        <textarea name="message" placeholder="Pesan" required></textarea>
+                    <form action="{{ route('contact.store') }}" method="post" role="form" class="contactForm">
+                        @csrf
+
+                        <input type="text" name="nama" id="nama" placeholder="Nama" required>
+                        <input type="email" name="email" id="email" placeholder="Email" required>
+                        <input type="text" name="subjek" id="subjek" placeholder="Subjek" required>
+                        <textarea name="pesan" id="pesan" placeholder="Pesan" required></textarea>
                         <div style="text-align: center;">
                             <button type="submit">Kirim Pesan</button>
                         </div>

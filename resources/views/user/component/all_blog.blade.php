@@ -3,8 +3,8 @@
       <div class="section-header mt-3">
         <div class="article-image mb-3">
           <a href="{{ route('blog_edukasi.show', $article->slug) }}" class="decoration-none">
-            @if($article->gambar)
-              <img src="{{ asset('storage/' . $article->gambar) }}" 
+            @if($article->gambar_utama)
+              <img src="{{ asset('storage/' . $article->gambar_utama) }}" 
                    alt="{{ $article->judul }}" 
                    class="img-fluid rounded w-100" 
                    style="object-fit: cover; height: 300px;">

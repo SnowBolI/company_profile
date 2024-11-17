@@ -58,7 +58,7 @@
                                                 <td class="text-truncate" style="max-width: 150px;">{{ $berita->tanggal }}</td>
                                                 <td class="text-truncate" style="max-width: 150px;">{!! $berita->keterangan !!}</td>
                                                 <td>
-                                                    <img class="img-fluid rounded mx-auto d-block" src="{{ Storage::url($berita->gambar) }}" alt="Gambar berita" style="max-width: 90px;" data-toggle="modal" data-target="#modalGambar{{ $berita->id }}">
+                                                    <img class="img-fluid rounded mx-auto d-block" src="{{ Storage::url($berita->gambar_utama) }}" alt="Gambar berita" style="max-width: 90px;" data-toggle="modal" data-target="#modalGambar{{ $berita->id }}">
                                                 </td>
                                                 <td>
                                                     <div class="btn-group">
@@ -113,7 +113,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <img class="img-fluid" src="{{ Storage::url($berita->gambar) }}" alt="Gambar berita">
+                                                            <img class="img-fluid" src="{{ Storage::url($berita->gambar_utama) }}" alt="Gambar berita">
                                                         </div>
                                                     </div>
                                                 </div>

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\PesanKontak;
+use App\Models\PesanKredit;
+use Illuminate\Http\Request;
+use App\Models\PesanDeposito;
+use App\Models\PesanTabungan;
 
 class DashboardController extends Controller
 {
@@ -13,13 +17,50 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $data = [
-            'draft'     => Article::where('status', 'DRAFT')->count(),
-            'publish'   => Article::where('status', 'PUBLISH')->count()
-        ];
-        return view('dashboards.index', ['data'=>$data]);
-    }
+{
+    // Get counts for the notifications
+    $kontakCount = PesanKontak::where('status', 'belum dibaca')->count();
+    $tabunganCount = PesanTabungan::where('status', 'belum dibaca')->count();
+    $depositoCount = PesanDeposito::where('status', 'belum dibaca')->count();
+    $kreditCount = PesanKredit::where('status', 'belum dibaca')->count();
+    $totalNotifications = $kontakCount + $tabunganCount + $depositoCount +$kreditCount;
+    $monthlyCountsKontak = PesanKontak::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+        ->groupBy('month')
+        ->pluck('count', 'month');
+    $monthlyCountsTabungan = PesanTabungan::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+        ->groupBy('month')
+        ->pluck('count', 'month');
+    $monthlyCountsDeposito = PesanDeposito::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+        ->groupBy('month')
+        ->pluck('count', 'month');
+    $monthlyCountsKredit = PesanKredit::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+        ->groupBy('month')
+        ->pluck('count', 'month');
+
+    // Fetch the latest 5 notifications, for example from Articles and PesanKontak
+    $notifications = collect([
+        ...PesanKontak::where('status', 'belum dibaca')->latest()->take(5)->get(),
+        ...PesanTabungan::where('status', 'belum dibaca')->latest()->take(5)->get(),
+        ...Article::whereIn('status', ['DRAFT', 'PUBLISH'])->latest()->take(5)->get()
+    ])->sortByDesc('tanggal')->take(5); // Sort by creation date and get the 5 most recent
+
+    // Pass the data to the view
+    $data = [
+        'kontak'     => $kontakCount,
+        'tabungan'     => $tabunganCount,
+        'total'      => $totalNotifications,
+        'notifications' => $notifications,
+        'charts' => [
+            'kontak'   => $monthlyCountsKontak,
+            'tabungan' => $monthlyCountsTabungan,
+            'deposito' => $monthlyCountsDeposito,
+            'kredit'   => $monthlyCountsKredit,
+        ],
+    ];
+
+    return view('dashboards.index', ['data' => $data]);
+}
+
 
     /**
      * Show the form for creating a new resource.
