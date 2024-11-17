@@ -28,8 +28,16 @@
                         <p id="keterangan" class="form-control-plaintext">{!! $edukasi->keterangan !!}</p>
                     </div>
                     <div class="mb-3">
-                        <label for="gambar" class="font-weight-bold">Gambar</label>
-                        <img src="{{ Storage::url($edukasi->gambar) }}" alt="{{ $edukasi->judul }}" class="img-fluid">
+                        <label for="gambar_utama" class="font-weight-bold">Gambar 1 dan Utama</label>
+                        <img src="{{ Storage::url($edukasi->gambar_utama) }}" alt="{{ $edukasi->judul }}" class="img-fluid">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gambar_2" class="font-weight-bold">Gambar 2</label>
+                        <img src="{{ Storage::url($edukasi->gambar_2) }}" alt="{{ $edukasi->judul }}" class="img-fluid">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gambar_3" class="font-weight-bold">Gambar 3</label>
+                        <img src="{{ Storage::url($edukasi->gambar_3) }}" alt="{{ $edukasi->judul }}" class="img-fluid">
                     </div>
                 </div>
             </div>

@@ -32,7 +32,7 @@
         <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
             <div class="hero-container">
                 <h1>Laporan Keuangan</h1>
-                <h2>Laporan Keuangan Bank Ekadharma</h2>
+                {{-- <h2>Laporan Keuangan Bank Ekadharma</h2> --}}
             </div>
         </section>
     @endforeach
@@ -40,7 +40,7 @@
     <section id="hero">
         <div class="hero-container">
             <h1>Laporan</h1>
-            <h2>Laporan Keuangan Bank Ekadharma</h2>
+            {{-- <h2>Laporan Keuangan Bank Ekadharma</h2> --}}
         </div>
     </section>
 @endif

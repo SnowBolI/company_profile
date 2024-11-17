@@ -13,16 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('edukasis', function (Blueprint $table) {
+        Schema::create('pesan_tabungans', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->text('slug');
-            $table->text('keterangan');
-            $table->string('gambar');
+            $table->text('nama');
+            $table->string('status');
+            $table->string('subjek');
+            $table->bigInteger('ktp');
+            $table->text('alamat');
+            $table->string('hp');
+            $table->string('email');
+            $table->string('tipe_tabungan');
+            $table->bigInteger('setoran_awal');
             $table->date('tanggal');
-            $table->string('hari');
-            $table->foreignId('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('edukasis');
+        Schema::dropIfExists('pesan_tabungans');
     }
 };

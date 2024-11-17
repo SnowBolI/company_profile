@@ -307,16 +307,16 @@
 @foreach($produkSliders as $slider)
     <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
         <div class="hero-container">
-            <h1>Tentang Kami</h1>
-            <h2>Informasi profil bank</h2>
+            <h1>Deposito</h1>
+            <h2></h2>
         </div>
     </section>
 @endforeach
 @else
 <section id="hero">
     <div class="hero-container">
-        <h1>Tentang Kami</h1>
-        <h2>Informasi profil bank</h2>
+        <h1>Deposito</h1>
+        <h2></h2>
     </div>
 </section>
 @endif
@@ -396,40 +396,50 @@
                 aria-labelledby="pills-pengajuan-deposito-tab">
                 <div class="deposito-content">
                     <h3>Pengajuan Deposito</h3>
-                    <form class="deposito-form mt-4">
+                    @if (($message = Session::get('message')))
+                    <div class="alert alert-success alert-dismissible fade show">
+                        <strong>Berhasil!</strong>
+                        <p>{{ $message }}</p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    <form action="{{ route('deposito.store') }}" method="post"  class="kredit-form mt-4">
+                        @csrf
                         <div class="form-group">
                             <label for="nama">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap">
+                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan nama lengkap">
                         </div>
                         <div class="form-group mt-3">
-                            <label for="ktp">No. KTP</label>
-                            <input type="text" class="form-control" id="ktp" placeholder="Masukkan nomor KTP">
+                            <label for="number">No. KTP</label>
+                            <input type="text" class="form-control" name="ktp" id="ktp" placeholder="Masukkan nomor KTP">
                         </div>
                         <div class="form-group mt-3">
                             <label for="alamat">Alamat</label>
-                            <textarea class="form-control" id="alamat" rows="2" placeholder="Masukkan alamat"></textarea>
+                            <textarea class="form-control" id="alamat" name="alamat" rows="2" placeholder="Masukkan alamat"></textarea>
                         </div>
                         <div class="form-group mt-3">
-                            <label for="hp">No. HP</label>
-                            <input type="text" class="form-control" id="hp" placeholder="Masukkan nomor HP">
+                            <label for="number">No. HP</label>
+                            <input type="text" class="form-control" id="hp" name="hp" placeholder="Masukkan nomor HP">
                         </div>
                         <div class="form-group mt-3">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Masukkan email">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email">
                         </div>
                         <div class="form-group mt-3">
-                            <label for="jenis-deposito">Pilih Jenis Deposito</label>
-                            <select class="form-control" id="jenis-deposito">
+                            <label for="tipe_deposito">Pilih Jenis Deposito</label>
+                            <select class="form-control" id="tipe_deposito" name="tipe_deposito">
                                 <option value="DeBesT">DeBesT</option>
-                                <option value="jangkaMenengah">Deposito Berjangka 12 Bulan</option>
-                                <option value="jangkaPanjang">Deposito Berjangka 6 Bulan</option>
-                                <option value="jangkaPanjang">Deposito Berjangka 3 Bulan</option>
-                                <option value="jangkaPanjang">Deposito Berjangka 1 Bulan</option>
+                                <option value="Deposito Berjangka 12 Bulan">Deposito Berjangka 12 Bulan</option>
+                                <option value="Deposito Berjangka 6 Bulan">Deposito Berjangka 6 Bulan</option>
+                                <option value="Deposito Berjangka 3 Bulan">Deposito Berjangka 3 Bulan</option>
+                                <option value="Deposito Berjangka 1 Bulan">Deposito Berjangka 1 Bulan</option>
                             </select>
                         </div>
                         <div class="form-group mt-3">
-                            <label for="setoran">Besar Setoran Awal</label>
-                            <input type="number" class="form-control" id="setoran" placeholder="Masukkan besar setoran awal">
+                            <label for="setoran_awal">Besar Setoran Awal</label>
+                            <input type="number" class="form-control" name="setoran_awal" id="setoran_awal" placeholder="Masukkan besar setoran awal">
                         </div>
                         <button type="submit" class="btn btn-primary mt-4 w-100">Kirim</button>
                     </form>

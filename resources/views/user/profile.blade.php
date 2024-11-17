@@ -204,16 +204,16 @@
 @foreach($profileSliders as $slider)
     <section id="hero" style="background-image: url('{{ asset('storage/' . $slider->gambar) }}');">
         <div class="hero-container">
-            <h1>Tentang Kami</h1>
-            <h2>Informasi profil bank</h2>
+            <h1>Profil</h1>
+            {{-- <h2>Informasi profil bank</h2> --}}
         </div>
     </section>
 @endforeach
 @else
 <section id="hero">
     <div class="hero-container">
-        <h1>Tentang Kami</h1>
-        <h2>Informasi profil bank</h2>
+        <h1>Profil</h1>
+        {{-- <h2>Informasi profil bank</h2> --}}
     </div>
 </section>
 @endif

@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('beritas', function (Blueprint $table) {
+        Schema::create('pesan_kontaks', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->text('slug');
-            $table->text('keterangan');
-            $table->string('gambar');
+            $table->text('nama');
+            $table->string('status');
+            $table->string('email');
+            $table->string('subjek');
+            $table->text('pesan');
             $table->date('tanggal');
-            $table->string('hari');
-            $table->foreignId('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('beritas');
+        Schema::dropIfExists('pesan_kontaks');
     }
 };

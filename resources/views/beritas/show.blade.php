@@ -28,8 +28,16 @@
                         <p id="keterangan" class="form-control-plaintext">{!! $berita->keterangan !!}</p>
                     </div>
                     <div class="mb-3">
-                        <label for="gambar" class="font-weight-bold">Gambar</label>
-                        <img src="{{ Storage::url($berita->gambar) }}" alt="{{ $berita->judul }}" class="img-fluid">
+                        <label for="gambar_utama" class="font-weight-bold">Gambar 1 dan Utama</label>
+                        <img src="{{ Storage::url($berita->gambar_utama) }}" alt="{{ $berita->judul }}" class="img-fluid">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gambar_2" class="font-weight-bold">Gambar 2</label>
+                        <img src="{{ Storage::url($berita->gambar_2) }}" alt="{{ $berita->judul }}" class="img-fluid">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gambar_3" class="font-weight-bold">Gambar 3</label>
+                        <img src="{{ Storage::url($berita->gambar_3) }}" alt="{{ $berita->judul }}" class="img-fluid">
                     </div>
                 </div>
             </div>

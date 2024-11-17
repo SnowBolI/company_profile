@@ -12,6 +12,8 @@ use App\Http\Controllers\KantorKasController;
 use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\ProdukPPOBController;
 use App\Http\Controllers\KarirBannerController;
+use App\Http\Controllers\PesanKontakController;
+use App\Http\Controllers\PesanKreditController;
 use App\Http\Controllers\BeritaBannerController;
 use App\Http\Controllers\HomeDepositoController;
 use App\Http\Controllers\HomeTabunganController;
@@ -23,6 +25,8 @@ use App\Http\Controllers\ProdukKreditController;
 use App\Http\Controllers\EdukasiBannerController;
 use App\Http\Controllers\HomeThumbnailController;
 use App\Http\Controllers\LaporanBannerController;
+use App\Http\Controllers\PesanDepositoController;
+use App\Http\Controllers\PesanTabunganController;
 use App\Http\Controllers\ProfileBannerController;
 use App\Http\Controllers\HomeBackgroundController;
 use App\Http\Controllers\ProdukDepositoController;
@@ -55,10 +59,19 @@ Route::get('/laporan', 'UserController@laporan')->name('laporan');
 Route::get('/destination', 'UserController@destination')->name('destination');
 Route::get('/destination/{slug}', 'UserController@show_destination')->name('destination.show');
 Route::get('/contact', 'UserController@contact')->name('contact');
+Route::post('/contact/store', 'UserController@contact_store')->name('contact.store');
 // route produk
 Route::get('/tabungan', 'UserController@tabungan')->name('tabungan');
+Route::post('/tabungan/store', 'UserController@tabungan_store')->name('tabungan.store');
+
 Route::get('/deposito', 'UserController@deposito')->name('deposito');
+Route::post('/deposito/store', 'UserController@deposito_store')->name('deposito.store');
+
+
 Route::get('/kredit', 'UserController@kredit')->name('kredit');
+Route::post('/kredit/store', 'UserController@kredit_store')->name('kredit.store');
+
+
 Route::get('/ppob', 'UserController@ppob')->name('ppob');
 
 // route profile
@@ -148,6 +161,13 @@ Route::prefix('admin')->group(function(){
 
   Route::resource('/kontak_banner',KontakBannerController::class)->middleware('auth');
   Route::resource('/kontak',KontakController::class)->middleware('auth');
+
+  Route::prefix('dashboard')->middleware('auth')->group(function () {
+    Route::resource('pesan_kontak', PesanKontakController::class);
+    Route::resource('pesan_tabungan', PesanTabunganController::class);
+    Route::resource('pesan_deposito', PesanDepositoController::class);
+    Route::resource('pesan_kredit', PesanKreditController::class);
+});
 
 
 

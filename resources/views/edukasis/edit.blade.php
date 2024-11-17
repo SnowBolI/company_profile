@@ -36,16 +36,35 @@
                             <div class="invalid-feedback">{{ $errors->first('keterangan') }}</div>
                         </div>
                         <div class="mb-3">
-                            <label for="gambar" class="font-weight-bold">Gambar</label>
-                            @if($edukasi->gambar)
-                                <img class="img-fluid rounded mx-auto d-block my-3" src="{{ Storage::url($edukasi->gambar) }}" alt="Gambar Produk">
+                            <label for="gambar_utama" class="font-weight-bold">Gambar 1 dan Utama</label>
+                            @if($edukasi->gambar_utama)
+                                <img class="img-fluid rounded mx-auto d-block my-3" src="{{ Storage::url($edukasi->gambar_utama) }}" alt="Gambar Produk">
                             @else
-                                <p>Tidak ada gambar yang diunggah.</p>
+                                <p>Tidak ada gambar utama yang diunggah.</p>
                             @endif
-                            <input type="file" id="gambar" class="form-control {{ $errors->first('gambar') ? 'is-invalid' : '' }}" name="gambar">
-                            <div class="invalid-feedback">{{ $errors->first('gambar') }}</div>
+                            <input type="file" id="gambar_utama" class="form-control {{ $errors->first('gambar_utama') ? 'is-invalid' : '' }}" name="gambar_utama">
+                            <div class="invalid-feedback">{{ $errors->first('gambar_utama') }}</div>
                         </div>
                         <div class="mb-3">
+                            <label for="gambar_2" class="font-weight-bold">Gambar 2</label>
+                            @if($edukasi->gambar_2)
+                                <img class="img-fluid rounded mx-auto d-block my-3" src="{{ Storage::url($edukasi->gambar_2) }}" alt="Gambar Produk">
+                            @else
+                                <p>Tidak ada gambar 2 yang diunggah.</p>
+                            @endif
+                            <input type="file" id="gambar_2" class="form-control {{ $errors->first('gambar_2') ? 'is-invalid' : '' }}" name="gambar_2">
+                            <div class="invalid-feedback">{{ $errors->first('gambar_2') }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gambar_3" class="font-weight-bold">Gambar 3</label>
+                            @if($edukasi->gambar_3)
+                                <img class="img-fluid rounded mx-auto d-block my-3" src="{{ Storage::url($edukasi->gambar_3) }}" alt="Gambar Produk">
+                            @else
+                                <p>Tidak ada gambar 3 yang diunggah.</p>
+                            @endif
+                            <input type="file" id="gambar_3" class="form-control {{ $errors->first('gambar_3') ? 'is-invalid' : '' }}" name="gambar_3">
+                            <div class="invalid-feedback">{{ $errors->first('gambar_3') }}</div>
+                        </div>
                             <button type="submit" class="btn btn-success">Simpan</button>
                         </div>
                     </form>
