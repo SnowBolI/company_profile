@@ -71,7 +71,7 @@
 
         .tab-pane h4 {
             color: #388e3c;
-            margin: 15px 0;
+            margin: 0 0;
         }
 
         .tab-pane p {
@@ -176,6 +176,22 @@
             .nav-wrapper {
                 padding: 30px 0;
             }
+            .penghargaan-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                padding: 15px;
+            }
+            .penghargaan-content {
+                padding: 15px;
+            }
+
+            .penghargaan-content h4 {
+                font-size: 16px;
+            }
+
+            .penghargaan-content p {
+                font-size: 13px;
+            }
             
             .nav-pills .nav-link {
                 margin: 5px;
@@ -194,6 +210,38 @@
             .management-photo {
                 width: 150px;
                 height: 150px;
+            }
+
+            .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+            font-size: 2rem;
+            }
+
+            /* penghargaan */
+            .award-card {
+            max-width: 45%; /* Mengatur lebar maksimum kontainer agar gambar tidak terlalu besar */
+            margin: 0 auto; /* Menempatkan elemen di tengah */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            flex: 0 1 45%;
+            text-align: center;
+            }
+
+            .award-photo {
+            width: 100%; /* Menjaga agar gambar responsif */
+            border-radius: 5px;
+            height: auto;
+            max-height: 100px
+            object-fit: cover;
+            }
+
+            .award-info {
+            margin-top: 10px;
             }
         }
     </style>
@@ -258,6 +306,13 @@
                                 data-bs-target="#pills-milestone" type="button" role="tab" 
                                 aria-controls="pills-milestone" aria-selected="false">
                             <i class="fas fa-flag-checkered"></i> Milestone
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-penghargaan-tab" data-bs-toggle="pill" 
+                                data-bs-target="#pills-penghargaan" type="button" role="tab" 
+                                aria-controls="pills-penghargaan" aria-selected="false">
+                            <i class="fas fa-trophy"></i>Penghargaan
                         </button>
                     </li>
                 </ul>
@@ -369,30 +424,107 @@
                     </div>
 
                     <div class="tab-pane fade" id="pills-milestone" role="tabpanel"
-    aria-labelledby="pills-milestone-tab" tabindex="0">
-    <h3>Milestone</h3>
-    @if($profileMilestones->isEmpty())
-        <p>Tidak ada data yang ditemukan</p>
-    @else
-        <div class="timeline">
-            @foreach($profileMilestones as $milestone)
-                <div class="timeline__event animated fadeInUp timeline__event--type1">
-                    <div class="timeline__event__icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="timeline__event__date">
-                        {{ $milestone->tahun }}
-                    </div>
-                    <div class="timeline__event__content">
-                        <div class="timeline__event__description">
-                            <p>{{ $milestone->keterangan }}</p>
+                    aria-labelledby="pills-milestone-tab" tabindex="0">
+                    <h3>Milestone</h3>
+                    @if($profileMilestones->isEmpty())
+                        <p>Tidak ada data yang ditemukan</p>
+                    @else
+                        <div class="timeline">
+                            @foreach($profileMilestones as $milestone)
+                                <div class="timeline__event animated fadeInUp timeline__event--type1">
+                                    <div class="timeline__event__icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="timeline__event__date">
+                                        {{ $milestone->tahun }}
+                                    </div>
+                                    <div class="timeline__event__content">
+                                        <div class="timeline__event__description">
+                                            <p>{{ $milestone->keterangan }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+
+                   <!-- Tab Penghargaan -->
+                    <div class="tab-pane fade" id="pills-penghargaan" role="tabpanel" 
+                        aria-labelledby="pills-penghargaan-tab" tabindex="0">
+                        <h3>Penghargaan</h3>
+                        
+                        <div class="row">
+                            <!-- Sertifikat 1 -->
+                            <div class="col-md-6 mb-4">
+                                <div class="award-card text-center">
+                                    <img src="{{ asset('user/images/bank3.jpeg') }}" alt="Sertifikat 1" class="award-photo img-fluid">
+                                    <div class="award-info mt-2">
+                                        <h4 class="award-title">Penghargaan 1</h4>
+                                        <p class="award-description">Deskripsi singkat tentang sertifikat ini.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sertifikat 2 -->
+                            <div class="col-md-6 mb-4">
+                                <div class="award-card text-center">
+                                    <img src="{{ asset('user/images/infobank_2022.jpg') }}" alt="Sertifikat 2" class="award-photo img-fluid">
+                                    <div class="award-info mt-2">
+                                        <h4 class="award-title">Penghargaan 2</h4>
+                                        <p class="award-description">Deskripsi singkat tentang sertifikat ini.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sertifikat 3 -->
+                            <div class="col-md-6 mb-4">
+                                <div class="award-card text-center">
+                                    <img src="{{ asset('user/images/sertif3.jpeg') }}" alt="Sertifikat 3" class="award-photo img-fluid">
+                                    <div class="award-info mt-2">
+                                        <h4 class="award-title">Penghargaan 3</h4>
+                                        <p class="award-description">Deskripsi singkat tentang sertifikat ini.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sertifikat 4 -->
+                            <div class="col-md-6 mb-4">
+                                <div class="award-card text-center">
+                                    <img src="{{ asset('user/images/sertif4.jpeg') }}" alt="Sertifikat 4" class="award-photo img-fluid">
+                                    <div class="award-info mt-2">
+                                        <h4 class="award-title">Penghargaan 4</h4>
+                                        <p class="award-description">Deskripsi singkat tentang sertifikat ini.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sertifikat 5 -->
+                            <div class="col-md-6 mb-4">
+                                <div class="award-card text-center">
+                                    <img src="{{ asset('user/images/sertifikat5.jpg') }}" alt="Sertifikat 5" class="award-photo img-fluid">
+                                    <div class="award-info mt-2">
+                                        <h4 class="award-title">Penghargaan 5</h4>
+                                        <p class="award-description">Deskripsi singkat tentang sertifikat ini.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sertifikat 6 -->
+                            <div class="col-md-6 mb-4">
+                                <div class="award-card text-center">
+                                    <img src="{{ asset('user/images/sertifikat6.jpg') }}" alt="Sertifikat 6" class="award-photo img-fluid">
+                                    <div class="award-info mt-2">
+                                        <h4 class="award-title">Penghargaan 6</h4>
+                                        <p class="award-description">Deskripsi singkat tentang sertifikat ini.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
-    @endif
-</div>
+
+
+                    </div>
                 </div>
             </div>
         </div>
