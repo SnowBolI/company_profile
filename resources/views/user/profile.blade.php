@@ -450,7 +450,7 @@
                 </div>
 
                    <!-- Tab Penghargaan -->
-                    <div class="tab-pane fade" id="pills-penghargaan" role="tabpanel" 
+                    {{-- <div class="tab-pane fade" id="pills-penghargaan" role="tabpanel" 
                         aria-labelledby="pills-penghargaan-tab" tabindex="0">
                         <h3>Penghargaan</h3>
                         
@@ -521,7 +521,23 @@
                                 </div>
                             </div>
                         </div>
+                    </div> --}}
+                    <div class="tab-pane fade" id="pills-penghargaan" role="tabpanel" aria-labelledby="pills-penghargaan-tab" tabindex="0">
+                        <h3>Penghargaan</h3>
+                        <div class="row">
+                            @foreach($penghargaans as $penghargaan)
+                                <div class="col-md-6 mb-4">
+                                    <div class="award-card text-center">
+                                        <img src="{{ Storage::url($penghargaan->gambar) }}" alt="{{ $penghargaan->judul }}" class="award-photo img-fluid">
+                                        <div class="award-info mt-2">
+                                            <h4 class="award-title">{{ $penghargaan->judul }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
+                    
 
 
                     </div>
