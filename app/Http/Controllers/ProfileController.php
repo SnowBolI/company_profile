@@ -10,6 +10,7 @@ use App\Models\ProfileBanner;
 use App\Models\ProfileTentang;
 use App\Models\ProfileStruktur;
 use App\Models\ProfileMilestone;
+use App\Models\ProfilePenghargaan;
 use App\Models\ProfileSejarahVisi;
 use App\Http\Controllers\Controller;
 
@@ -46,6 +47,8 @@ class ProfileController extends Controller
         $profileMisi = ProfileSejarahVisi::whereRaw('LOWER(judul) = ?', ['misi'])->first();
         $profileStrukturs = ProfileStruktur::orderBy('created_at', 'desc')->take(1)->get();
         $profileMilestones = ProfileMilestone::orderBy('tahun', 'asc')->get();
+        $penghargaans = ProfilePenghargaan::all(); 
+
         $profileTentangs = ProfileTentang::orderBy('created_at', 'desc')->take(4)->get();
         $recents = Berita::select('judul', 'slug')
         ->orderBy('created_at', 'desc')
@@ -86,6 +89,7 @@ class ProfileController extends Controller
             'profileSliders' => $profileSliders,
             'profileStrukturs' => $profileStrukturs,     
             'profileTentangs' => $profileTentangs,     
+            'penghargaans' => $penghargaans,
             'profileMilestones' => $profileMilestones,
             'recents'=>$recents,
             'kontaks'=>$kontaks
@@ -130,4 +134,12 @@ class ProfileController extends Controller
             'profileData' => $this->profileData
         ]);
     }
+    public function showPenghargaan()
+    {
+        return view('user.profile', [
+            'section' => 'penghargaan',
+            'penghargaans' => $this->profileData
+        ]);
+    }
+
 }
