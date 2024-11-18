@@ -189,10 +189,35 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 80vh;
-  color: black;
+  height: 80vh; /* Sesuaikan tinggi section */
+  overflow: hidden;
   background-size: cover;
   position: relative;
+}
+
+
+#hero img {
+  width: 100% !important; /* Paksa gambar memenuhi lebar */
+  height: 100% !important; /* Paksa gambar memenuhi tinggi */
+  object-fit: cover !important; /* Paksa gambar mengisi tanpa merusak aspek rasio */
+  object-position: center !important; /* Posisi tengah */
+}
+
+.carousel-inner {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#hero .carousel-item {
+  height: 100%;
+}
+
+#hero .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Memastikan gambar memenuhi area slider */
+  object-position: center; /* Memastikan gambar tetap di tengah */
+  transition: none; /* Hilangkan animasi tak diinginkan */
 }
 
 /* #hero {
