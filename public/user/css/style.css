@@ -1155,7 +1155,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   transform: translateY(-50%);
   width: 15px;
   height: 15px;
-  background: yellow;
+  background: orange;
   border-radius: 50%;
 }
 .regulator-header {
@@ -1262,7 +1262,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .contact-info i {
-  color: yellow;
+  color: orange;
 }
 
 

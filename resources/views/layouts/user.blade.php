@@ -179,16 +179,16 @@
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Berita Terbaru</h3>
-                @foreach ($recents as $recent)
-                <div>
-                    <a href="{{route('blog_berita.show', [$recent->slug])}}"> <i class="fa fa-dot-circle-o"
-                            aria-hidden="true"></i>
-                        {{$recent->judul}}
-                    </a>
-                    <hr>
-                </div>
-                @endforeach
+    <h3>Berita Terbaru</h3>
+    @foreach ($recents->take(3) as $recent)
+    <div>
+        <a href="{{ route('blog_berita.show', [$recent->slug]) }}" class="text-white"> 
+            <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+            {{ $recent->judul }}
+        </a>
+        <hr>
+    </div>
+@endforeach
                 <div class="social-icons">
                     @if($kontaks && $kontaks->whatsapp)
                         <a href="https://wa.me/{{ $kontaks->whatsapp }}" target="_blank"><i class="fab fa-whatsapp"></i></a>

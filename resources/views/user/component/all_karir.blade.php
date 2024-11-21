@@ -23,7 +23,7 @@
               {{ $article->judul }}
             </div>
           </a>
-          <div class="text-center mt-1">
+          <div class="text-center mt-1" style="font-size: 16px;">
             <small class="font-italic">Tanggal: {{ date('d M Y', strtotime($article->tanggal)) }}</small>
           </div>
         </div>

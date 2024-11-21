@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-                <div class="cabang-info text-center">
+                <div class="cabang-info text-center" style="font-size: 16px;">
                     <a href="https://maps.google.com/?q={{ urlencode($cabang->alamat) }}" target="_blank" class="text-decoration-none">
                         <i class="fas fa-map-marker-alt me-2"></i>
                         {{ $cabang->alamat }}
@@ -72,7 +72,7 @@
                             </div>
                         </div>
 
-                        <div class="cabang-info text-center">
+                        <div class="cabang-info text-center" style="font-size: 16px;">
                             <a href="https://maps.google.com/?q={{ urlencode($cabang->alamat) }}" target="_blank" class="text-decoration-none">
                                 <i class="fas fa-map-marker-alt me-2"></i>
                                 {{ $cabang->alamat }}
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="text-center mt-3">
-                            <a href="{{ route('cabang.single', $cabang->slug) }}" class="btn btn-primary">
+                            <a href="{{ route('cabang.single', $cabang->id) }}" class="btn btn-primary">
                                 Kantor Kas
                             </a>
                         </div>

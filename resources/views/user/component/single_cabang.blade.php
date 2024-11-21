@@ -25,7 +25,7 @@
                         </div>
                     </div>
 
-                    <div class="cabang-info text-center">
+                    <div class="cabang-info text-center" style="font-size: 16px;">
                         <a href="https://maps.google.com/?q={{ urlencode($kas->alamat) }}" target="_blank" class="text-decoration-none">
                             <i class="fas fa-map-marker-alt me-2"></i>
                             {{ $kas->alamat }}
