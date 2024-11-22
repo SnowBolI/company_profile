@@ -385,7 +385,7 @@
                   @foreach ($karirs as $karir)
                       <div class="col-md-4 col-sm-12 category-item">
                           <a href="{{ route('blog_karir.show', $karir->slug) }}">
-                              <img src="{{ $karir->gambar ? Storage::url($karir->gambar) : asset('images/default.jpg') }}" class="image-center">
+                              <img src="{{ $karir->gambar_utama ? Storage::url($karir->gambar_utama) : asset('images/default.jpg') }}" class="image-center">
                               <div class="details">
                                   <h4>{{ $karir->judul ?? 'Karir' }}</h4>
                                   <span>{!! $karir->keterangan ?? 'Tidak ada keterangan' !!}</span>
@@ -399,7 +399,7 @@
                   @foreach ($edukasis as $edukasi)
                       <div class="col-md-4 col-sm-12 category-item">
                           <a href="{{ route('blog_edukasi.show', $edukasi->slug) }}">
-                              <img src="{{ $edukasi->gambar ? Storage::url($edukasi->gambar) : asset('images/default.jpg') }}" class="image-center">
+                              <img src="{{ $edukasi->gambar_utama ? Storage::url($edukasi->gambar_utama) : asset('images/default.jpg') }}" class="image-center">
                               <div class="details">
                                   <h4>{{ $edukasi->judul ?? 'Edukasi' }}</h4>
                                   <span>{!! $edukasi->keterangan ?? 'Tidak ada keterangan' !!}</span>
@@ -413,7 +413,7 @@
                   @foreach ($beritas as $berita)
                       <div class="col-md-4 col-sm-12 category-item">
                           <a href="{{ route('blog_berita.show', $berita->slug) }}">
-                              <img src="{{ $berita->gambar ? Storage::url($berita->gambar) : asset('images/default.jpg') }}" class="image-center">
+                              <img src="{{ $berita->gambar_utama ? Storage::url($berita->gambar_utama) : asset('images/default.jpg') }}" class="image-center">
                               <div class="details">
                                   <h4>{{ $berita->judul ?? 'Berita' }}</h4>
                                   <span>{!! $berita->keterangan ?? 'Tidak ada keterangan' !!}</span>
