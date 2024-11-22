@@ -42,6 +42,30 @@
           font-size: 18px;
           font-weight: bold;
         }
+        body, #about, #youtube, #category {
+    background: 
+        linear-gradient(
+            to right, 
+            rgba(240, 240, 240, 0) 0%, 
+            rgba(240, 240, 240, 0.8) 25%, 
+            rgba(240, 240, 240, 0.8) 75%, 
+            rgba(240, 240, 240, 0) 100%
+        ),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d3d3d3'%3E%3Cpath d='M30 30c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+}
+
+#about {
+    background-color: transparent;
+}
+
+#youtube {
+    background-color: transparent;
+}  
+
+#category {
+  background-color: transparent;
+}
     </style>    
 @endsection
 
@@ -361,7 +385,7 @@
                   @foreach ($karirs as $karir)
                       <div class="col-md-4 col-sm-12 category-item">
                           <a href="{{ route('blog_karir.show', $karir->slug) }}">
-                              <img src="{{ $karir->gambar ? Storage::url($karir->gambar) : asset('images/default.jpg') }}" class="image-center">
+                              <img src="{{ $karir->gambar_utama ? Storage::url($karir->gambar_utama) : asset('images/default.jpg') }}" class="image-center">
                               <div class="details">
                                   <h4>{{ $karir->judul ?? 'Karir' }}</h4>
                                   <span>{!! $karir->keterangan ?? 'Tidak ada keterangan' !!}</span>
@@ -375,7 +399,7 @@
                   @foreach ($edukasis as $edukasi)
                       <div class="col-md-4 col-sm-12 category-item">
                           <a href="{{ route('blog_edukasi.show', $edukasi->slug) }}">
-                              <img src="{{ $edukasi->gambar ? Storage::url($edukasi->gambar) : asset('images/default.jpg') }}" class="image-center">
+                              <img src="{{ $edukasi->gambar_utama ? Storage::url($edukasi->gambar_utama) : asset('images/default.jpg') }}" class="image-center">
                               <div class="details">
                                   <h4>{{ $edukasi->judul ?? 'Edukasi' }}</h4>
                                   <span>{!! $edukasi->keterangan ?? 'Tidak ada keterangan' !!}</span>
@@ -389,7 +413,7 @@
                   @foreach ($beritas as $berita)
                       <div class="col-md-4 col-sm-12 category-item">
                           <a href="{{ route('blog_berita.show', $berita->slug) }}">
-                              <img src="{{ $berita->gambar ? Storage::url($berita->gambar) : asset('images/default.jpg') }}" class="image-center">
+                              <img src="{{ $berita->gambar_utama ? Storage::url($berita->gambar_utama) : asset('images/default.jpg') }}" class="image-center">
                               <div class="details">
                                   <h4>{{ $berita->judul ?? 'Berita' }}</h4>
                                   <span>{!! $berita->keterangan ?? 'Tidak ada keterangan' !!}</span>
