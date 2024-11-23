@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class HomeTabungan extends Model
 {
     use HasFactory;
-    protected $fillable = ['judul', 'nilai_persentase'];
+    protected $fillable = ['judul', 'nilai_persentase', 'jangka'];
 }

@@ -41,7 +41,8 @@
                                             <tr>
                                                 <th style="width: 5%;">No</th>
                                                 <th style="width: 25%;">Judul</th>
-                                                <th style="width: 55%;">Persentase</th>
+                                                <th style="width: 25%;">Jangka</th>
+                                                <th style="width: 20%;">Persentase</th>
                                                 <th style="width: 15%;">Aksi</th>
                                             </tr>
                                         </thead>
@@ -53,6 +54,7 @@
                                             <tr>
                                                 <td class="text-center">{{ $i++ }}</td>
                                                 <td class="text-truncate" style="max-width: 150px;">{{ $tabungan->judul }}</td>
+                                                <td class="text-truncate" style="max-width: 150px;">{{ $tabungan->jangka }}</td>
                                                 <td class="text-truncate" style="max-width: 150px;">
                                                     {{ $tabungan->nilai_persentase * 100 }}%
                                                 </td>

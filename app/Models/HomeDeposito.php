@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class HomeDeposito extends Model
 {
     use HasFactory;
-    protected $fillable = ['judul', 'nilai_persentase'];
+    protected $fillable = ['judul', 'nilai_persentase', 'jangka'];
 
 }

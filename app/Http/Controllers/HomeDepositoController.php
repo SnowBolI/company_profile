@@ -47,7 +47,8 @@ class HomeDepositoController extends Controller
     {
         $request->validate([
             'judul' => 'required',
-            'nilai_persentase' => 'required|numeric'
+            'nilai_persentase' => 'required|numeric',
+            'jangka' => 'required|numeric',
         ]);
     
         $input = $request->all();
@@ -92,7 +93,9 @@ class HomeDepositoController extends Controller
     {
         $request->validate([
             'judul' => 'required',
-            'nilai_persentase' => 'required|numeric'
+            'nilai_persentase' => 'required|numeric',
+            'jangka' => 'required|numeric'
+
         ]);
     
         $input = $request->all();

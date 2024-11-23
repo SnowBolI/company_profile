@@ -41,7 +41,8 @@
                                             <tr>
                                                 <th style="width: 5%;">No</th>
                                                 <th style="width: 25%;">Judul</th>
-                                                <th style="width: 55%;">Persentase</th>
+                                                <th style="width: 15%;">Jangka</th>
+                                                <th style="width: 40%;">Persentase</th>
                                                 <th style="width: 15%;">Aksi</th>
                                             </tr>
                                         </thead>
@@ -53,6 +54,8 @@
                                             <tr>
                                                 <td class="text-center">{{ $i++ }}</td>
                                                 <td class="text-truncate" style="max-width: 150px;">{{ $deposito->judul }}</td>
+                                                <td class="text-truncate" style="max-width: 150px;">{{ $deposito->jangka }}</td>
+
                                                 <td class="text-truncate" style="max-width: 150px;">
                                                     {{ $deposito->nilai_persentase * 100 }}%
                                                 </td>

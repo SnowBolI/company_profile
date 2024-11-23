@@ -20,6 +20,10 @@
                         <p id="judul" class="form-control-plaintext">{{ $homeDeposito->judul }}</p>
                     </div>
                     <div class="mb-3">
+                        <label for="jangka" class="font-weight-bold">Jangka</label>
+                        <p id="jangka" class="form-control-plaintext">{{ $homeDeposito->jangka }}</p>
+                    </div>
+                    <div class="mb-3">
                         <label for="nilai_persentase" class="font-weight-bold">Persentase</label>
                         <p id="nilai_persentase" class="form-control-plaintext">{{ $homeDeposito->nilai_persentase*100 }}%</p>
                     </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\HomeDeposito;
+use App\Models\HomeTabungan;
 use App\Models\Karir;
 use App\Models\Berita;
 use App\Models\HomeYT;
@@ -80,6 +82,18 @@ class UserController extends Controller
 
     return view('user.home', compact('penghargaans','karirs','edukasis','beritas','kontaks', 'homeSliders', 'homeBackgrounds', 'homeThumbnails', 'youtubeId', 'categories', 'about', 'recents'));
   }
+  public function getTabunganTypes()
+    {
+        // Ambil semua jenis tabungan beserta bunga dari database
+        $tabunganTypes = HomeTabungan::all();
+        return response()->json($tabunganTypes);
+    }
+    public function getDepositoTypes()
+    {
+        // Ambil semua jenis tabungan beserta bunga dari database
+        $depositoTypes = HomeDeposito::all();
+        return response()->json($depositoTypes);
+    }
 
   public function cabang(Request $request)
   {

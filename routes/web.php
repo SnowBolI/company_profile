@@ -40,6 +40,8 @@ use App\Http\Controllers\ProfileSejarahVisiController;
 
 Route::get('/', function(){return redirect('/home');});
 
+Route::get('/api/tabungan-types', [UserController::class, 'getTabunganTypes']);
+Route::get('/api/deposito-types', [UserController::class, 'getDepositoTypes']);
 
 Route::get('/home', 'UserController@home')->name('home');
 Route::get('/blog_edukasi', 'UserController@edukasi')->name('blog_edukasi');
