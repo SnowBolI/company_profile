@@ -469,63 +469,38 @@
             <div class="tabungan-content">
                 <h3>Simulasi Tabungan</h3>
                 <div class="simulation-calculator">
-                    <div class="form-group mb-3">
-                        <label for="jangka-waktu">Pilih Tabungan</label>
-                        <select class="form-control" id="jangka-waktu">
-                            <option value="0">-- Pilih Tabungan --</option>
-                            <option value="12">Tabungan Sisa Belanja / 12 Bulan</option>
-                            <option value="24">SIMPEL / 12 Bulan</option>
-                            <option value="36">Tabungan Sukarela / 12 Bulan</option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="setoran-bulanan">Jumlah Dana</label>
-                        <input type="number" class="form-control" id="setoran-bulanan"
-                            placeholder="Masukkan nominal jumlah dana">
-                    </div>
-                    <button class="tabungan-cta-button" id="hitung-simulasi">Hitung Simulasi</button>
-                    <div class="simulation-result mt-4" style="display: none;">
-                        <h4>Hasil Simulasi</h4>
-                        <div class="result-box">
-                            <div class="result-item">
-                                <span>Total Tabungan</span>
-                                <strong id="total-tabungan">Rp 0</strong>
-                            </div>
-                            <div class="result-item">
-                                <span>Estimasi Bunga</span>
-                                <strong id="total-bunga">Rp 0</strong>
-                            </div>
+                    <form id="form-simulasi-tabungan">
+                        <input type="hidden" name="jenis_simulasi" value="tabungan" id="jenis_simulasi">
+                        <div class="form-group mb-3">
+                          <select id="jangka_waktu_tabungan" name="jangka_waktu_tabungan"
+                            class="form-control form-select border-0 bg-light px-4" style="height: 55px;">
+                            <option value="">- Pilih Tabungan -</option>
+                          </select>
                         </div>
-                    </div>
+                        <div class="form-group mb-3">
+                          <input id="jumlah_dana_tabungan" type="number" class="form-control border-0 bg-light px-4"
+                            placeholder="Jumlah Dana" style="height: 55px;">
+                        </div>
+                        <div class="form-group mb-3">
+                          <button class="btn btn-success w-100 py-3" type="button" onclick="hitungSimulasiTabungan()">Hitung</button>
+                        </div>
+                        <div class="form-group mb-3" id="jumlahbunga_tabungan">
+                          <label>Jumlah Bunga:</label>
+                          <input id="jumlah_bunga_tabungan" name="jumlah_bunga_tabungan" class="form-control border-0 bg-light px-4"
+                            placeholder="Jumlah Bunga" style="height: 55px;" readonly>
+                        </div>
+                        <div class="form-group mb-3" id="hasilsimulasi_tabungan">
+                          <label>Hasil:</label>
+                          <input id="hasil_simulasi_tabungan" name="hasil_simulasi_tabungan"
+                            class="form-control border-0 bg-light px-4" placeholder="Hasil Simulasi" style="height: 55px;" readonly>
+                        </div>
+                        <small class="text-muted">*Bunga yang ditampilkan dalam hitungan pertahun dan belum dikurangi pajak.</small>
+                    </form>
                 </div>
             </div>
         </div>
 
-        <script>
-            document.getElementById('hitung-simulasi').addEventListener('click', function () {
-                // Get selected tabungan and dana input values
-                const jangkaWaktu = parseInt(document.getElementById('jangka-waktu').value);
-                const dana = parseFloat(document.getElementById('setoran-bulanan').value);
-
-                // Check if inputs are valid
-                if (jangkaWaktu === 0 || isNaN(dana) || dana <= 0) {
-                    alert('Mohon pilih tabungan dan masukkan jumlah dana yang valid.');
-                    return;
-                }
-
-                // Calculate total tabungan and bunga (this can be customized)
-                let bungaRate = 0.05; // Example bunga rate per year
-                let totalTabungan = dana * jangkaWaktu;
-                let estimasiBunga = totalTabungan * bungaRate;
-
-                // Display results
-                document.getElementById('total-tabungan').textContent = 'Rp ' + totalTabungan.toFixed(2);
-                document.getElementById('total-bunga').textContent = 'Rp ' + estimasiBunga.toFixed(2);
-
-                // Show simulation result
-                document.querySelector('.simulation-result').style.display = 'block';
-            });
-        </script>
+       
 
         <!-- SIMPEL Content -->
         @foreach($tabunganData as $index => $tabungan)
@@ -587,5 +562,60 @@
 
 
     </div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          // Sembunyikan hasil di awal
+          document.getElementById('jumlahbunga_tabungan').style.display = 'none';
+          document.getElementById('hasilsimulasi_tabungan').style.display = 'none';
+        });
+    
+        fetch('/api/tabungan-types')
+          .then(response => response.json())
+          .then(data => {
+            const select = document.getElementById('jangka_waktu_tabungan');
+            data.forEach(tabungan => {
+              const option = document.createElement('option');
+              option.value = tabungan.jangka;  // Atau bisa berdasarkan jangka waktu, misalnya '12'
+              option.textContent = `${tabungan.judul}`;
+              option.setAttribute('data-bunga', tabungan.nilai_persentase * 100);
+              select.appendChild(option);
+            });
+          });
+    
+        // Fungsi untuk menghitung simulasi tabungan
+        function hitungSimulasiTabungan() {
+          var jumlahDana = parseFloat(document.getElementById('jumlah_dana_tabungan').value);
+          var selectElement = document.getElementById('jangka_waktu_tabungan');
+          var bungaTabungan = parseFloat(selectElement.options[selectElement.selectedIndex].getAttribute('data-bunga'));
+    
+          if (isNaN(jumlahDana) || jumlahDana <= 0) {
+            alert("Masukkan jumlah dana yang valid.");
+            return;
+          }
+    
+          if (isNaN(bungaTabungan) || bungaTabungan <= 0) {
+            alert("Pilih jenis tabungan terlebih dahulu.");
+            return;
+          }
+    
+          // Hitung bunga dan total tabungan
+          var jumlahBunga = (bungaTabungan / 100) * jumlahDana;
+          var totalTabungan = jumlahBunga + jumlahDana;
+    
+          document.getElementById('jumlah_bunga_tabungan').value = formatRupiah(jumlahBunga);
+          document.getElementById('hasil_simulasi_tabungan').value = formatRupiah(totalTabungan);
+    
+          // Tampilkan elemen hasil perhitungan
+          document.getElementById('jumlahbunga_tabungan').style.display = 'block';
+          document.getElementById('hasilsimulasi_tabungan').style.display = 'block';
+        }
+    
+        // Fungsi untuk format angka ke Rupiah
+        function formatRupiah(number) {
+          return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR"
+          }).format(number);
+        }
+    </script>
     @endsection

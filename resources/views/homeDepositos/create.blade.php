@@ -24,8 +24,13 @@
                             <div class="invalid-feedback">{{ $errors->first('judul') }}</div>
                         </div>
                         <div class="form-group">
+                            <label for="jangka" class="font-weight-bold">Jangka</label>
+                            <input type="text" id="jangka" class="form-control {{ $errors->first('jangka') ? 'is-invalid' : '' }}" name="jangka" placeholder="Jangka" value="{{ old('jangka') }}" required>
+                            <div class="invalid-feedback">{{ $errors->first('jangka') }}</div>
+                        </div>
+                        <div class="form-group">
                             <label for="nilai_persentase" class="font-weight-bold">Persentase</label>
-                            <input type="number" step="0.1" min="0" max="100" placeholder="5.5" id="nilai_persentase" class="form-control {{ $errors->first('nilai_persentase') ? 'is-invalid' : '' }}" name="nilai_persentase" value="{{ old('nilai_persentase') }}" required>
+                            <input type="number" step="0.000001" min="0" max="100" placeholder="5.5" id="nilai_persentase" class="form-control {{ $errors->first('nilai_persentase') ? 'is-invalid' : '' }}" name="nilai_persentase" value="{{ old('nilai_persentase') }}" required>
                             <div class="invalid-feedback">{{ $errors->first('nilai_persentase') }}</div>
                         </div>
                         {{-- <div class="form-group">

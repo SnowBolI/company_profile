@@ -359,7 +359,7 @@
                         data-bs-target="#pills-{{ Str::slug($deposito->judul) }}" type="button" role="tab"
                         aria-controls="pills-{{ Str::slug($deposito->judul) }}"
                         aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
-                        <i class="fas fa-calender-alt"></i> {{ $deposito->judul }}
+                        <i class="fa-solid fa-calendar-week"></i>{{ $deposito->judul }}
                     </button>
                 </li>
                 @endif
@@ -370,7 +370,7 @@
                         data-bs-target="#pills-{{ Str::slug($deposito->judul) }}" type="button" role="tab"
                         aria-controls="pills-{{ Str::slug($deposito->judul) }}"
                         aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
-                        <i class="fas fa-calender-check"></i> {{ $deposito->judul }}
+                        <i class="fa-solid fa-calendar-check"></i> {{ $deposito->judul }}
                     </button>
                 </li>
                 @endif
@@ -380,7 +380,7 @@
                         data-bs-target="#pills-{{ Str::slug($deposito->judul) }}" type="button" role="tab"
                         aria-controls="pills-{{ Str::slug($deposito->judul) }}"
                         aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
-                        <i class="fas fa-calender-day"></i> {{ $deposito->judul }}
+                        <i class="fa-solid fa-calendar-days"></i> {{ $deposito->judul }}
                     </button>
                 </li>
                 @endif
@@ -452,64 +452,38 @@
                 <div class="deposito-content">
                     <h3>Simulasi Deposito</h3>
                     <div class="simulation-calculator">
-                        <div class="form-group mb-3">
-                            <label for="jangka-waktu">Jangka Waktu</label>
-                            <select class="form-control" id="jangka-waktu">
-                                <option value="0">- Pilih Deposito -</option>
-                                <option value="12">Deposito Berjangka 12 Bulan</option>
-                                <option value="6">Deposito Berjangka 6 Bulan</option>
-                                <option value="3">Deposito Berjangka 3 Bulan</option>
-                                <option value="1">Deposito Berjangka 1 Bulan</option>
-                            </select>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="nominal">Jumlah Dana</label>
-                            <input type="number" class="form-control" id="nominal" placeholder="Masukkan nominal">
-                        </div>
-                        <button class="deposit-cta-button" onclick="calculateDeposit()">Hitung Simulasi</button>
-                        <div class="simulation-result mt-4" id="simulation-result" style="display: none;">
-                            <h4>Hasil Simulasi</h4>
-                            <div class="result-box">
-                                <div class="result-item">
-                                    <span>Total Bunga</span>
-                                    <strong id="total-bunga">Rp 0</strong>
-                                </div>
-                                <div class="result-item">
-                                    <span>Total Dana Akhir</span>
-                                    <strong id="total-dana">Rp 0</strong>
-                                </div>
+                        <form id="form-simulasi-deposito">
+                            <input type="hidden" name="jenis_simulasi" value="deposito" id="jenis_simulasi">
+                            <div class="form-group mb-3">
+                              <select id="jangka_waktu_deposito" name="jangka_waktu_deposito"
+                                class="form-control form-select border-0 bg-light px-4" style="height: 55px;">
+                                <option value="">- Pilih Deposito -</option>
+                              </select>
                             </div>
-                        </div>
+                            <div class="form-group mb-3">
+                              <input id="jumlah_dana_deposito" type="number" class="form-control border-0 bg-light px-4"
+                                placeholder="Jumlah Dana" style="height: 55px;">
+                            </div>
+                            <div class="form-group mb-3">
+                              <button class="btn btn-success w-100 py-3" type="button" onclick="hitungSimulasiDeposito()">Hitung</button>
+                            </div>
+                            <div class="form-group mb-3" id="jumlahbunga_deposito">
+                              <label>Jumlah Bunga:</label>
+                              <input id="jumlah_bunga_deposito" name="jumlah_bunga_deposito" class="form-control border-0 bg-light px-4"
+                                placeholder="Jumlah Bunga" style="height: 55px;" readonly>
+                            </div>
+                            <div class="form-group mb-3" id="hasilsimulasi_deposito">
+                              <label>Hasil:</label>
+                              <input id="hasil_simulasi_deposito" name="hasil_simulasi_deposito"
+                                class="form-control border-0 bg-light px-4" placeholder="Hasil Simulasi" style="height: 55px;" readonly>
+                            </div>
+                            <small class="text-muted">*Bunga yang ditampilkan dalam hitungan pertahun dan belum dikurangi pajak.</small>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <script>
-                function calculateDeposit() {
-                    // Get values from input fields
-                    const jangkaWaktu = parseInt(document.getElementById("jangka-waktu").value);
-                    const jumlahDana = parseFloat(document.getElementById("nominal").value);
-
-                    // Define interest rate (e.g., 5% per year)
-                    const interestRate = 5;
-
-                    // Calculate total interest and final amount based on jangka waktu
-                    const totalBunga = (jumlahDana * interestRate * jangkaWaktu) / 1200; // Simple interest formula
-                    const totalDanaAkhir = jumlahDana + totalBunga;
-
-                    // Format results as currency
-                    const formattedBunga = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(totalBunga);
-                    const formattedDanaAkhir = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(totalDanaAkhir);
-
-                    // Update result elements
-                    document.getElementById("total-bunga").textContent = formattedBunga;
-                    document.getElementById("total-dana").textContent = formattedDanaAkhir;
-
-                    // Show the result section
-                    document.getElementById("simulation-result").style.display = "block";
-                }
-            </script>
-
+           
 
             <!-- DeBesT Content -->
             @foreach($depositoData as $index => $deposito)
@@ -586,5 +560,60 @@
         </div>
         @endif
         @endforeach
-
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              // Sembunyikan hasil di awal
+              document.getElementById('jumlahbunga_deposito').style.display = 'none';
+              document.getElementById('hasilsimulasi_deposito').style.display = 'none';
+            });
+        
+            fetch('/api/deposito-types')
+              .then(response => response.json())
+              .then(data => {
+                const select = document.getElementById('jangka_waktu_deposito');
+                data.forEach(deposito => {
+                  const option = document.createElement('option');
+                  option.value = deposito.jangka;  // Atau bisa berdasarkan jangka waktu, misalnya '12'
+                  option.textContent = `${deposito.judul}`;
+                  option.setAttribute('data-bunga', deposito.nilai_persentase * 100);
+                  select.appendChild(option);
+                });
+              });
+        
+            // Fungsi untuk menghitung simulasi deposito
+            function hitungSimulasiDeposito() {
+              var jumlahDana = parseFloat(document.getElementById('jumlah_dana_deposito').value);
+              var selectElement = document.getElementById('jangka_waktu_deposito');
+              var bungaDeposito = parseFloat(selectElement.options[selectElement.selectedIndex].getAttribute('data-bunga'));
+        
+              if (isNaN(jumlahDana) || jumlahDana <= 0) {
+                alert("Masukkan jumlah dana yang valid.");
+                return;
+              }
+        
+              if (isNaN(bungaDeposito) || bungaDeposito <= 0) {
+                alert("Pilih jenis deposito terlebih dahulu.");
+                return;
+              }
+        
+              // Hitung bunga dan total deposito
+              var jumlahBunga = (bungaDeposito / 100) * jumlahDana;
+              var totalDeposito = jumlahBunga + jumlahDana;
+        
+              document.getElementById('jumlah_bunga_deposito').value = formatRupiah(jumlahBunga);
+              document.getElementById('hasil_simulasi_deposito').value = formatRupiah(totalDeposito);
+        
+              // Tampilkan elemen hasil perhitungan
+              document.getElementById('jumlahbunga_deposito').style.display = 'block';
+              document.getElementById('hasilsimulasi_deposito').style.display = 'block';
+            }
+        
+            // Fungsi untuk format angka ke Rupiah
+            function formatRupiah(number) {
+              return new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR"
+              }).format(number);
+            }
+          </script>
 @endsection

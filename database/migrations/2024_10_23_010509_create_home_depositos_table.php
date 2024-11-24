@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             
             $table->string('judul');
+            $table->integer('jangka');
             $table->decimal('nilai_persentase', 5, 4);
             $table->timestamps();
         });
