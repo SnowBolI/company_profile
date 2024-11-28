@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Edit Home Youtube')
+@section('title', 'Edit Home Thumbnail')
 
-@section('breadcrumbs', 'Home Youtube')
+@section('breadcrumbs', 'Home Thumnail')
 
 @section('second-breadcrumb')
     <li>Edit</li>

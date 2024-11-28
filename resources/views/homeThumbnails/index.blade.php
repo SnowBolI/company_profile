@@ -1,7 +1,7 @@
 @extends('layouts.admin') {{-- Sesuaikan dengan layout Ela Admin --}}
 
-@section('title', 'Home Youtube')
-@section('breadcrumbs', 'Home Youtube')
+@section('title', 'Home Thumbnail')
+@section('breadcrumbs', 'Home Thumbnail')
 
 @section('content')
     {{-- <div class="content"> --}}
