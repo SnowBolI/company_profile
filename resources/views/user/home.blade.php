@@ -57,7 +57,7 @@
     font-weight: bold;
   }
 
-  body,
+  /* body,
   #about,
   #youtube,
   #category {
@@ -69,7 +69,7 @@
         rgba(240, 240, 240, 0) 100%),
       url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d3d3d3'%3E%3Cpath d='M30 30c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     background-attachment: fixed;
-  }
+  } */
 
   #about {
     background-color: transparent;
