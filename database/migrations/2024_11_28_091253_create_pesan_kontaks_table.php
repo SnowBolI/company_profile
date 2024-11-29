@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('subjek');
             $table->text('pesan');
             $table->date('tanggal');
-            
             $table->timestamps();
         });
     }
